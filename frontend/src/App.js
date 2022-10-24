@@ -11,10 +11,8 @@ import Greeting from './components/helloEkko';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
       <Greeting />
-      </BrowserRouter>
-
+    
      
     </div>
   );
