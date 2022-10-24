@@ -7,11 +7,29 @@ const mongoose = require('mongoose');
 //register the express app
 const app = express();
 
-app.get("/",(req,res)=>{
-    res.json({msg:"hello"})
+//middleware
+app.use(express.json); //getting access to req.body
+
+//show req.path and req.mothod of the request.
+app.use((req,res,next)=>{
+    console.log(req.path,req.method);
+    next();
 })
 
-app.listen(process.env.PORT,()=>{
-    console.log("Connected",process.env.PORT);
-});
+
+//connecting to mongo db
+mongoose.connect(process.env.MONGO_URI)
+    .then(()=>{
+        app.listen(process.env.PORT,()=>{
+            console.log("Connected to db and listening on port",process.env.PORT);
+        });
+    })
+    .catch((error)=>{
+        console.log("Bad news! Something went wrong");
+        console.log(error);
+    })
+
+
+
+
 
