@@ -6,13 +6,17 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 //route: individual route
 
 //import components
-import Greeting from './components/helloEkko';
+import Home from './routes/home/home';
+import Register from './routes/register/register';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <Greeting />
-    </div>
+    <Routes>
+      <Route path='/home' element = {<Home />} />
+      <Route path='/register' element = {<Register />} />
+    </Routes>
+  
   );
 }
 

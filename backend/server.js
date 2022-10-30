@@ -16,6 +16,11 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.get("/hi",(req,res)=>{
+    res.json({msg:"hi"});
+    // next();
+})
+
 
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)
