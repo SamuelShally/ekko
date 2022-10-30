@@ -22,6 +22,7 @@ const Greeting = () => {
             <div className='container'>
                 <div className = "greet">
                     <h1>Hello {msg}</h1>
+                    <div>Connections built on exchange of ideas</div>
                 </div>
                 
             </div>
