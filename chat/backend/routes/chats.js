@@ -5,7 +5,7 @@ const Chats = require('../modles/chatModel');
 
 //Get all chats at this route
 router.get('/', async (req,res) => {
-    const allChats = await Chats.find({}).sort({createdAt: -1});
+    const allChats = await Chats.find({}).sort({createdAt: 1});
     res.status(200).json(allChats);
 });
 
