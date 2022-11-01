@@ -16,13 +16,10 @@ const Home = () => {
             if(response.ok){
                 setChats(json) 
             }
-            count += 1;
-            console.log(count);
+        
         }
-            fetchChats()
-
+            fetchChats();
     }, []);
-
     
     return (
         <div  className = "home">
