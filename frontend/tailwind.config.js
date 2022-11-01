@@ -2,7 +2,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: ["./src/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/*.{js,jsx,ts,tsx}",
+    "./src/components/*/*.{js,jsx,ts,tsx}",
+    "./src/routes/*/*.{js,jsx,ts,tsx}"
+  ],
   theme: {
     extend: {
       fontFamily: { 
@@ -11,7 +15,7 @@ module.exports = {
     },
     
   },
-  plugins: [require("daisyui")],
+  plugins: [require('@tailwindcss/typography'),require("daisyui")],
 
   // daisyUI config (optional)
   daisyui: {
@@ -19,10 +23,10 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          darkBrown: "#29180F",
-          khaki: "#A69E56",
-          lightGreen: "#DEDBC0",
-          ivory: "#F5F2F2",
+          primary: "#29180F", // darkBrown
+          secondary: "#A69E56", // khaki
+          accent: "#DEDBC0", // lightGreen
+          neutral: "#F5F2F2", // ivory
           "base-100": "#ffffff",
           // "--rounded-box": "1rem", // border radius rounded-box utility class, used in card and other large boxes
           // "--rounded-btn": "0.5rem", // border radius rounded-btn utility class, used in buttons and similar element
