@@ -1,14 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --primary: #1aac83;
-  --error: #e7195a;
-}
-
-header{
-  background-color:rgba(142, 23, 150, 0.782);
-}
-
-header .container .greet{
-  color:#edce02;
-  text-align: center;
-}
