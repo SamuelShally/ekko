@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --primary: #1aac83;
   --error: #e7195a;
 }
@@ -17,4 +17,4 @@ header{
 header .container .greet{
   color:#edce02;
   text-align: center;
-}
+} */
