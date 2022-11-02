@@ -3,9 +3,10 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
-    "./src/*.{js,jsx,ts,tsx}",
-    "./src/components/*/*.{js,jsx,ts,tsx}",
-    "./src/routes/*/*.{js,jsx,ts,tsx}"
+    "./src/**/*.{js,jsx,ts,tsx}",
+    // "./src/*.{js,jsx,ts,tsx}",
+    // "./src/components/*/*.{js,jsx,ts,tsx}",
+    // "./src/routes/*/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {
@@ -15,7 +16,10 @@ module.exports = {
     },
     
   },
-  plugins: [require('@tailwindcss/typography'),require("daisyui")],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require("daisyui"),
+  ],
 
   // daisyUI config (optional)
   daisyui: {
