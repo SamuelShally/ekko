@@ -25,6 +25,14 @@ router.get("/hi", (req,res)=>{
     res.status(200).json({msg:"Ekko"});
 })
 
+router.post("/register", (req,res)=>{
+    console.log(req.body);
+    // Add to database & send appropritate respons to backnd
+    res.status(200).json({
+        lol: "look at me"
+    });
+})
+
 app.use('/', router)
 
 //connecting to mongo db
