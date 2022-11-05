@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import fish from '../../img/fish.png';
+import fish from '../img/fish.png';
 
 // import Home from './routes/home/home';
 // import Register from './routes/register/register';

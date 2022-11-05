@@ -6,12 +6,12 @@ import {BrowserRouter,Routes,Route,Link} from 'react-router-dom';
 //route: individual route
 
 //import components
-import Home from './routes/home/home';
-import Register from './routes/register/register';
-import Navigation from './routes/navigation/navigation';
-import Login from './routes/login/login';
-import Discover from './components/Discover/discover';
-import Learn from './components/Learn/learn';
+import Home from './routes/home';
+import Register from './routes/register';
+import Navigation from './routes/navigation';
+import Login from './routes/login';
+import Discover from './components/discover';
+import Learn from './components/learn';
 
 
 
