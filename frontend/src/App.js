@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {BrowserRouter,Routes,Route,Link} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 //BR : wraps everwhere we want to use the routes
 // Routes: wraps every single route
 //route: individual route
@@ -15,17 +15,23 @@ import Learn from './components/Learn';
 
 const App = () => {
   return (
-    <div>
-    <Routes>
-      <Route exact path='/' element = {<Navigation />} >
-        <Route index={true} element = {<Home />} />
-        <Route path='register' element = {<Register />} />
-        <Route path='login' element = {<Login />} />
-        <Route path='learn' element = {<Learn />} />
-        <Route path='discover' element = {<Discover />} />
-      </Route>
-    </Routes>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route path='/nav' element = {<Navigation />} />
+        <Route path='/register' element = {<Register />} />
+        <Route path='/login' element = {<Login />} />
+        <Route path='/learn' element = {<Learn />} />
+        <Route path='/discover' element = {<Discover />} />
+          {/* <Route exact path='/' element = {<Navigation />} >
+            <Route index={true} element = {<Home />} />
+            <Route path='register' element = {<Register />} />
+            <Route path='login' element = {<Login />} />
+            <Route path='learn' element = {<Learn />} />
+            <Route path='discover' element = {<Discover />} />
+          </Route> */}
+        </Routes>
+    </Router>
   );
 }
 
