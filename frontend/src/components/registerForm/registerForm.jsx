@@ -57,6 +57,7 @@ const RegisterForm = () =>{
         }
     }
     
+    
     return (
         <div>
             <h1>Welcome to our app! Please sign up with your username, email and password </h1>
