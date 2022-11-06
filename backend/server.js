@@ -3,6 +3,7 @@ require('dotenv').config(); //attach env variables to the process object
 const express = require('express');
 const cors = require('cors')
 const mongoose = require('mongoose');
+const userRoutes = require("./routes/users");
 
 
 //register the express app
@@ -19,21 +20,22 @@ app.use((req,res,next)=>{
     next();
 })
 
-const router = express.Router();
+// const router = express.Router();
 
-router.get("/hi", (req,res)=>{
-    res.status(200).json({msg:"Ekko"});
-})
+// router.get("/hi", (req,res)=>{
+//     res.status(200).json({msg:"Ekko"});
+// })
 
-router.post("/register", (req,res)=>{
-    console.log(req.body);
-    // Add to database & send appropritate respons to backnd
-    res.status(200).json({
-        lol: "look at me"
-    });
-})
+// router.post("/register", (req,res)=>{
+//     console.log(req.body);
+//     // Add to database & send appropritate respons to backnd
+//     res.status(200).json({
+//         lol: "look at me"
+//     });
+// })
 
-app.use('/', router)
+app.use('/api/users', userRoutes);
+
 
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)

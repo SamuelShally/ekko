@@ -37,7 +37,7 @@ const Greeting = () => {
             {/* <button className="btn btn-active bg-primary">Test</button> */}
             <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Ekko</button>
             <button className="btn absolute btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-secondary">Sign in</button>
-            <button className="btn absolute btn-xs top-2 right-2 sm:btn-sm md:btn-md lg:btn-lg bg-primary text-neutral rounded-full">Sign up</button>
+            <button className="btn absolute btn-xs top-2 right-2 sm:btn-sm md:btn-md lg:btn-lg bg-primary text-neutral rounded-full"><Link classname="home-link" to='/register'>Sign up</Link></button>
             <button className="btn absolute btn-xs top-1/2 right-1/3 sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">Learn</button>
             <button className="btn absolute btn-xs top-1/2 right-1/3 sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">Discover</button>
 
@@ -47,3 +47,4 @@ const Greeting = () => {
 }
 
 export default Greeting;
+
