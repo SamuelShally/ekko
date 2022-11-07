@@ -1,45 +1,41 @@
 import { Link } from 'react-router-dom';
+import ekkoO from '../img/ekko-o-512.png';
+import PreviousBtn from '../components/Previous';
 
 const LoginForm = () => {
     return (
-        <div className="grid h-screen w-screen justify-center">
-        <div className="grid gap-y-8 place-content-center h-screen">
-            {/* <div className="place-items-center"> */}
-                <h1 className="text-2xl font-semibold">Welcome back</h1>
-            {/* <div/> */}
-                <form onSubmit={()=>{}} className="grid gap-4">
-                    {/* <label> Email </label> */}
+        <div className="relative">
+            {/* <Link to="/">
+                <span className='absolute top-3 block'><PreviousBtn/></span> 
+            </Link> */}
+            {/* <div className="relative z-20"><img src={ekkoO} className="relative z-10 w-1/4 place-content-center ml-4 mt-4"/></div> */}
+            <div className="relative z-0 grid gap-y-16 place-content-center h-screen">
+                <h1 className="text-3xl font-semibold">Welcome back</h1>
+                <form onSubmit={()=>{}} className="grid gap-6">
                     <div className="form-control w-full max-w-xs">
-                        <label className="label">
-                            {/* <span className="label-text">Email address</span> */}
-                        </label>
+                        <label className="label"/>
                     <input type="text" placeholder="Email address"
-                        className="input w-full max-w-xs rounded-full border-solid border-2
-                        input-sm sm:input-sm md:input-md lg:input-lg font-light text-xs"/>
+                            className="input w-full max-w-xs rounded-full border-solid border-2
+                            input-md md:input-lg lg:input-lg font-light text-xs"/>
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label">
-                            {/* <span className="label-text">Password</span> */}
-                        </label>
-                    <input type="text" placeholder="Password"
-                        className="input w-full max-w-xs rounded-full border-solid border-2
-                        input-sm sm:input-sm md:input-md lg:input-lg font-light"/>
+                        <label className="label"/>
+                        <input type="text" placeholder="Password"
+                            className="input w-full max-w-xs rounded-full border-solid border-2
+                            input-md md:input-lg lg:input-lg font-light text-xs"/>
                     </div>
-                    {/* <label> Password</label>
-                    <input type ="password"required />
-                    <button type="submit"> Sign up </button> */}
                 </form>
-
                 <Link to="/discover">
-                    <button className="text-m px-20 w-80 btn-sm sm:btn-sm md:btn-md lg:btn-lg bg-primary text-white rounded-full">
-                        Sign in
+                    <button
+                        className="text-l text-white rounded-full bg-primary
+                        px-20 w-80 btn-md md:btn-lg lg:btn-lg">
+                            Sign in
                     </button>
                 </Link>
-
+                
             </div>
-            </div>
-    )
-
-}
+        </div>
+    );
+};
 
 export default LoginForm;
