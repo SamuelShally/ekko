@@ -57,8 +57,12 @@ router.post('/createUser', async(req, res) => {
     }
 }); 
 
+/*
+Log user in to the system 
 
-//Log user in to the system 
+(JSON response can be modified to send back some sort of user DB ID if
+ login is successful and actually log in the user)
+*/
 router.post('/login', async(req, res) => {
     let {name, password} = req.body;
     const allUsers = await UserDB.find({}).sort({createdAt: 1});
@@ -79,7 +83,7 @@ router.post('/login', async(req, res) => {
             }else{
                 failed = true;
             }
-            
+
             break;
         }
     }
