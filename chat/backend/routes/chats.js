@@ -60,8 +60,36 @@ router.post('/createUser', async(req, res) => {
 
 //Log user in to the system 
 router.post('/login', async(req, res) => {
-    
+    let {name, password} = req.body;
+    const allUsers = await UserDB.find({}).sort({createdAt: 1});
 
+    let failed = true;
+    //Find user via username -> hash password
+    for(let x = 0; x<allUsers.length; x++){
+
+        //If username match
+        if (allUsers[x].name == name){
+            let userNameExists = true;
+
+            //hash entered password and check agaist the password in the DB
+            password = md5(password);
+
+            if(allUsers[x].password == password){
+                failed = false;
+            }else{
+                failed = true;
+            }
+            
+            break;
+        }
+    }
+
+    if(!failed){
+        res.status(200).json({"status":"success"});
+    }else{
+        res.status(400).json({"status": "failed"});
+    }
+    
 });
 
 //export the router
