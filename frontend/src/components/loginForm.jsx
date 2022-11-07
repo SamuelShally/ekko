@@ -4,7 +4,7 @@ const LoginForm = () => {
     return (
         // <div className="flex h-screen m-0">
             <div className="grid gap-8 place-content-center mx-6 h-screen">
-            <h1 className="text-2xl">Get started</h1>
+            <h1 className="text-2xl">Welcome back</h1>
             {/* <div > */}
 
                 <form onSubmit={()=>{}} className="grid gap-4">
@@ -19,9 +19,9 @@ const LoginForm = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            {/* <span className="label-text">Set password</span> */}
+                            {/* <span className="label-text">Password</span> */}
                         </label>
-                    <input type="text" placeholder="Set password"
+                    <input type="text" placeholder="Password"
                         className="input w-full max-w-xs rounded-full border-solid border-2
                         input-sm sm:input-sm md:input-md lg:input-lg"/>
                     </div>
@@ -32,7 +32,7 @@ const LoginForm = () => {
 
                 <Link to="/discover">
                     <button className="text-m px-20 btn-sm sm:btn-sm md:btn-md lg:btn-lg bg-primary text-white rounded-full">
-                        Create an account
+                        Sign in
                     </button>
                 </Link>
 
