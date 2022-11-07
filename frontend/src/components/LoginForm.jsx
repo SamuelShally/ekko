@@ -5,9 +5,6 @@ import PreviousBtn from '../components/Previous';
 const LoginForm = () => {
     return (
         <div className="relative">
-            {/* <Link to="/">
-                <span className='absolute top-3 block'><PreviousBtn/></span> 
-            </Link> */}
             {/* <div className="relative z-20"><img src={ekkoO} className="relative z-10 w-1/4 place-content-center ml-4 mt-4"/></div> */}
             <div className="relative z-0 grid gap-y-16 place-content-center h-screen">
                 <h1 className="text-3xl font-semibold">Welcome back</h1>
