@@ -29,7 +29,6 @@ router.post('/', async(req,res) => {
 
 //Recives a user name and log in
 router.post('/createUser', async(req, res) => {
-
     let {name, password} = req.body;
     const allUsers = await UserDB.find({}).sort({createdAt: 1});
 
@@ -38,6 +37,7 @@ router.post('/createUser', async(req, res) => {
     for(let x = 0; x<allUsers.length; x++){
         if(allUsers[x].name == name){
             userNameExists = true;
+            break;
         }
     }
 
@@ -57,7 +57,12 @@ router.post('/createUser', async(req, res) => {
     }
 }); 
 
+
+//Log user in to the system 
+router.post('/login', async(req, res) => {
+    
+
+});
+
 //export the router
 module.exports = router;
-
-
