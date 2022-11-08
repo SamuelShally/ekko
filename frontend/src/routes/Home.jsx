@@ -1,4 +1,4 @@
-import Greeting from '../../components/Greeting/helloEkko';
+import Greeting from '../components/HelloEkko';
 
 
 const Home = () => {
