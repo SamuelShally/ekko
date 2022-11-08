@@ -24,17 +24,16 @@ const Greeting = () => {
             <div className="relative">
                 <Navigation/>
             </div>
-            {/* <img className = "fixed mx-auto h-auto opacity-25 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src={fish} alt="Fish" /> */}
-            <div className='absolute w-screen top-1/3 md:top-2'>
+            <div className='absolute w-screen top-1/3'>
                 <div className="relative">
-                <img className="absolute opacity-25 w-3/4 md:w-1/3 lg:w-2/5 left-1/2 -translate-x-1/2" src={fish} alt="Fish" />
-                <div className="relative grid gap-y-10 md:top-1/2 lg:top-1/2">
+                <img className="absolute opacity-25 w-4/5 left-1/2 -translate-x-1/2" src={fish} alt="Fish" />
+                <div className="relative grid gap-y-12 mx-4">
                     <h1 className="font-readex text-4xl text-center justify-center">
-                        Connections Built on<br />Exchange of Ideas.
+                        Connections<br />built on<br />Exchange of Ideas.
                     </h1>  
                     <div className='grid grid-cols-2 justify-items-center'>
                         <Link to="/learn">
-                            <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                            <button className="text-xl px-6 justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
                                 Learn
                             </button>
                         </Link>
