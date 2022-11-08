@@ -3,23 +3,31 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    // "./src/*.{js,jsx,ts,tsx}",
-    // "./src/components/*/*.{js,jsx,ts,tsx}",
-    // "./src/routes/*/*.{js,jsx,ts,tsx}"
+    "./src/*.{js,jsx,ts,tsx}",
+    "./src/components/*.{js,jsx,ts,tsx}",
+    "./src/routes/*.{js,jsx,ts,tsx}"
   ],
   theme: {
+    // screens: {
+    //   sm: '360px',
+    //   md: '768px',
+    //   lg: '976px',
+    //   xl: '1440px'
+    // },
     extend: {
       fontFamily: { 
         "sans": ['Readex Pro',...defaultTheme.fontFamily.sans] // 'font-readex'
       },
+      colors: {
+        darkBrown: "#29180F",
+        khaki: "#A69E56",
+        lightGreen: "#DEDBC0",
+        ivory: "#F5F2F2"
+      }
     },
     
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require("daisyui"),
-  ],
+  plugins: [require('@tailwindcss/typography'),require("daisyui")],
 
   // daisyUI config (optional)
   daisyui: {
@@ -40,7 +48,7 @@ module.exports = {
           // "--btn-text-case": "uppercase", // set default text transform for buttons
           // "--btn-focus-scale": "0.95", // scale transform of button when you focus on it
           // "--border-btn": "1px", // border width of buttons
-          // "--tab-border": "1px", // border width of tabs
+          // "--tab -border": "1px", // border width of tabs
           // "--tab-radius": "0.5rem", // border radius of tabs
         },
       },
