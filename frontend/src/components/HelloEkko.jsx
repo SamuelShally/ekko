@@ -20,7 +20,7 @@ const Greeting = () => {
     }, []);
  
     return (
-        <div className="relative w-screen h-screen z-0">
+        <div className="relative w-screen h-screen z-0 scroll-smooth">
             {/* navigation bar */}
             <div className="relative z-20">
                 <Navigation/>

@@ -5,7 +5,7 @@ const RegisterForm = () => {
     return (
         <div>
             {/* <div className="relative z-20"><img src={ekkoO} className="relative z-10 w-1/4 place-content-center ml-4 mt-4"/></div> */}
-            <div className="relative z-0 grid gap-y-16 place-content-center h-screen">
+            <div className="relative z-0 grid w-screen h-screen gap-y-16 place-content-center">
                 <h1 className="text-3xl font-semibold">Get started</h1>
                 <form onSubmit={() => { }} className="grid gap-6">
                     <div className="form-control w-3/4 max-w-xs">
