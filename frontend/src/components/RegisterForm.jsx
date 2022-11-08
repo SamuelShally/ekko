@@ -12,7 +12,8 @@ const RegisterForm = () => {
                         <label className="label"/>
                     <input type="text" placeholder="Username"
                             className="input w-full max-w-xs rounded-full border-solid border-2
-                            input-md md:input-lg lg:input-lg font-light text-xs"/>
+                            input-md md:input-lg lg:input-lg font-light text-xs"
+                            />
                     </div>
                     <div className="form-control w-72 max-w-xs">
                         <label className="label"/>
