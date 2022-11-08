@@ -24,12 +24,43 @@ const Greeting = () => {
             <div className="relative">
                 <Navigation/>
             </div>
-            <div className='absolute w-screen top-1/3'>
+            <div className='absolute w-screen h-full inset-y-48'>
                 <div className="relative">
-                <img className="absolute opacity-25 w-4/5 left-1/2 -translate-x-1/2" src={fish} alt="Fish" />
-                <div className="relative grid gap-y-12 mx-4">
-                    <h1 className="font-readex text-4xl text-center justify-center">
-                        Connections<br />built on<br />Exchange of Ideas.
+                    <div className="absolute">
+                        <img className="relative opacity-25 left-1/2 -translate-x-1/2
+                                        w-2/3 sm:w-2/3" src={fish} alt="Fish"/>
+                        <div className="absolute top-1/2 -translate-y-1/2">
+                            <h1 className="font-readex text-4xl text-left leading-normal px-6 w-full">
+                                Connections<br /><span className="font-light">built on</span><br />Exchange of Ideas
+                            </h1>  
+                        </div>
+                    </div>
+                    <div className='absolute grid grid-rows-2 gap-y-6 left-1/2 -translate-x-1/2 w-screen justify-items-start top-80'>
+                        <Link to="/learn">
+                            <button className="text-xl px-6 ml-6 btn btn-md md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                                Learn
+                            </button>
+                        </Link>
+                        <Link to="/discover">
+                            <button className="text-xl ml-6 btn btn-md md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                                Discover
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    )
+
+}
+
+export default Greeting;
+
+{/* <div className="relative grid gap-y-24 mx-4 top-8">
+                    <h1 className="font-readex text-4xl text-center leading-normal">
+                        Connections<br /><span className="font-light">built on</span><br />Exchange of Ideas.
                     </h1>  
                     <div className='grid grid-cols-2 justify-items-center'>
                         <Link to="/learn">
@@ -43,14 +74,4 @@ const Greeting = () => {
                             </button>
                         </Link>
                     </div>
-                </div>
-                </div>
-                
-        </div>
-            
-        </div>
-    )
-
-}
-
-export default Greeting;
+                </div> */}
