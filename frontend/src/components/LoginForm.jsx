@@ -24,7 +24,7 @@ const LoginForm = () => {
                 </form>
                 <Link to="/discover">
                     <button
-                        className="text-l text-neutral rounded-full bg-primary
+                        className="text-lg text-neutral rounded-full bg-primary
                         px-20 w-80 btn-md md:btn-lg lg:btn-lg">
                             Sign in
                     </button>
