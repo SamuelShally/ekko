@@ -4,20 +4,6 @@ import fish from '../img/fish.png';
 import Navigation from '../routes/Navigation';
 
 const Greeting = () => {
-
-    const [msg, setMsg] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:4000/hi')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setMsg(data.msg);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
  
     return (
         <div className="relative w-screen h-screen z-0 scroll-smooth">
