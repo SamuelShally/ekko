@@ -8,7 +8,7 @@ const Navigation = () => {
     // <nav className="w-full flex py-6 justify-between items-center">
     //   <img src={logo} alt="ekko" className="w-[250px] h-[124px]"/>
     // </nav>
-    <div className="navbar bg-base-100 w-full flex p-3 justify-between items-center"> 
+    <div className="navbar bg-base-100 w-full flex px-3 py-5 justify-between items-center "> 
       <div className="flex-1">
         {/* <img src={logo} alt="ekko" /> */}
         <Link to="/">
