@@ -1,76 +1,70 @@
 import { useState } from 'react';
+import React from 'react';
 
 const RegisterForm = () =>{
-    const [username, setUsername] = useState([]);
-    const [email, setEmail] = useState([]);
-    const [password, setPassword] = useState([]);
 
-    const submitForm = (event) => {
-        console.log("Values to POST to API")
-        console.log("--------------")
-        console.log("Username: ", username)
-        console.log("Email: ", email)
-        console.log("Password: ", password)
+    const [username,setUsername] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [error,setError] = useState(null);
 
-        console.log("Body: ", JSON.stringify({
-            username: username,
-            email: email,
-            password: password,
-        }))
+    const submitForm = async (e)=>{
+        e.preventDefault();
+        const user = {username,email,password};
+        
 
-        // POST request here
-        fetch('http://localhost:4000/register', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-            })})
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-
-        event.preventDefault(); // Do not remove
-    }
-
-    const setValue = (event) => {
-        const value = event.target.value;
-
-        switch(event.target.id) {
-            case "username":
-                setUsername(value);
-                break;
-            case "email":
-                setEmail(value);
-                break;
-            case "password":
-                setPassword(value);
-                break;
+        const response = await fetch('http://localhost:4000/api/users',{
+            method:'POST',
+            body: JSON.stringify(user),
+            headers:{
+                'Content-Type' : "application/json"
+            }
+        });
+        console.log(response);
+        const json = await response.json();
+        
+        if(!response.ok){
+            console.log(json.error);
+            setError(json.error);
         }
+        if(response.ok){
+            setUsername('');
+            setEmail('');
+            setPassword('');
+            setError(null);
+            console.log("New user added");
+        }
+
     }
-    
-    
+ 
+
+
     return (
         <div>
             <h1>Welcome to our app! Please sign up with your username, email and password </h1>
-            <form onSubmit={submitForm}>
+            <form className = "createForm" onSubmit = {submitForm}>
                 <label> Username</label>
-                <input id="username" type="text" value={username} onChange={setValue} required />
+                <input 
+                
+                type="text"
+                value={username} 
+                onChange={(e)=>setUsername(e.target.value)}
+                />
 
                 <label> Email </label>
-                <input id="email" type="email" value={email} onChange={setValue} required />
+                <input 
+                type="email" 
+                value={email} 
+                onChange={(e)=>setEmail(e.target.value)} />
 
                 <label> Password</label>
-                <input id="password" type ="password" value={password} onChange={setValue} required />
-                <button type="submit"> Sign up </button>
+                <input 
+                type ="password" 
+                value={password} 
+                onChange={(e)=>setPassword(e.target.value)} />
+
+                <button> Sign up </button>
+                { error && <div className="error">{error}</div>}
             </form>
         </div>
 
