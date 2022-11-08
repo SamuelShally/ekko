@@ -11,7 +11,7 @@ const LoginForm = () => {
                 <form onSubmit={()=>{}} className="grid gap-6">
                     <div className="form-control w-full max-w-xs">
                         <label className="label"/>
-                    <input type="text" placeholder="Email address"
+                    <input type="text" placeholder="User name or Email address"
                             className="input w-full max-w-xs rounded-full border-solid border-2
                             input-md md:input-lg lg:input-lg font-light text-xs"/>
                     </div>
