@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import userImageHolder from '../img/user-img-holder.png';
+
 const Discover = () => {
     return (
         <div className="relative h-screen">
@@ -6,7 +8,7 @@ const Discover = () => {
             <div className="absolute card card-bordered rounded-3xl bg-accent left-1/2 -translate-x-1/2 shadow-xl top-1/2 -translate-y-1/2
                             w-3/4 lg:card-side">
                 {/* <figure className="px-10 pt-10"> */}
-                    <img className="rounded-3xl mt-10 mx-8" src="https://placeimg.com/400/225/arch" alt="User1"/>
+                    <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User2"/>
                 {/* </figure> */}
                 <div className="card-body items-center text-center text-primary">
                     <h2 className="card-title text-2xl mt-8">User 2</h2>
