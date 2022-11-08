@@ -4,7 +4,7 @@ const CreateProfile = () => {
     return (
         <div className="relative h-screen bg-accent">
             <div className="absolute grid h-3/4 inset-y-20 bg-accent place-items-center">
-                <h1 className="relative w-screen  text-4xl text-primary text-center text-bold">Create profile</h1>
+                <h1 className="relative w-screen  text-4xl text-primary text-center text-bold">Set up profile</h1>
                 <div className="relative card card-bordered rounded-3xl bg-neutral shadow-xl
                                 w-3/4 lg:card-side">
                     <img className="rounded-3xl mt-10 mx-8" src="https://placeimg.com/400/225/arch" alt="User1"/>
