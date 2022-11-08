@@ -20,12 +20,15 @@ const Greeting = () => {
     }, []);
  
     return (
-        <div className="relative w-screen h-screen">
-            <div className="relative">
+        <div className="relative w-screen h-screen z-0">
+            {/* navigation bar */}
+            <div className="relative z-20">
                 <Navigation/>
             </div>
-            <div className='absolute w-screen h-full inset-y-48'>
-                <div className="relative">
+
+            {/* main section */}
+            <div className='absolute w-screen z-10'>
+                <div className="relative inset-y-36">
                     <div className="absolute">
                         <img className="relative opacity-25 left-1/2 -translate-x-1/2
                                         w-2/3 sm:w-2/3" src={fish} alt="Fish"/>
@@ -35,20 +38,20 @@ const Greeting = () => {
                             </h1>  
                         </div>
                     </div>
-                    <div className='absolute grid grid-rows-2 gap-y-6 left-1/2 -translate-x-1/2 w-screen justify-items-start top-80'>
+                    <div className='absolute grid grid-rows-2 gap-y-8 justify-items-start 
+                                    mt-80 pb-20 pt-10'>
                         <Link to="/learn">
-                            <button className="text-xl px-6 ml-6 btn btn-md md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                            <button className="text-xl px-8 ml-6 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
                                 Learn
                             </button>
                         </Link>
                         <Link to="/discover">
-                            <button className="text-xl ml-6 btn btn-md md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                            <button className="text-xl ml-6 px-10 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
                                 Discover
                             </button>
                         </Link>
                     </div>
                 </div>
-                
             </div>
             
         </div>
