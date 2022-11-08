@@ -12,7 +12,7 @@ const Navigation = () => {
       <div className="flex-1">
         {/* <img src={logo} alt="ekko" /> */}
         <Link to="/">
-          <button className="btn btn-ghost normal-case text-2xl px-2">
+          <button className="btn btn-ghost normal-case text-3xl px-2">
             Ekko
           </button>
         </Link>
@@ -21,14 +21,14 @@ const Navigation = () => {
         <ul className="menu menu-horizontal">
           <li>
             <Link to="/login">
-              <button className="text-l btn btn-sm sm:btn-sm md:btn-md lg:btn-lg py-0">
+              <button className="text-lg btn btn-sm sm:btn-sm md:btn-md lg:btn-lg py-0">
                 Sign in
               </button>
             </Link>
           </li>
           <li>
             <Link to="/register">
-              <button className="text-m btn btn-sm sm:btn-sm md:btn-md lg:btn-lg bg-primary text-neutral rounded-full hover:text-secondary hover:bg-white">
+              <button className="text-lg btn btn-sm sm:btn-sm md:btn-md lg:btn-lg bg-primary text-neutral rounded-full hover:text-secondary hover:bg-white">
                 Sign up
               </button>
             </Link>
