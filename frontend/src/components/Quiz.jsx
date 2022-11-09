@@ -8,9 +8,9 @@ const Quiz = () => {
         //     </h1>
         // </div>
         <div className="bg-white">
-            <div className="relative h-screen pt-28">
-                <h1 className='pl-6 pb-6 font-bold text-3xl'>Quiz time!<br/>
-                    <span className='font-light text-xl'>Tell us more about yourself</span>
+            <div className="relative h-screen pt-20">
+                <h1 className='pl-6 pb-6 font-bold text-3xl'>Tell us more<br/>about yourself.<br/>
+                    {/* <span className='font-light text-xl'>Tell us more about yourself</span> */}
                 </h1>
             {/* option wrapper div */}
             <div className="relative bg-neutral h-full rounded-tl-3xl rounded-tr-3xl">
