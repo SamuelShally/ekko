@@ -1,12 +1,12 @@
 const Learn = () =>{
     return (
-        <div className="relative space-y-4 h-screen">
-            <div className="grid absolute gap-y-12 mx-6 text-left justify-center top-1/3 -translate-y-1/2">
-                <h1 className="text-2xl font-bold">Learn and find resources<br />on
-                    <span className="text-secondary"> Free Speech</span> with <span className="text-secondary">Ekko</span>
+        <div className="relative h-screen bg-neutral">
+            <div className="grid absolute gap-y-4 mx-8 text-center mt-20">
+                <h1 className="text-4xl font-bold leading-relaxed">Make<br />
+                    <span className="text-secondary text-5xl"> Free Speech </span><br/>Easy.
                 </h1>
-                <p className="text-md font-light opacity-30">This is a page of resources for educating ourselves on how to engage in
-                    civil discourse and how to exercise our right to freedom of speech.
+                <p className="text-md font-light opacity-30 text-center">Check out our selecttion of resources to better engage in
+                    civil discourse and exercise your right to freedom of speech.
                 </p>
             </div>
             {/* <div className="relative grid grid-rows-3 content-center w-screen">
