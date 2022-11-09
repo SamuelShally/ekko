@@ -31,13 +31,6 @@ const App = () => {
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element = {<Discover />} />
-          {/* <Route exact path='/' element = {<Navigation />} >
-            <Route index={true} element = {<Home />} />
-            <Route path='register' element = {<Register />} />
-            <Route path='login' element = {<Login />} />
-            <Route path='learn' element = {<Learn />} />
-            <Route path='discover' element = {<Discover />} />
-          </Route> */}
         </Routes>
     </Router>
   );
