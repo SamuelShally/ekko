@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer footer-center px-10 pt-10 pb-6 bg-neutral text-primary">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-20 h-16 scale-100" fill="none"><path fill="#DEDBC0" d="M35.786 35.009c14.869-7.167-20.51 1.162 3.099-32.858C56.669.955 66.606 13.566 67.84 30.798c1.234 17.23-9.178 32.354-24.112 32.354-6.86-11.568-17.532-21.331-7.942-28.143Z" /><path fill="#29180F" d="M49.715 29.833c-.426 2.318-2.25 4.048-3.969 5.657-6.642 6.218-11.253 13.861-1.413 27.662-21.517 1.447-40.156-10.76-41.39-27.99C1.707 17.93 18.577 3.597 40.094 2.15c-14.341 10.19 11.774 15.96 9.62 27.682Z" /></svg>
-                <p className="font-bold pt-6">Ekko Inc.</p>
+                <p className="font-bold pt-8">Ekko Inc.</p>
                 <p className="font-medium pb-6">Copyright © 2022 - All right reserved</p>
             </div>
             <div className="grid grid-flow-col gap-4">
