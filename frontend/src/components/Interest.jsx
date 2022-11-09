@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Interest = () => {
     return (
-        <div className="bg-white">
+        <div className="relative bg-white h-screen mb-40 z-0">
             <div className="relative h-screen top-20">
                 {/* question */}
                 <h1 className="relative font-bold text-3xl text-primary mb-10 ml-6">
@@ -39,7 +39,7 @@ const Interest = () => {
                         </button>
                     </div>
                     <Link to="/quiz"> 
-                        <div className="w-full flex flex-row-reverse mt-10">
+                        <div className="w-full flex flex-row-reverse mt-10 z-20">
                             <button className="btn rounded-full flex-none mr-6 
                                                 bg-primary text-neutral text-xl">
                                 Next
