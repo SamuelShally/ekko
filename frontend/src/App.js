@@ -13,6 +13,7 @@ import Interest from './components/Interest';
 import Quiz from './components/Quiz';
 import SimilarUsers from './components/SimilarUsers';
 import Navigation from './routes/Navigation';
+import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
 import Learn from './components/Learn';
@@ -31,7 +32,8 @@ const App = () => {
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element = {<Discover />} />
-        </Routes>
+      </Routes>
+      <Footer/>
     </Router>
   );
 }
