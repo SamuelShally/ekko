@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Previous from '../components/Previous';
 
 const RegisterForm = () => {
     return (
@@ -6,7 +7,7 @@ const RegisterForm = () => {
             {/* <div className="relative z-20"><img src={ekkoO} className="relative z-10 w-1/4 place-content-center ml-4 mt-4"/></div> */}
             <div className="absolute flex justify-between place-items-center w-screen z-30 py-5">
                 <Link to="/">
-                    <h1 className="ml-4">Prev</h1>
+                    <Previous/>
                 </Link>
             </div>
             <div className="relative z-0 grid w-screen h-screen gap-y-14 place-content-center">
