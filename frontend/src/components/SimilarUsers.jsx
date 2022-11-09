@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+// left & right margins: 6
 
 const SimilarUsers = () => {
     return (
@@ -23,7 +24,7 @@ const SimilarUsers = () => {
                 </div>
                 <Link to="/"> 
                     <div className="w-full flex flex-row-reverse mt-10">
-                        <button className="btn rounded-full flex-none mr-4 
+                        <button className="btn rounded-full flex-none mr-6 
                                             bg-primary text-neutral text-xl">
                             Skip
                         </button>
