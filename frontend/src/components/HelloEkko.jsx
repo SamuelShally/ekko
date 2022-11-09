@@ -33,12 +33,18 @@ const Greeting = () => {
                         <div className='absolute grid grid-rows-2 gap-y-8 justify-items-start 
                                         mt-80 mb-20 pt-10'>
                             <Link to="/learn">
-                                <button className="text-2xl px-8 ml-6 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                                <button className="text-2xl px-8 ml-6 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
+                                        onClick={() => {
+                                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+                                        }}>
                                     Learn
                                 </button>
                             </Link>
                             <Link to="/discover">
-                                <button className="text-2xl ml-6 px-10 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                                <button className="text-2xl ml-6 px-10 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
+                                        onClick={() => {
+                                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+                                        }}>
                                     Discover
                                 </button>
                             </Link>
