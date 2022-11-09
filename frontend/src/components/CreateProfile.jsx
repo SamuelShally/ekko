@@ -3,16 +3,25 @@ import userImageHolder from '../img/user-img-holder.png';
 
 const CreateProfile = () => {
     return (
+        // wrapper div
         <div className="relative h-screen bg-accent">
             <div className="absolute grid h-3/4 inset-y-20 bg-accent place-items-center">
-                <h1 className="relative w-screen text-4xl text-primary text-center text-bold">Set up profile</h1>
+                <h1 className="relative w-screen pl-11 pb-7 text-3xl text-primary text-left font-bold">
+                    Hey, {'{Ekko}'}.<br /><span className="font-light text-2xl">Set up your profile!</span> {/* To do: Ekko -> replace with registered username! */}
+                </h1>
+                {/* card */}
                 <div className="relative card card-bordered rounded-3xl bg-neutral shadow-xl
-                                w-3/4 lg:card-side">
-                    <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User1"/>
+                                w-3/4 -mt-4">
+                    {/* user profile img */}
+                    <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User1" />
+                    {/* card body */}
                     <div className="relative gap-y-2 card-body items-center text-center text-primary">
                         {/* <h2 className="card-title text-3xl mt-8">User1</h2> */}
-                        <div className="w-full mt-8">
+                        {/* <div className="w-full mt-8">
                             <input type="text" placeholder="Enter username" className="input input-bordered rounded-full max-w-xs" />
+                        </div> */}
+                        <div className="w-full mt-6">
+                            <h2 className="text-2xl">{'{Ekko}'}</h2> {/* To do: Ekko -> replace with registered username! */}
                         </div>
                         <div className="form-control mt-4">
                             {/* <label className="label">
