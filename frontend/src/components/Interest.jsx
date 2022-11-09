@@ -4,6 +4,7 @@ const Interest = () => {
     return (
         <div className="bg-white">
             <div className="relative h-screen top-20">
+                {/* question */}
                 <h1 className="relative font-bold text-3xl text-primary mb-10 ml-4">
                     Which social issues<br />spark your interest?</h1>
                 {/* option wrapper div */}
@@ -36,7 +37,7 @@ const Interest = () => {
                                             sm:btn-md md:btn-md lg:btn-lg">+ economic inequality
                         </button>
                     </div>
-                    <Link to="/quiz-1"> 
+                    <Link to="/quiz"> 
                         <div className="w-full flex flex-row-reverse mt-10">
                             <button className="btn rounded-full flex-none mr-4 
                                                 bg-primary text-neutral text-xl">
