@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const SimilarUsers = () => {
     return (
         <div className="bg-white">
-            <div className="relative h-screen pt-28">
+            <div className="relative h-screen pt-20">
                 <h1 className='pl-6 pb-6 font-bold text-3xl'>People like me<br/>
                     <span className='font-light text-xl'>Connect and spark that convo !</span>
                 </h1>
