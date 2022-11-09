@@ -1,10 +1,7 @@
-import { Link } from 'react-router-dom';
-import previous from '../img/prev-btn.png';
-
 const Previous = () => {
     return (
         <div>
-            <img src={previous} alt="return"></img>
+            <h1 className="ml-4">Prev</h1>
         </div>
     )
 }

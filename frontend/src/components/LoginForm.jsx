@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Previous from '../components/Previous';
 
 const LoginForm = () => {
     return (
@@ -6,7 +7,8 @@ const LoginForm = () => {
             {/* Previous button */}
             <div className="absolute flex justify-between place-items-center w-screen z-30 py-5">
                 <Link to="/">
-                    <h1 className="ml-4">Prev</h1>
+                    {/* <h1 className="ml-4">Prev</h1> */}
+                    <Previous/>
                 </Link>
             </div>
             <div className="relative z-0 grid gap-y-14 place-content-center h-screen ">
