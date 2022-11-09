@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ekkoO from '../img/ekko-o-512.png';
+import ekkoO from '../img/ekko-o.svg';
 import PreviousBtn from '../components/Previous';
 
 const LoginForm = () => {

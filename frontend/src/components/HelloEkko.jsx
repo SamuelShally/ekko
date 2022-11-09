@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fish from '../img/fish.png';
 import Navigation from '../routes/Navigation';
-import ekkoO from '../img/ekko-o-512.png';
+import ekkoO from '../img/ekko-o.svg';
 
 const Greeting = () => {
  
