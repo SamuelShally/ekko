@@ -1,11 +1,11 @@
 const Learn = () =>{
     return (
-        <div className="relative h-screen bg-neutral">
-            <div className="grid absolute gap-y-4 mx-8 text-center mt-20">
+        <div className="relative h-screen bg-neutral w-screen">
+            <div className="grid absolute gap-y-4 bg-neutral px-8 text-center mt-20 w-screen">
                 <h1 className="text-4xl font-bold leading-relaxed">Make<br />
                     <span className="text-secondary text-5xl"> Free Speech </span><br/>Easy.
                 </h1>
-                <p className="text-md font-light opacity-30 text-center">Check out our proudly curated resources to better engage in
+                <p className="text-md font-light opacity-30 text-center w-full align-middle justify-self-center">Check out our proudly curated resources to better engage in
                     civil discourse and exercise your right to freedom of speech.
                 </p>
             </div>
