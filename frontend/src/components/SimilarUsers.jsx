@@ -2,15 +2,10 @@ import { Link } from 'react-router-dom';
 
 const SimilarUsers = () => {
     return (
-        // <div>
-        //     <h1 className='font-bold text-3xl'>Quiz time!<br/>
-        //         <span className='font-light text-2xl'>We would love to understand more about your political belief</span>
-        //     </h1>
-        // </div>
         <div className="bg-white">
             <div className="relative h-screen pt-28">
                 <h1 className='pl-6 pb-6 font-bold text-3xl'>People like me<br/>
-                    <span className='font-light text-xl'>Connect and spark the conversation!</span>
+                    <span className='font-light text-xl'>Connect and spark that convo !</span>
                 </h1>
             {/* option wrapper div */}
             <div className="relative bg-neutral h-full rounded-tl-3xl rounded-tr-3xl">
