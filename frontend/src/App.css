@@ -1,0 +1,9 @@
+html, body, .chat-container, #root {
+    height: 100%;
+  }
+
+  .chatList{
+    height: 90%;
+    border: 3px #ccc solid;
+  }
+  
