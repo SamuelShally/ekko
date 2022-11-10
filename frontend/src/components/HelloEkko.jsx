@@ -32,10 +32,15 @@ const Greeting = () => {
                     <h1 className="font-readex text-4xl text-center justify-center">
                         Connections Built on<br />Exchange of Ideas.
                     </h1>  
-                    <div className='grid grid-cols-2 justify-items-center'>
+                    <div className='grid grid-cols-3 justify-items-center'>
                         <Link to="/learn">
                             <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
                                 Learn
+                            </button>
+                        </Link>
+                        <Link to="/chat/1">
+                            <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
+                                Chat
                             </button>
                         </Link>
                         <Link to="/discover">
@@ -43,6 +48,7 @@ const Greeting = () => {
                                 Discover
                             </button>
                         </Link>
+
                     </div>
                 </div>
                 </div>

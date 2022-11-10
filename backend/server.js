@@ -48,10 +48,16 @@ mongoose.connect(process.env.MONGO_URI)
 
 // handle the socket event
 io.sockets.on('connection', socket => {
+    console.log('connect');
     let room = '';
     // send message
     socket.on('message', message => socket.broadcast.to(room).emit('message', message));
 
+    socket.on('text-message', message => {
+        console.log(message, 'text-message');
+        console.log(room, 'room');
+        io.emit('text-message', message)
+    });
 
     // leave room
     socket.on('leave', () => {
