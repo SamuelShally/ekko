@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fish from '../img/fish.png';
 import Navigation from '../routes/Navigation';
-import ekkoO from '../img/ekko-o.svg';
 
 const Greeting = () => {
  
@@ -34,17 +33,13 @@ const Greeting = () => {
                                         mt-80 mb-20 pt-10'>
                             <Link to="/learn">
                                 <button className="text-2xl px-8 ml-6 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
-                                        onClick={() => {
-                                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                                        }}>
+                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                     Learn
                                 </button>
                             </Link>
                             <Link to="/discover">
                                 <button className="text-2xl ml-6 px-10 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
-                                        onClick={() => {
-                                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                                        }}>
+                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                     Discover
                                 </button>
                             </Link>
@@ -58,21 +53,3 @@ const Greeting = () => {
 }
 
 export default Greeting;
-
-{/* <div className="relative grid gap-y-24 mx-4 top-8">
-                    <h1 className="font-readex text-4xl text-center leading-normal">
-                        Connections<br /><span className="font-light">built on</span><br />Exchange of Ideas.
-                    </h1>  
-                    <div className='grid grid-cols-2 justify-items-center'>
-                        <Link to="/learn">
-                            <button className="text-xl px-6 justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
-                                Learn
-                            </button>
-                        </Link>
-                        <Link to="/discover">
-                            <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
-                                Discover
-                            </button>
-                        </Link>
-                    </div>
-                </div> */}
