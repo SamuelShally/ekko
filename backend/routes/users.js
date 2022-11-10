@@ -76,6 +76,8 @@ router.delete('/getUser/:id',(req,res)=>{
 
 });
 
+
+//TODO: Need to encrypt the password when it is updated
 router.patch('/getUser/:id',(req,res)=>{
     const {id} = req.params;
     if(!mongoose.Types.ObjectId.isValid(id)){
