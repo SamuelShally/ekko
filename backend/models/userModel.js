@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
             unique:true,
             required: true
         },
-        encrypedPW: {
+        password: {
             type:String,
             required: true
             
