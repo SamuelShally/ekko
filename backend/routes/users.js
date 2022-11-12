@@ -1,4 +1,3 @@
-
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
 const express = require("express");
@@ -36,14 +35,17 @@ router.get('/getUser/:id',(req,res)=>{
     
 });
 
-router.post('/', async(req,res)=>{
+router.post('/', (req,res)=>{
     const {username,email,password} = req.body;
+    console.log(req.body);
 
     //encrypt the password before saving it
     let encrypedPW = md5(password);
+    console.log(encrypedPW)
+    req.body.password = encrypedPW;
     
     //save a new user with encrypted password
-    User.create({username,email, encrypedPW}, (err, user) => {
+    User.create({username,email, password}, (err, user) => {
         if (err) {
             res.status(400).json({error: err.message});
             return;
@@ -105,7 +107,6 @@ router.patch('/getUser/:id',(req,res)=>{
 
 /*
 Log user in to the system 
-
 (JSON response can be modified to send back some sort of user DB ID if
  login is successful and actually log in the user)
 */
