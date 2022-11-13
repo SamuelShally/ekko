@@ -39,11 +39,11 @@ router.get('/getUser/:id',(req,res)=>{
 });
 
 router.post('/', (req,res)=>{
+  
     const {username,email,password} = req.body;
 
     //encrypt the password before saving it
     let encrypedPW = md5(password);
-  
   
     
     //save a new user with encrypted password
@@ -53,9 +53,14 @@ router.post('/', (req,res)=>{
             return;
         }
         console.log(user);
+        
         res.status(200).json(user);
+        success = true;
 
-    });    
+        
+    });  
+  
+  
 });
 
 router.delete('/getUser/:id',(req,res)=>{
@@ -127,6 +132,7 @@ Log user in to the system
 */
 router.post('/login', async(req, res) => {
     let {username, password} = req.body;
+  
     const allUsers = await User.find({}).sort({createdAt: 1});
 
     let failed = true;
@@ -140,7 +146,8 @@ router.post('/login', async(req, res) => {
             //hash entered password and check agaist the password in the DB
             password = md5(password);
 
-            if(allUsers[x].encrypedPW == password){
+            if(allUsers[x].password == password){
+
                 failed = false;
             }else{
                 failed = true;
@@ -152,6 +159,7 @@ router.post('/login', async(req, res) => {
 
     if(!failed){
         res.status(200).json({"status":"success"});
+       
     }else{
         res.status(400).json({"status": "failed"});
     }
