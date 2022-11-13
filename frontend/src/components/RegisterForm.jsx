@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import ekkoO from '../img/ekko-o-512.png';
 import { useState } from 'react';
 import React from 'react';
+import { useNavigate  } from 'react-router-dom';
 
 const RegisterForm = () => {
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword]=useState('');
+    const navigate = useNavigate();
 
     const submitForm= async(e) =>{
         e.preventDefault();
@@ -28,6 +30,8 @@ const RegisterForm = () => {
             setEmail('');
             setPassword('');
             console.log("New User Added");
+            navigate('/profile'); //navigate to creating user profile
+
         }
 
     }
