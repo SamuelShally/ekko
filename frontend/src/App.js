@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 //route: individual route
 
 //import components
+import './App.css';
 import Home from './routes/Home';
 import Register from './routes/Register';
 import CreateProfile from './components/CreateProfile';
@@ -13,6 +14,8 @@ import Navigation from './routes/Navigation';
 import Login from './routes/Login';
 import Discover from './components/Discover';
 import Learn from './components/Learn';
+import ChatRoom from './routes/ChartRoom';
+import ChatRoomList from './routes/ChatRoomList';
 
 const App = () => {
   return (
@@ -25,6 +28,8 @@ const App = () => {
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element = {<Discover />} />
+        <Route path='/chatList' element = {<ChatRoomList />} />
+        <Route path='/chat/:roomid' element={<ChatRoom />} />
           {/* <Route exact path='/' element = {<Navigation />} >
             <Route index={true} element = {<Home />} />
             <Route path='register' element = {<Register />} />
