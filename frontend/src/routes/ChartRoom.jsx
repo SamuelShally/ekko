@@ -1,53 +1,79 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { Component } from 'react';
 import io from 'socket.io-client'
 
-const ChatRoom = () => {
+class ChatRoom extends Component{
 
-    const [socket, setSocket] = useState(io('http://localhost:4000'));
-    const [chatData, setChatData] = useState([]);
-    const [input, inputChange] = useState("")
-
-    const handleChange = (event) => {
-        inputChange(event.target.value);
+    constructor(props) {
+        super(props);
+        if (!this.socket) {
+            this.socket = io('http://localhost:4000');
+        }
+        this.state = {
+            inputText: '',
+            chatData: []
+        }
+        this.onRevTextMessage = this.onRevTextMessage.bind(this);
+        this.onMessage = this.onMessage.bind(this);
+        this.sendMsg = this.sendMsg.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        console.log(this.state)
     }
-    const onRevTextMessage = (msg) => {
-        console.log('text-message', msg)
-        chatData.push(msg);
-        setChatData(chatData);
+
+    componentDidMount() {
+        this.socket.on('message', this.onMessage);
+        this.socket.on('text-message', this.onRevTextMessage);
     }
 
-    const sendMsg = (socket) => {
-        socket.emit('text-message', input)
+    onMessage(message) {
+
+    }
+
+    handleChange(event)  {
+        this.setState({
+            inputText: event.target.value
+        })
     }
     
-    socket.on('text-message', onRevTextMessage);
+    onRevTextMessage (msg) {
+        console.log('text-message', msg);
+        let temp = this.state.chatData;
+        temp.push(msg);
+        this.setState({
+            chatData: temp
+        })
+    }
 
-    useEffect(() => {
-        
-    })
+    sendMsg () {
+        this.socket.emit('text-message', this.state.inputText)
+    }
+    
+    render() {
+        return (
+            <div className='chat-container'>
+                <div>Chat</div>
+                <ul
+                    className='chatList'
+                >
+                    {
+                        this.state.chatData.map((item, idx) => {
+                            return (<div className="card w-96 bg-base-100 shadow-xl" key={idx}>
+                                <div className="card-body">
+                                    <h2 className="card-title">{item}</h2>
+                                </div>
+                            </div>)
+                        })
+                    }
+                </ul>
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value = {this.state.input}
+                        onChange={this.handleChange}/>
+                <button className="btn btn-active btn-accent" onClick={this.sendMsg}>Send</button>
+            </div>
+    
+        )
+    }
 
-    return (
-        <div className='chat-container'>
-            <div>Chat</div>
-            <ul
-                className='chatList'
-            >
-                {
-                    chatData.map((item, idx) => {
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <div className="card-body">
-                                <h2 className="card-title">{item}</h2>
-                            </div>
-                        </div>
-                    })
-                }
-            </ul>
-            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value = {input}
-                    onChange={handleChange}/>
-            <button className="btn btn-active btn-accent" onClick={() => sendMsg(socket)}>Send</button>
-        </div>
 
-    )
 }
 
 export default ChatRoom;

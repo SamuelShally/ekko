@@ -38,7 +38,7 @@ const Greeting = () => {
                                 Learn
                             </button>
                         </Link>
-                        <Link to="/chat/1">
+                        <Link to="/chatList">
                             <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
                                 Chat
                             </button>
