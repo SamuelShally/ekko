@@ -8,12 +8,13 @@ const RegisterForm = () => {
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword]=useState('');
+    const [error,setError] = useState(null);
     const navigate = useNavigate();
 
     const submitForm= async(e) =>{
         e.preventDefault();
         const user = {username,email,password};
-        const response = await fetch("http://localhost:4000/api/users",{
+        const response = await fetch("http://localhost:4000/api/users/signup",{
             method:'POST',
             body: JSON.stringify(user),
             headers:{
@@ -24,11 +25,13 @@ const RegisterForm = () => {
         const json = await response.json();
         if(!response.ok){
             console.log(json.error);
+            setError(json.error);
         }
         if(response.ok){
             setUsername('');
             setEmail('');
             setPassword('');
+            setError(null);
             console.log("New User Added");
             navigate('/profile'); //navigate to creating user profile
 
@@ -69,7 +72,7 @@ const RegisterForm = () => {
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}/>
                     </div>
-                    <Link to="/profile">
+                    
                     <button
                         className="text-lg text-white rounded-full bg-primary
                         px-20 w-80 btn-md md:btn-lg lg:btn-lg"
@@ -77,7 +80,8 @@ const RegisterForm = () => {
                     >
                         Create an account
                     </button>
-                </Link>
+                    {error && <div className="error">{error}</div>}
+                
                 </form>
                
                 

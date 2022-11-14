@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
 const express = require("express");
+const validator = require("validator");
 var md5 = require('md5');
 
 const router = express.Router();
@@ -38,10 +39,46 @@ router.get('/getUser/:id',(req,res)=>{
     
 });
 
-router.post('/', (req,res)=>{
+router.post('/signup', (req,res)=>{
   
     const {username,email,password} = req.body;
+   
+    //validation
+    if(!username ||!email ||!password ){
+        
+        res.status(400).json({error:"all fields need to be filled"});
+        return;
+    }
 
+    if(!validator.isEmail(email)){
+        res.status(400).json({error:"Email is not valid"})
+        return;
+    }
+
+    
+    if(!validator.isStrongPassword(password)){
+        res.status(400).json({error:'Password not strong enough,password needs upper,lowercase, symbols and numbers'});
+        return;
+    }
+
+    User.findOne({username:username},(err,user)=>{
+        if(err){
+            res.status(400).json({error:err.message});
+            console.log("cannot find");
+            return;
+        }
+        if(user){
+           //res.status()
+           throw Error("User already in use");
+        }
+
+    })
+  
+
+    
+
+
+   
     //encrypt the password before saving it
     let encrypedPW = md5(password);
   
@@ -54,13 +91,10 @@ router.post('/', (req,res)=>{
         }
         console.log(user);
         
-        res.status(200).json(user);
-        success = true;
+        res.status(200).json({user});
 
-        
     });  
-  
-  
+
 });
 
 router.delete('/getUser/:id',(req,res)=>{
