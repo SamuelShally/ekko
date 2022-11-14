@@ -36,6 +36,16 @@ mongoose.connect(process.env.MONGO_URI)
 //All changes to Server.js are below this line
 //Please do NPM install. New packages were used.
 
+/*
+    How this works (I think): 
+    
+    We will set a cookie on the front end that will remember 
+    if we're logged in or not - or whatever else we want it to remember.
+
+    This cookie will then compare against an identical copy saved to our mongoDB 
+    database. If it exists and isAuth = true, we can be logged in as that user
+*/
+
 const session = require('express-session')
 const MongoDBSession = require('connect-mongodb-session')(session)
 const User = require('./models/userModel');
@@ -46,7 +56,7 @@ const store = new MongoDBSession({
     collection: 'mySessions',
 })
 
-//check if user is logged in
+//check if user is logged in, if not: redirect to log in page
 const isAuth = (req, res, next) => {
     if(req.session.isAuth){
         next()
@@ -67,12 +77,11 @@ app.use(session({
 app.use('/api/users', userRoutes);
 
 /*
-
 //For backend sessions testing  
 app.get("/", (req, res) => {
     //Temp for allowing access
     req.session.isAuth = true; 
     res.send("Testing sessions");
 });
-
 */
+
