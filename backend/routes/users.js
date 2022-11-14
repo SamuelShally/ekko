@@ -199,9 +199,12 @@ router.post('/login', async(req, res) => {
         return;
     }
 
-    //User is logged in -> set session
+    //User is logged in -> set usAuth 
     req.session.isAuth = true;
-    req.session.testin = "hello";
+
+    //We can save whatever we want to the session cookie
+    req.session.testing = "hello";
+
     res.status(200).json({});
 });
 
