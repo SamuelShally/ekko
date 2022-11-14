@@ -200,7 +200,8 @@ router.post('/login', async(req, res) => {
     }
 
     //User is logged in -> set session
-    // req.session.isAuth = true;
+    req.session.isAuth = true;
+    req.session.testin = "hello";
     res.status(200).json({});
 });
 
