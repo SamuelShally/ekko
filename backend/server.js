@@ -61,7 +61,12 @@ const isAuth = (req, res, next) => {
     if(req.session.isAuth){
         next()
     }else{
-        //TODO: Redirect the user to the log-in page if user is not signed in
+        // TODO: Redirect the user back to log in page
+
+          /*
+            Remark: I don't know where to redirect to right now. 
+            I need to understand the combination between front and backend better
+        */
     }
 
 }

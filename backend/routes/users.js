@@ -183,7 +183,6 @@ router.patch('/getUser/:id',(req,res)=>{
     password : 123Nyu@321
 */
 
-// TODO: need to add sessions system here
 router.post('/login', async(req, res) => {
     let {username, password} = req.body;
   
@@ -207,5 +206,21 @@ router.post('/login', async(req, res) => {
 
     res.status(200).json({});
 });
+
+//Log out of the app (destoy the cookie)
+router.post('/logout', (req, res) => {
+
+    req.session.destroy((err) => {
+        if(err) throw err;
+
+        /*
+            Remark: I don't know where to redirect to right now. 
+            I need to understand the combination between front and backend better
+        */
+       
+        res.redirect('/'); 
+    })
+
+}) 
 
 module.exports = router;
