@@ -4,6 +4,9 @@ const express = require("express");
 const validator = require("validator");
 var md5 = require('md5');
 
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session)
+
 const router = express.Router();
 
 router.get('/getUsers',(req,res)=>{
@@ -172,14 +175,15 @@ router.patch('/getUser/:id',(req,res)=>{
 
 })
 
-/*
-Log user in to the system 
-(JSON response can be modified to send back some sort of user DB ID if
- login is successful and actually log in the user)
+/* 
+**Log user in to the system**
+
+    For testng purpose
+    username : lime
+    password : 123Nyu@321
 */
-//for testng purpose
-//username : lime
-//password : 123Nyu@321
+
+// TODO: need to add sessions system here
 router.post('/login', async(req, res) => {
     let {username, password} = req.body;
   
@@ -195,8 +199,9 @@ router.post('/login', async(req, res) => {
         return;
     }
 
+    //User is logged in -> set session
+    // req.session.isAuth = true;
     res.status(200).json({});
 });
-
 
 module.exports = router;
