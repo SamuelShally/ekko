@@ -64,36 +64,49 @@ router.post('/signup', (req,res)=>{
     User.findOne({username:username},(err,user)=>{
         if(err){
             res.status(400).json({error:err.message});
-            console.log("cannot find");
+            
             return;
         }
         if(user){
-           //res.status()
-           throw Error("User already in use");
+         
+           res.status(400).json({error:"User already in use"});
+           return;
         }
+
+        User.findOne({email:email},(err,user)=>{
+            if(err){
+                res.status(400).json({error:err.message});
+                
+                return;
+            }
+            if(user){
+               res.status(400).json({error:"Email already in use"});
+               return;
+            }
+
+            //encrypt the password before saving it
+            let encrypedPW = md5(password);
+        
+            
+            //save a new user with encrypted password
+            User.create({username,email, password: encrypedPW}, (err, user) => {
+                if (err) {
+                    res.status(400).json({error: err.message});
+                    return;
+                }
+                console.log(user);
+                
+                res.status(200).json({user});
+
+            });  
+    
+        })
+
+         
 
     })
-  
 
     
-
-
-   
-    //encrypt the password before saving it
-    let encrypedPW = md5(password);
-  
-    
-    //save a new user with encrypted password
-    User.create({username,email, password: encrypedPW}, (err, user) => {
-        if (err) {
-            res.status(400).json({error: err.message});
-            return;
-        }
-        console.log(user);
-        
-        res.status(200).json({user});
-
-    });  
 
 });
 
@@ -164,40 +177,25 @@ Log user in to the system
 (JSON response can be modified to send back some sort of user DB ID if
  login is successful and actually log in the user)
 */
+//for testng purpose
+//username : lime
+//password : 123Nyu@321
 router.post('/login', async(req, res) => {
     let {username, password} = req.body;
   
-    const allUsers = await User.find({}).sort({createdAt: 1});
+    const user = await User.findOne({username});
 
-    let failed = true;
-    //Find user via username -> hash password
-    for(let x = 0; x<allUsers.length; x++){
-
-        //If username match
-        if (allUsers[x].username == username){
-            let userNameExists = true;
-
-            //hash entered password and check agaist the password in the DB
-            password = md5(password);
-
-            if(allUsers[x].password == password){
-
-                failed = false;
-            }else{
-                failed = true;
-            }
-
-            break;
-        }
+    if(!user){
+        res.status(400).json({error:"user not found"});
+        return;
     }
 
-    if(!failed){
-        res.status(200).json({"status":"success"});
-       
-    }else{
-        res.status(400).json({"status": "failed"});
+    if(user.password !== md5(password)) {
+        res.status(400).json({error:"password incorrect"});
+        return;
     }
-    
+
+    res.status(200).json({});
 });
 
 
