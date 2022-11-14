@@ -56,7 +56,7 @@ const LoginForm = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"/>
-                        <input type="text" placeholder="Password"
+                        <input type="password" placeholder="Password"
                             className="input w-full max-w-xs rounded-full border-solid border-2
                             input-md md:input-lg lg:input-lg font-light text-xs"
                             value={password}
