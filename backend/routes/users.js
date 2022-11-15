@@ -201,13 +201,13 @@ router.post('/login', async(req, res) => {
     //User is logged in -> set usAuth 
     req.session.isAuth = true;
 
-    //We can save whatever we want to the session cookie
+    //Example: We can save whatever we want to the session cookie
     req.session.testing = "hello";
 
     res.status(200).json({});
 });
 
-//Log out of the app (destoy the cookie)
+//Log out of the app (destroy the cookie)
 router.post('/logout', (req, res) => {
 
     req.session.destroy((err) => {
@@ -217,7 +217,7 @@ router.post('/logout', (req, res) => {
             Remark: I don't know where to redirect to right now. 
             I need to understand the combination between front and backend better
         */
-       
+
         res.redirect('/'); 
     })
 
