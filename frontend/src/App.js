@@ -16,6 +16,7 @@ import Discover from './components/Discover';
 import Learn from './components/Learn';
 import ChatRoom from './routes/ChartRoom';
 import ChatRoomList from './routes/ChatRoomList';
+import ElementWrapper from './routes/Wrapper';
 
 const App = () => {
   return (
@@ -29,7 +30,7 @@ const App = () => {
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element = {<Discover />} />
         <Route path='/chatList' element = {<ChatRoomList />} />
-        <Route path='/chat/:roomid' element={<ChatRoom />} />
+        <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
           {/* <Route exact path='/' element = {<Navigation />} >
             <Route index={true} element = {<Home />} />
             <Route path='register' element = {<Register />} />
