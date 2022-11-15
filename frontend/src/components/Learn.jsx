@@ -9,6 +9,13 @@ const Learn = () =>{
                     civil discourse and exercise your right to freedom of speech.
                 </p>
             </div>
+            {/* <div className="bg-white">
+                <div>
+                    <div className="grid w-32 h-20 rounded bg-primary text-primary-content place-content-center">1</div> 
+                    <div className="grid w-32 h-20 rounded bg-accent text-accent-content place-content-center">2</div> 
+                    <div className="grid w-32 h-20 rounded bg-secondary text-secondary-content place-content-center">3</div>
+                </div>
+            </div> */}
             {/* <div className="relative grid grid-rows-3 content-center w-screen">
                 <button className=" 
                 btn bg-accent rounded-full w-80 sm:btn-sm md:btn-md lg:btn-lg">
