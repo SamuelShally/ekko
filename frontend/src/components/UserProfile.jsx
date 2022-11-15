@@ -2,32 +2,85 @@ import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
     return (
-        <div className="h-screen bg-neutral">
+        <div className="h-screen bg-white px-4 mb-28">
             <h2 className='mt-2 text-center tracking-notmal'>My Profile</h2>
-            <div className='flex flex-col mt-16 w-full justify-content-center'>
-                <img className="w-1/3 mask mask-circle" src="https://placeimg.com/160/160/arch" />
-                <h4 className='mt-2 text-gray-500'>username</h4>
+            <div className='flex flex-col mt-16 w-full text-center items-center justify-center'>
+                <img className="relative w-1/3 rounded-full justify-self-center" src="https://placeimg.com/160/160/arch" />
+                <h4 className='mt-2 text-gray-500'>@username</h4>
             </div>
 
-            <div className="bg-accent"> {/* card container */}
-                <h3>My posts</h3>
-                <div className='p-6'> {/* each card */}
+            <div className="grid mt-10 bg-neutral rounded-lg"> {/* card container */}
+                <div className="pt-6 ml-6">
+                    <h2 className='text-xl'>My posts</h2>
+                </div>
+                <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 1 */}
                     <div>
                         <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
                     </div>
-                    <p>Blog</p>
-                    <h3>Title</h3>
-                    <p>Content preview</p>
-                    <div> {/* author info container */}
-                        <img className="mask mask-circle" src="https://placeimg.com/160/160/arch" />
-                        <p>Author name</p>
-                        <div>
-                            <time dateTime='2022-11-15'>
-                                Nov 15, 2022
-                            </time>
+                    <div className='p-4'>
+                        <p className='text-secondary'>Blog</p>
+                        <h3 className='mt-2 text-2xl font-semibold leading-7 text-gray-900'>8 facts about gender equality you must know</h3>
+                        <p className='mt-2 leading-6 text-gray-400 font-light'>
+                            Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.
+                        </p>
+                        <div className='mt-6 flex items-center'> {/* author info container */}
+                            <div className='flex-shrink-0'>
+                                <img className="h-12 w-12 rounded-full mask-circle" src="https://placeimg.com/160/160/arch" />
+                            </div>
+                            <div className='ml-4 align-middle'>
+                                <p className='text-sm leading-5 font-medium text-primary'>Author name</p>
+                                <time dateTime='2022-11-15' className='text-sm leading-5 text-primary opacity-50'>
+                                    Nov 15, 2022
+                                </time>
+                            </div>        
                         </div>
+                    </div> 
+                </div>
+                <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 1 */}
+                    <div>
+                        <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
                     </div>
-                    
+                    <div className='p-4'>
+                        <p className='text-secondary'>Blog</p>
+                        <h3 className='mt-2 text-2xl font-semibold leading-7 text-gray-900'>8 facts about gender equality you must know</h3>
+                        <p className='mt-2 leading-6 text-gray-400 font-light'>
+                            Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.
+                        </p>
+                        <div className='mt-6 flex items-center'> {/* author info container */}
+                            <div className='flex-shrink-0'>
+                                <img className="h-12 w-12 rounded-full mask-circle" src="https://placeimg.com/160/160/arch" />
+                            </div>
+                            <div className='ml-4 align-middle'>
+                                <p className='text-sm leading-5 font-medium text-primary'>Author name</p>
+                                <time dateTime='2022-11-15' className='text-sm leading-5 text-primary opacity-50'>
+                                    Nov 15, 2022
+                                </time>
+                            </div>        
+                        </div>
+                    </div> 
+                </div>
+                <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 1 */}
+                    <div>
+                        <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+                    </div>
+                    <div className='p-4'>
+                        <p className='text-secondary'>Blog</p>
+                        <h3 className='mt-2 text-2xl font-semibold leading-7 text-gray-900'>8 facts about gender equality you must know</h3>
+                        <p className='mt-2 leading-6 text-gray-400 font-light'>
+                            Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.
+                        </p>
+                        <div className='mt-6 flex items-center'> {/* author info container */}
+                            <div className='flex-shrink-0'>
+                                <img className="h-12 w-12 rounded-full mask-circle" src="https://placeimg.com/160/160/arch" />
+                            </div>
+                            <div className='ml-4 align-middle'>
+                                <p className='text-sm leading-5 font-medium text-primary'>Author name</p>
+                                <time dateTime='2022-11-15' className='text-sm leading-5 text-primary opacity-50'>
+                                    Nov 15, 2022
+                                </time>
+                            </div>        
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
