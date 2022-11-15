@@ -15,6 +15,7 @@ import SimilarUsers from './components/SimilarUsers';
 import UserProfile from './components/UserProfile';
 import Navigation from './routes/Navigation';
 import UserNav from './components/UserNav';
+import Chat from './components/Chat';
 import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
@@ -32,7 +33,8 @@ const App = () => {
         <Route path='/interest' element={<Interest />} />
         <Route path='/quiz' element={<Quiz />} />
         <Route path='/people-like-me' element={<SimilarUsers />} />
-        <Route path='/my-profile' element = {<UserProfile />} />
+        <Route path='/my-profile' element={<UserProfile />} />
+        <Route path='/chat' element = {<Chat />} />
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element = {<Discover />} />

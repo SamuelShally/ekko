@@ -45,11 +45,11 @@ const UserProfile = () => {
                     </div>
                     <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 2 */}
                         <div>
-                            <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+                            <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/1140854/pexels-photo-1140854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
                         </div>
                         <div className='p-4'>
                             <p className='text-secondary'>Blog</p>
-                            <h3 className='mt-2 text-2xl font-semibold leading-7 text-gray-900'>8 facts about gender equality you must know</h3>
+                            <h3 className='mt-2 text-2xl font-semibold leading-7 text-gray-900'>5 Ways Abortion Rights Protect Women's Health</h3>
                             <p className='mt-2 leading-6 text-gray-400 font-light'>
                                 Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.
                             </p>
