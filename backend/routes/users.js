@@ -210,16 +210,16 @@ router.post('/login', async(req, res) => {
 //Log out of the app (destroy the cookie)
 router.post('/logout', (req, res) => {
 
-    req.session.destroy((err) => {
-        if(err) throw err;
+    // req.session.destroy((err) => {
+    //     if(err) throw err;
 
-        /*
-            Remark: I don't know where to redirect to right now. 
-            I need to understand the combination between front and backend better
-        */
+    //     /*
+    //         Remark: I don't know where to redirect to right now. 
+    //         I need to understand the combination between front and backend better
+    //     */
 
-        res.redirect('/'); 
-    })
+    //     res.redirect('/'); 
+    // })
 
 }) 
 
