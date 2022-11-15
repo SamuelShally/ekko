@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
 import Previous from '../components/Previous';
-=======
-import ekkoO from '../img/ekko-o-512.png';
 import { useState } from 'react';
 import React from 'react';
 import { useNavigate  } from 'react-router-dom';
->>>>>>> 7203bbd50a5a83163883c420dd376fdfd028d0ee
 
 const RegisterForm = () => {
     const [username,setUsername] = useState('');

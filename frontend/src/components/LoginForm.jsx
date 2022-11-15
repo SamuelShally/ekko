@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import Previous from '../components/Previous';
-=======
 import { Link, useSearchParams } from 'react-router-dom';
-import ekkoO from '../img/ekko-o-512.png';
 import PreviousBtn from '../components/Previous';
 import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { Error } from 'mongoose';
->>>>>>> 7203bbd50a5a83163883c420dd376fdfd028d0ee
+import Previous from '../components/Previous';
+
 
 const LoginForm = () => {
     const [username,setUsername] = useState('');
@@ -61,18 +57,14 @@ const LoginForm = () => {
                 <form  className="grid gap-6">
                     <div className="form-control w-full max-w-xs">
                         <label className="label"/>
-<<<<<<< HEAD
-                    <input type="text" placeholder="Email address"
-                            className="input w-80 max-w-xs rounded-full border-solid border-2
-                            input-md md:input-lg lg:input-lg font-light text-xs"/>
-=======
+
                     <input type="text" placeholder="User name "
-                            className="input w-72 max-w-xs rounded-full border-solid border-2
+                            className="input w-80 max-w-xs rounded-full border-solid border-2
                             input-md md:input-lg lg:input-lg font-light text-xs"
                             value={username}
                             onChange = {(e)=>setUsername(e.target.value)}
                             />
->>>>>>> 7203bbd50a5a83163883c420dd376fdfd028d0ee
+
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"/>
