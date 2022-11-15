@@ -6,7 +6,7 @@ import Navigation from '../routes/Navigation';
 const Greeting = () => {
  
     return (
-        <div className="relative w-screen h-screen mb-10">
+        <div className="relative w-screen h-screen">
 
             {/* navigation bar */}
             <div className="relative z-30">
@@ -15,7 +15,7 @@ const Greeting = () => {
 
             {/* big wrapper */}
             <div className='relative'>
-                <div className='absolute w-screen z-20'>
+                <div className='absolute w-screen h-screen z-20 mb-20'>
                     <div className="relative inset-y-36">
                         {/* fish img + msg */}
                         <div className="absolute">
@@ -28,28 +28,30 @@ const Greeting = () => {
                             </div>
                         </div>
 
-             
-
-                {/* Learn, Discover  */}
-                <div className='absolute grid grid-rows-2 gap-y-8 justify-items-start 
-                                        mt-80 mb-20 pt-10'>
-                    <Link to="/learn">
-                        <button className="text-2xl px-8 ml-6 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
-                                onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
-                                Learn
-                        </button>
-                    </Link>
-                    <Link to="/discover">
-                        <button className="text-2xl ml-6 px-10 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
-                                onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
-                                Discover
-                        </button>
-                    </Link>
+                        {/* Learn, Discover  */}
+                        <div className='absolute grid grid-rows-2 gap-y-8 justify-items-start 
+                                                mt-80 pb-32 pt-10'>
+                            <Link to="/learn">
+                                <button className="text-2xl px-8 ml-6 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
+                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
+                                        Learn
+                                </button>
+                            </Link>
+                            <Link to="/discover">
+                                <button className="text-2xl ml-6 px-10 btn btn-lg md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full"
+                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
+                                        Discover
+                                </button>
+                            </Link>
+                            {/* <div className='w-full h-96'>
+                            <p>hi</p>
+                            </div> */}
+                        </div>   
+                        
+                    </div>    {/* fish, button container */}
                 </div>
-            </div> 
-            </div>
-            </div>
-            </div>
+             </div>
+        </div>
     )
 }
 
