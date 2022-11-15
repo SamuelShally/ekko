@@ -14,6 +14,7 @@ import Quiz from './components/Quiz';
 import SimilarUsers from './components/SimilarUsers';
 import UserProfile from './components/UserProfile';
 import Navigation from './routes/Navigation';
+import UserNav from './components/UserNav';
 import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
@@ -24,7 +25,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route path='/nav' element = {<Navigation />} />
+        <Route path='/nav' element={<Navigation />} />
+        <Route path='/user-nav' element = {<UserNav />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile' element={<CreateProfile />} />
         <Route path='/interest' element={<Interest />} />
