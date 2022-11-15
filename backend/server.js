@@ -73,7 +73,7 @@ const isAuth = (req, res, next) => {
 
 //Set up the session cookie
 app.use(session({
-    secret: 'test', //Str that will sign the cookie 
+    secret: 'samuel_test', //Str that will sign the cookie 
     resave: false, //New session for every request t/f
     saveUninitialized: false, //save if session is unmodified t/f 
     store: store, //Save session to Database
