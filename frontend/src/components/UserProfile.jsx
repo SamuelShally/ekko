@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import UserNav from '../components/UserNav';
 
 const UserProfile = () => {
     return (
-        <div className="min-h-screen h-full bg-white px-4 lg:px-10">
-            <h2 className='mt-4 text-center tracking-notmal'>My Profile</h2>
-            <div className='flex flex-col mt-16 w-full text-center items-center justify-center'>
+        <div className="min-h-screen h-full bg-white px-4 mt-4 lg:px-10">
+            <UserNav/>
+
+            {/* <h2 className='mt-4 text-center tracking-notmal'>My Profile</h2> */}
+            <div className='flex flex-col mt-10 w-full text-center items-center justify-center'>
                 <img className="relative w-30 h-30 rounded-full justify-self-center" src="https://placeimg.com/160/160/arch" />
                 <h4 className='mt-2 text-gray-500'>@username</h4>
             </div>
@@ -15,7 +18,7 @@ const UserProfile = () => {
                 <div className="ml-6">
                     <h2 className='text-xl lg:text-3xl'>My posts</h2>
                 </div>
-                <div className="grid gap-5 max-w-lg mx-auto py-8 bg-neutral rounded-lg
+                <div className="grid gap-5 max-w-lg mx-auto py-6 bg-neutral rounded-lg
                             lg:grid-cols-3 lg:max-w-none">
                     <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 1 */}
                         <div>
