@@ -6,8 +6,11 @@ class ChatRoom extends Component{
 
     constructor(props) {
         super(props);
+        console.log(props);
+        let { roomid } = this.props.params;
+        console.log(roomid, 'roomid')
         if (!this.socket) {
-            this.socket = io('http://localhost:4000');
+            this.socket = io('http://localhost:4000', {query: {room: roomid}});
         }
         this.state = {
             inputText: '',
@@ -17,16 +20,29 @@ class ChatRoom extends Component{
         this.onMessage = this.onMessage.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.onfull = this.onfull.bind(this);
         console.log(this.state)
     }
 
     componentDidMount() {
         this.socket.on('message', this.onMessage);
+        this.socket.on('full', this.onfull);
         this.socket.on('text-message', this.onRevTextMessage);
+
+        this.socket.emit('find', {room:this.props.params.roomid})
+    }
+
+    componentWillUnmount() {
+        this.socket.emit('leave', {room:this.props.params.roomid})
     }
 
     onMessage(message) {
 
+    }
+
+    onfull() {
+        alert("this room is full!")
+        window.location.href = "/chatList"
     }
 
     handleChange(event)  {
