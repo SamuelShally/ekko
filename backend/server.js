@@ -56,6 +56,7 @@ const store = new MongoDBSession({
     collection: 'mySessions',
 })
 
+
 //check if user is logged in, if not: redirect to log in page
 const isAuth = (req, res, next) => {
     if(req.session.isAuth){
@@ -72,12 +73,17 @@ const isAuth = (req, res, next) => {
 }
 
 //Set up the session cookie
-app.use(session({
-    secret: 'samuel_test', //Str that will sign the cookie 
-    resave: false, //New session for every request t/f
-    saveUninitialized: false, //save if session is unmodified t/f 
-    store: store, //Save session to Database
-}))
+app.use(
+    
+    session({
+        secret: 'samuel_test', //Str that will sign the cookie 
+        resave: false, //New session for every request t/f
+        saveUninitialized: true, //save if session is unmodified t/f 
+        store: store //Save session to Database
+        console.log("got here");
+    })
+);
+
 
 app.use('/api/users', userRoutes);
 
