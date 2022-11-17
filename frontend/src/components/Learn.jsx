@@ -1,14 +1,21 @@
 const Learn = () =>{
     return (
-        <div className="relative space-y-4 h-screen">
-            <div className="grid absolute gap-y-12 mx-6 text-left justify-center top-1/3 -translate-y-1/2">
-                <h1 className="text-2xl font-bold">Learn and find resources<br />on
-                    <span className="text-secondary"> Free Speech</span> with <span className="text-secondary">Ekko</span>
+        <div className="relative h-screen bg-neutral w-screen">
+            <div className="grid absolute gap-y-4 bg-neutral px-8 text-center mt-20 w-screen">
+                <h1 className="text-4xl font-bold leading-relaxed">Make<br />
+                    <span className="text-secondary text-5xl"> Free Speech </span><br/>Easy.
                 </h1>
-                <p className="text-md font-light opacity-30">This is a page of resources for educating ourselves on how to engage in
-                    civil discourse and how to exercise our right to freedom of speech.
+                <p className="text-md font-light opacity-30 text-center w-full align-middle justify-self-center">Check out our proudly curated resources to better engage in
+                    civil discourse and exercise your right to freedom of speech.
                 </p>
             </div>
+            {/* <div className="bg-white">
+                <div>
+                    <div className="grid w-32 h-20 rounded bg-primary text-primary-content place-content-center">1</div> 
+                    <div className="grid w-32 h-20 rounded bg-accent text-accent-content place-content-center">2</div> 
+                    <div className="grid w-32 h-20 rounded bg-secondary text-secondary-content place-content-center">3</div>
+                </div>
+            </div> */}
             {/* <div className="relative grid grid-rows-3 content-center w-screen">
                 <button className=" 
                 btn bg-accent rounded-full w-80 sm:btn-sm md:btn-md lg:btn-lg">
