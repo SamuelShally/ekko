@@ -17,8 +17,11 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
     "md5": "^2.3.0",
     "mongoose": "^6.7.1",
+    "request": "^2.88.2",
     "validator": "^13.7.0"
   }
 }

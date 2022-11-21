@@ -4,6 +4,9 @@ const express = require("express");
 const validator = require("validator");
 var md5 = require('md5');
 
+//for external api calls
+const request = require('request');
+
 const session = require('express-session');
 const MongoDBSession = require('connect-mongodb-session')(session)
 
@@ -200,12 +203,49 @@ router.post('/login', async(req, res) => {
 
     //User is logged in -> set usAuth 
     req.session.isAuth = true;
+    req.session.userName = username;
 
-    //Example: We can save whatever we want to the session cookie
-    req.session.testing = "hello";
-
-    res.status(200).json({});
+    res.status(200).json({hello: 'test'});
 });
+
+
+//get name from session
+router.get("/name", async (req, res) => {
+    try{
+        console.log(req.session.name);
+        req.send({message: req.session.name});
+    }catch (error){
+        console.log(error);
+    }
+});
+
+
+//Pass: The name of a topic
+//Returns: JSON list of articles relating to that topic 
+router.post("/articles", async(req, res) => {
+    let {topic} = req.body;
+
+    const apiKey = 'fbc4d6586ae548d68923b9b732c10ee9';
+    const url = `https://newsapi.org/v2/everything?q=${topic}&from=2022-10-21&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    const response = await fetch(url,{
+        method:'GET',
+        headers:{
+            'Content-Type' : "application/json"
+        }
+    });
+
+    const json = await response.json();
+
+    //fetch ten articles
+    let articles = [];
+    for(let x = 0; x<10; x++){
+        articles.push(json.articles[x]);
+    }
+
+    res.status(200).json(articles);
+});
+
 
 //Log out of the app (destroy the cookie)
 router.post('/logout', (req, res) => {
@@ -222,5 +262,8 @@ router.post('/logout', (req, res) => {
     // })
 
 }) 
+
+
+
 
 module.exports = router;

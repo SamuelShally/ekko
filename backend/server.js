@@ -9,8 +9,9 @@ const userRoutes = require("./routes/users");
 const app = express();
 
 //middleware
-app.use(cors())
+app.use(cors()); //request from any dom.
 app.use(express.json()); //getting access to req.body
+
 
 //show req.path and req.mothod of the request.
 app.use((req,res,next)=>{
@@ -46,8 +47,8 @@ mongoose.connect(process.env.MONGO_URI)
     database. If it exists and isAuth = true, we can be logged in as that user
 */
 
-const session = require('express-session')
-const MongoDBSession = require('connect-mongodb-session')(session)
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session);
 const User = require('./models/userModel');
 
 //Database for saving the user session
@@ -68,30 +69,36 @@ const isAuth = (req, res, next) => {
             Remark: I don't know where to redirect to right now. 
             I need to understand the combination between front and backend better
         */
+       next()
     }
-
 }
 
-//Set up the session cookie
+//Set up the session cookie to req objects
 app.use(
     
     session({
-        secret: 'samuel_test', //Str that will sign the cookie 
+        secret: 'test_user_key', //Str that will sign the cookie 
         resave: false, //New session for every request t/f
-        saveUninitialized: true, //save if session is unmodified t/f 
-        store: store //Save session to Database
+        saveUninitialized: false, //save if session is unmodified t/f 
+        store: store, //Save session to Database
+        cookie: {
+            sameSite: "none",
+            secure: false, 
+            maxAge: 100*60*60,
+        }
     })
+
 );
 
 
 app.use('/api/users', userRoutes);
 
-/*
-//For backend sessions testing  
+
+// For backend sessions testing  
 app.get("/", (req, res) => {
     //Temp for allowing access
-    req.session.isAuth = true; 
+    // req.session.isAuth = true; 
     res.send("Testing sessions");
 });
-*/
+
 
