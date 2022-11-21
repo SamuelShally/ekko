@@ -80,7 +80,6 @@ app.use(
         resave: false, //New session for every request t/f
         saveUninitialized: true, //save if session is unmodified t/f 
         store: store //Save session to Database
-        console.log("got here");
     })
 );
 
