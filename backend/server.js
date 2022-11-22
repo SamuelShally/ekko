@@ -5,13 +5,14 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const http = require('http');
 const sio = require('socket.io');
-
+const userRoutes = require("./routes/users");
+const roomRoutes = require("./routes/rooms")
 
 //register the express app
 const app = express();
 
 //config the socket io
-const port = 4000;
+const port = 4001;
 const server = http.createServer(app).listen(port)
 const io = sio(server);
 
@@ -33,6 +34,10 @@ router.get("/hi", (req, res) => {
 })
 
 app.use('/', router)
+
+app.use('/api/users', userRoutes);
+
+app.use('/api/rooms', roomRoutes);
 
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)
