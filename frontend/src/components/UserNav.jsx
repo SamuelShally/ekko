@@ -12,7 +12,7 @@ const UserNav = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><a>Favorites</a></li>
                         {/* <li><a>Friends</a></li> */}
-                        <li><a>Saved</a></li>
+                        <li><Link to="/saved">Saved</Link></li>
                         <li><a>Stats</a></li>
                         <li>
                             <Link to="/settings">Settings</Link>
