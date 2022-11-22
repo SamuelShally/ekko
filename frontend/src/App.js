@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
 import Learn from './components/Learn';
+import Settings from './components/Settings';
 
 const App = () => {
   return (
@@ -37,7 +38,8 @@ const App = () => {
         <Route path='/chat' element = {<Chat />} />
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
-        <Route path='/discover' element = {<Discover />} />
+        <Route path='/discover' element={<Discover />} />
+        <Route path='/settings' element = {<Settings />} />
       </Routes>
       {/* <Footer/> */}
     </Router>
