@@ -11,7 +11,7 @@ const app = express();
 //middleware
 app.use(cors()); //request from any dom.
 app.use(express.json()); //getting access to req.body
-
+app.use('/api/users', userRoutes);
 
 //show req.path and req.mothod of the request.
 app.use((req,res,next)=>{
@@ -19,6 +19,7 @@ app.use((req,res,next)=>{
     console.log(req.path,req.method);
     next();
 })
+
 
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)
@@ -30,7 +31,11 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error)=>{
         console.log("Bad news! Something went wrong");
         console.log(error);
-    })
+})
+
+
+
+
 
 
 /* **********SESSIONS FRAMEWORK********* */
@@ -47,6 +52,7 @@ mongoose.connect(process.env.MONGO_URI)
     database. If it exists and isAuth = true, we can be logged in as that user
 */
 
+/*
 const session = require('express-session');
 const MongoDBSession = require('connect-mongodb-session')(session);
 const User = require('./models/userModel');
@@ -57,23 +63,31 @@ const store = new MongoDBSession({
     collection: 'mySessions',
 })
 
+*/
+
 
 //check if user is logged in, if not: redirect to log in page
-const isAuth = (req, res, next) => {
-    if(req.session.isAuth){
-        next()
-    }else{
+
+
+//const isAuth = (req, res, next) => {
+    //if(req.session.isAuth){
+     //   next()
+   // }else{
         // TODO: Redirect the user back to log in page
 
           /*
             Remark: I don't know where to redirect to right now. 
             I need to understand the combination between front and backend better
         */
-       next()
-    }
-}
+
+     //  next()
+  //  }
+//}
+
 
 //Set up the session cookie to req objects
+
+/*
 app.use(
     
     session({
@@ -91,7 +105,7 @@ app.use(
 );
 
 
-app.use('/api/users', userRoutes);
+
 
 
 // For backend sessions testing  
@@ -100,5 +114,7 @@ app.get("/", (req, res) => {
     // req.session.isAuth = true; 
     res.send("Testing sessions");
 });
+
+*/
 
 
