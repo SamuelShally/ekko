@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
 import Learn from './components/Learn';
+import Saved from './components/Saved';
 import Settings from './components/Settings';
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element={<Discover />} />
+        <Route path='/saved' element = {<Saved />} />
         <Route path='/settings' element = {<Settings />} />
       </Routes>
       {/* <Footer/> */}
