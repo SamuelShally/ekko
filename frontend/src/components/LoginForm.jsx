@@ -34,6 +34,9 @@ const LoginForm = () => {
             setPassword('');
             setError(null);
             console.log("Logging");
+
+            console.log(json.hello);
+
             navigate('/discover'); //navigate to creating discover page after logging in succefully (should be replaced to user's dashboard)
 
         }
