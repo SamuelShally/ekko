@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import userImageHolder from '../img/user-img-holder.png';
 
+
 const CreateProfile = () => {
+    
+
+
     return (
         // wrapper div
         <div className="relative h-screen bg-accent">
@@ -28,7 +32,7 @@ const CreateProfile = () => {
                                 <span className="label-text text-sm text-stone-400 font-light mb-1">Pick one!</span>
                             </label> */}
                             <select className="select select-bordered rounded-full px-6">
-                                <option disabled selected>Choose your worldview</option>
+                                <option >Choose your worldview</option>
                                 <option>worldview1</option>
                                 <option>worldview2</option>
                                 <option>worldview3</option>

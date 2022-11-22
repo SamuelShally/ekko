@@ -2,12 +2,20 @@ const User = require('../models/userModel');
 const mongoose = require('mongoose');
 const express = require("express");
 const validator = require("validator");
+const jwt = require('jsonwebtoken');
 var md5 = require('md5');
+
+
+//function to create a web token 
+const createToken = (_id) =>{
+    return jwt.sign({_id},process.env.SECRET,{expiresIn: '1d'})
+}
 
 //for external api calls
 const request = require('request');
 
 const session = require('express-session');
+const { create } = require('../models/userModel');
 const MongoDBSession = require('connect-mongodb-session')(session)
 
 const router = express.Router();
@@ -101,8 +109,9 @@ router.post('/signup', (req,res)=>{
                     return;
                 }
                 console.log(user);
+                const token = createToken(user._id);
                 
-                res.status(200).json({user});
+                res.status(200).json({username,email,token});
 
             });  
     
@@ -201,11 +210,13 @@ router.post('/login', async(req, res) => {
         return;
     }
 
-    //User is logged in -> set usAuth 
-    req.session.isAuth = true;
-    req.session.userName = username;
+    const token = createToken(user._id);
 
-    res.status(200).json({hello: 'test'});
+    //User is logged in -> set usAuth 
+    // req.session.isAuth = true;
+    // req.session.userName = username;
+
+    res.status(200).json({username,token});
 });
 
 

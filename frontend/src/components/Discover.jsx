@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import userImageHolder from '../img/user-img-holder.png';
 
+
 const Discover = () => {
+   
+
     return (
         <div className="relative h-screen">
             <div className="absolute grid h-3/4 inset-y-20 place-items-center">
