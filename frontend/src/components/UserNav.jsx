@@ -13,7 +13,7 @@ const UserNav = () => {
                         <li><a>Favorites</a></li>
                         {/* <li><a>Friends</a></li> */}
                         <li><Link to="/saved">Saved</Link></li>
-                        <li><a>Stats</a></li>
+                        <li><Link to="/stats">Stats</Link></li>
                         <li>
                             <Link to="/settings">Settings</Link>
                         </li>
