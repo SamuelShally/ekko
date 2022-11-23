@@ -17,6 +17,7 @@ import Learn from './components/Learn';
 import ChatRoom from './routes/ChartRoom';
 import ChatRoomList from './routes/ChatRoomList';
 import ElementWrapper from './routes/Wrapper';
+import Profile from './components/UserProfile'
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='/discover' element = {<Discover />} />
         <Route path='/chatList' element = {<ChatRoomList />} />
         <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
+        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} />
           {/* <Route exact path='/' element = {<Navigation />} >
             <Route index={true} element = {<Home />} />
             <Route path='register' element = {<Register />} />
