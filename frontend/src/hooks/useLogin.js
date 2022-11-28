@@ -40,8 +40,6 @@ export const useLogin = () =>{
 
             //redirect to a different page
             navigate('/my-profile'); //navigate to creating user profile
-
-           
         }
 
     }

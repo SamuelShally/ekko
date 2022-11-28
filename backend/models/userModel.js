@@ -17,6 +17,15 @@ const userSchema = new mongoose.Schema(
             type:String,
             required: true
             
+        },
+        worldview:{
+            type:String
+        },
+        interests:{
+            type:[String]
+        },
+        intro:{
+            type:String
         }
     }
 );
