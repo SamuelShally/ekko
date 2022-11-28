@@ -22,6 +22,8 @@ const router = express.Router();
 router.post('/signup', (req,res)=>{
   
     const {username,email,password} = req.body;
+    const worldview = undefined
+    const intro = undefined
    
     //validation
     if(!username ||!email ||!password ){
@@ -69,7 +71,7 @@ router.post('/signup', (req,res)=>{
         
             
             //save a new user with encrypted password
-            User.create({username,email, password: encrypedPW}, (err, user) => {
+            User.create({username,email, password: encrypedPW,worldview,intro}, (err, user) => {
                 if (err) {
                     res.status(400).json({error: err.message});
                     return;
@@ -77,7 +79,7 @@ router.post('/signup', (req,res)=>{
                 console.log(user);
                 const token = createToken(user._id);
                 
-                res.status(200).json({username,email,token});
+                res.status(200).json({username,email,token,worldview,intro});
 
             });  
     
@@ -111,7 +113,7 @@ router.post('/login', async(req, res) => {
 });
 
 
-router.use(requireAuth); //protecting all the APIS below 
+router.use(requireAuth); //protecting all the APIS
 
 router.get('/getUsers',(req,res)=>{
     // console.log(User);
@@ -218,10 +220,45 @@ router.patch('/getUser/:id',(req,res)=>{
     password : 123Nyu@321
 */
 
+router.post("/worldview",(req,res)=>{
+    let {username,worldview}= req.body;
+     User.findOneAndUpdate({username},{worldview},(err,u)=>{
+        if(err){
+            res.status(400).json(err.message);
+        }else{
+            res.status(200).json(u)
+        }
+     })
 
+})
 
+router.post("/interests",(req,res)=>{
+    let {username,interests} = req.body
+    User.findOneAndUpdate({username},{interests},(err,user)=>{
+        if(err){
+            res.status(400).json(err.message);
+        }else{
+            res.status(200).json(user)
+        }
 
+    })
+ 
+})
 
+router.post("/intro",(req,res)=>{
+    let {username,intro} = req.body
+    console.log(username,intro);
+    User.findOneAndUpdate({username},{intro},(err,user)=>{
+        if(err){
+            res.status(400).json(err.message);
+        }else{
+            console.log(user)
+            res.status(200).json(user)
+        }
+
+    })
+
+})
 
 
 //Pass: The name of a topic
