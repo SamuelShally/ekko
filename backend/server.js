@@ -8,6 +8,7 @@ const http = require('http');
 const sio = require('socket.io');
 const userRoutes = require("./routes/users");
 const roomRoutes = require("./routes/rooms")
+const blogRoutes = require("./routes/blog");
 
 //register the express app
 const app = express();
@@ -110,6 +111,7 @@ app.use(
 
 
 app.use('/api/users', userRoutes);
+app.use('/api/blog', blogRoutes);
 
 
 // For backend sessions testing  
