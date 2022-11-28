@@ -35,7 +35,7 @@ router.post("/add", (req, res) => {
       //Validate
       if(!username || !post){
         res.status(400).json({error:"all fields need to be filled"});
-        // return;
+        return;
     }
 
     Blog.create( {username, post}, (err, post) => {
@@ -44,6 +44,7 @@ router.post("/add", (req, res) => {
             res.status(400).json({error: err.message});
             return;
         }
+    
         res.status(200).json({post});
 
     }); 
@@ -51,16 +52,67 @@ router.post("/add", (req, res) => {
 });
 
 //Update a blog post via id
+//Returns updated porst
 router.patch("/update/:id", (req, res) => {
     const {id} = req.params;
 
+     //Validate ID
+     if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:"Blog post does not exist"})
+    }
+
+    const data = {
+        _id: id,
+    }
+    if(req.body.username) {
+        data.username = req.body.username;
+    }
+    if(req.body.post) {
+        data.post = req.body.post;
+    }
+
+
+    //Update the blog post
+    let doc = Blog.findOneAndUpdate({_id:id}, data, {
+        returnOriginal: false
+      }, (err,data)=>{
+            if(err){
+                res.status(400).json({error: err.message});
+                return;
+            }
+
+            res.status(200).json(data);
+        }
+    );
+
+    if(!doc){
+        res.status(200).json({error: "Blog post does not exist"});
+    }
 });
 
 //Delete a blog post by id
 router.delete('/delete/:id', (req, res) => {
     const {id} = req.params;
 
-});
+    //Validate ID
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:"Blog post does not exist"})
+    }
 
+    //Remove from DB
+    const post = Blog.findOneAndDelete({_id:id},(err, onePost)=>{
+        if (err) {
+            res.status(400).json({error: err.message});
+            return;
+        }
+        res.status(200).json(onePost);
+    });
+
+    //If user does not exist
+    if(!post){
+        return res.status(404).json({error:"Blog post does not exist"});
+    }
+
+});
 
 module.exports = router;
