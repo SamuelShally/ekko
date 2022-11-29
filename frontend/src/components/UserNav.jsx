@@ -10,12 +10,18 @@ const UserNav = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
-                        <li><a>Favorites</a></li>
+                        {/* <li><a>Favorites</a></li> */}
                         {/* <li><a>Friends</a></li> */}
-                        <li><Link to="/saved">Saved</Link></li>
-                        <li><Link to="/stats">Stats</Link></li>
+                        {/* <li><Link to="/saved">Saved</Link></li>
+                        <li><Link to="/stats">Stats</Link></li> */}
+                        <li>
+                            <Link to="/post">Post</Link>
+                        </li>
                         <li>
                             <Link to="/settings">Settings</Link>
+                        </li>
+                        <li>
+                            <Link to="/">Logout</Link>
                         </li>
                     </ul>
                     </div>
