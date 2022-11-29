@@ -3,15 +3,17 @@ import userImageHolder from '../img/user-img-holder.png';
 
 const Discover = () => {
     return (
-        <div className="relative h-screen">
+        <div className="relative h-screen bg-neutral md:bg-transparent">
             <div className='grid grid-cols-3'>
                 {/* block on breakpoint md*/}
                 <div className='relative hidden bg-neutral text-primary h-full
                                 md:block md:col-span-1'>
-                    <h1 className="absolute left-0 ml-10 mt-40 text-4xl text-primary text-center text-bold">Discover</h1>
+                    <h1 className="absolute left-0 ml-10 mt-40 text-4xl text-primary text-center text-bold
+                                    lg:mt-56">Discover</h1>
                 </div>
                 <div className="h-screen w-screen inset-y-20 mt-40 itmes-center 
-                                md:w-full md:col-span-2">
+                                md:w-full md:col-span-2
+                                lg:mt-56">
                     <h1 className="relative mb-6 w-screen text-4xl text-primary text-center text-bold md:hidden">Discover</h1>
                     <div className="relative card card-bordered rounded-3xl bg-accent
                                     max-w-sm mx-auto w-3/4 ">
