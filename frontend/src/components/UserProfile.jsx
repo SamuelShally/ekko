@@ -14,12 +14,12 @@ const UserProfile = () => {
 
             {/* card container */}
             <div className="max-w-lg mx-auto my-10 py-8 bg-neutral rounded-lg
-                            lg:grid-cols-3 lg:max-w-none"> 
+                            lg:grid-cols-3 lg:max-w-5xl lg:px-8"> 
                 <div className="ml-6">
-                    <h2 className='text-xl lg:text-3xl'>My posts</h2>
+                    <h2 className='text-xl lg:text-2xl lg:text-center'>My posts</h2>
                 </div>
-                <div className="grid gap-5 max-w-lg mx-auto py-6 bg-neutral rounded-lg
-                            lg:grid-cols-3 lg:max-w-none">
+                <div className="grid gap-5 max-w-lg mx-auto py-6 bg-neutral rounded-lg 
+                            lg:grid-cols-3 lg:max-w-none ">
                     <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 1 */}
                         <div>
                             <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
