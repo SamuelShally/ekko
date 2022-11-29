@@ -6,7 +6,7 @@ const Discover = () => {
         <div className="relative h-screen">
             <div className='grid grid-cols-3'>
                 {/* block on breakpoint md*/}
-                <div className='relative hidden bg-neutral text-primary h-screen
+                <div className='relative hidden bg-neutral text-primary h-full
                                 md:block md:col-span-1'>
                     <h1 className="absolute left-0 ml-10 mt-40 text-4xl text-primary text-center text-bold">Discover</h1>
                 </div>
