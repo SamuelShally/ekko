@@ -5,9 +5,9 @@ const Discover = () => {
     return (
         <div className="relative h-screen">
             <div className="absolute grid h-3/4 inset-y-20 place-items-center">
-                <h1 className="relative w-screen text-4xl text-primary text-center text-bold">Discover</h1>
+                <h1 className="relative mb-6 w-screen text-4xl text-primary text-center text-bold">Discover</h1>
                 <div className="relative card card-bordered rounded-3xl bg-accent
-                                w-3/4 lg:card-side">
+                                max-w-sm w-3/4 lg:card-side">
                     {/* <figure className="px-10 pt-10"> */}
                         <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User2"/>
                     {/* </figure> */}
