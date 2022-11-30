@@ -15,7 +15,7 @@ const RegisterForm = () => {
                     </Link>
                 </div>
                 <div className="relative z-0 grid h-screen gap-y-14 place-content-center
-                                min-w-min
+                                min-w-min sm:col-span-2
                                 ">
                     <div className="h-0 place-self-end">
                         <svg xmlns="http://www.w3.org/2000/svg"
