@@ -28,7 +28,7 @@ const UserNav = () => {
                 </div>
                 <div className="navbar-center">
                 <a className="btn btn-ghost normal-case text-xl
-                              md:text-2xl">My Profile</a>
+                              md:text-2xl">My Space</a>
                 </div>
                 <div className="navbar-end">
                     {/* <button className="btn btn-ghost btn-circle">
