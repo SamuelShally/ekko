@@ -15,6 +15,7 @@ const Navigation = () => {
               <button className="btn btn-md text-lg
                                  sm:btn-md sm:text-xl 
                                  md:btn-lg md:text-2xl
+                                 hover:text-secondary
                                  ">
                 Sign in
               </button>
