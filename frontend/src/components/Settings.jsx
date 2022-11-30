@@ -2,13 +2,11 @@ import { Link } from 'react-router-dom';
 
 const Settings = () => {
     return (
-        <div>
-
-            <div className='pl-6 pb-6 pt-20'>
-                <p1 className="font-bold text-3xl">Settings</p1>
-            </div>
-
-            <div className="bg-neutral h-screen rounded-tl-3xl rounded-tr-3xl">
+        <div className='grid sm:grid-cols-5'>
+            <div className=" bg-neutral h-screen sm:col-span-2">
+                <div className='pl-6 pb-6 pt-20'>
+                    <p1 className="font-bold text-3xl">Settings</p1>
+                </div>
                 <div className="grid grid-rows-3 gap-y-0 mt-6 pt-2 text-xl"> {/* create grid */}
                     <div className='flex w-full px-6 py-4 border-solid border-b-2 border-primary border-opacity-25'> 
                         <div className='mr-2 pt-1'>
@@ -54,6 +52,9 @@ const Settings = () => {
                         </div>
                     </div>
                 </div> {/* end of grid */}
+            </div>
+            <div className='hidden sm:col-span-3'>
+                <h>placeholder</h>
             </div>
         </div>
     )
