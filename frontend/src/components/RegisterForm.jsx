@@ -28,25 +28,25 @@ const RegisterForm = () => {
                             <label className="label"/>
                         <input type="text" placeholder="Username"
                                 className="input w-full rounded-full border-solid border-2
-                                input-md md:input-lg lg:input-lg font-light text-xs"/>
+                                input-md font-light text-xs"/>
                         </div>
                         <div className="form-control w-80 max-w-s">
                             <label className="label"/>
                         <input type="text" placeholder="Email address"
                                 className="input w-full rounded-full border-solid border-2
-                                input-md md:input-lg lg:input-lg font-light text-xs"/>
+                                input-md font-light text-xs"/>
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label"/>
                             <input type="password" placeholder="Set password"
                                 className="input w-full rounded-full border-solid border-2
-                                input-md md:input-lg lg:input-lg font-light text-xs"/>
+                                input-md text-xs"/>
                         </div>
                     </form>
                     <Link to="/profile">
                         <button
                             className="text-lg text-white rounded-full bg-primary
-                            px-20 w-80 btn-md md:btn-lg lg:btn-lg">
+                            px-20 w-80 btn-md">
                                 Create an account
                         </button>
                     </Link>
