@@ -5,7 +5,8 @@ const Bloglist = (props) => {
     const blogs = props.blogs;
     
     return ( 
-        <section>
+        <section className="grid gap-5 max-w-lg mx-auto py-6 bg-neutral rounded-lg 
+        lg:grid-cols-3 lg:max-w-none ">
             {blogs.map((blog) => (
                 // <Blog title={blog.title} body={blog.body} author={blog.author} date={blog.date} key={blog.id} />
                 <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'
