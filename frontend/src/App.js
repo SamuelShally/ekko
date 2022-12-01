@@ -20,10 +20,11 @@ import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
 import Learn from './components/Learn';
-import Saved from './components/Saved';
 import Settings from './components/Settings';
-import Stats from './components/Stats';
 import Post from './components/BlogPost';
+// import ChatRoom from './components/ChatRoom';
+// import ChatRoomList from './components/ChatRoomList';
+// import ElementWrapper from './components/Wrapper';
 
 const App = () => {
   return (
@@ -42,10 +43,12 @@ const App = () => {
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element={<Discover />} />
-        <Route path='/saved' element={<Saved />} />
-        <Route path='/stats' element={<Stats />} />
         <Route path='/post' element = {<Post />} />
-        <Route path='/settings' element = {<Settings />} />
+        <Route path='/settings' element={<Settings />} />
+        
+        {/* <Route path='/chatList' element = {<ChatRoomList />} /> */}
+        {/* <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
+        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} /> */}
       </Routes>
       {/* <Footer/> */}
     </Router>
