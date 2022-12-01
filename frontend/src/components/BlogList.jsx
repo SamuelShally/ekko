@@ -16,7 +16,7 @@ const Bloglist = (props) => {
                 </div>
                 <div className='p-4'>
                     <p className='text-secondary sm:text-lg'>Blog</p>
-                    <h3 className='mt-2 text-2xl sm:text-3xl font-semibold leading-7 text-gray-900'> { blog.title } </h3>
+                    <h3 className='mt-2 text-2xl sm:text-3xl lg:text-2xl font-semibold leading-7 text-gray-900'> { blog.title } </h3>
                     <p className='mt-2 leading-6 sm:text-lg text-gray-400 font-light'>
                                 {blog.body}
                     </p>
