@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import UserNav from './UserNav';
 import Bloglist from './BlogList';
+import Interestlist from './InterestList';
 
 const UserSpace = () => {
     const [blogs, setBlogs] = useState([
@@ -9,13 +10,13 @@ const UserSpace = () => {
         {
             title: "8 facts about gender equality you must know",
             body: 'Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.',
-            author: 'Lemon',
+            author: 'Ruby',
             date: 'Nov 15, 2022',
             img: 'https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
             id: 1
         },
         {
-            title: "5 Ways Abortion Rights Protect Women's Health",
+            title: "5 ways abortion rights protect women's health",
             body: 'Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.',
             author: 'Ruby',
             date: 'Nov 30, 2022',
@@ -23,7 +24,7 @@ const UserSpace = () => {
             id: 2
         },
         {
-            title: "5 Ways Abortion Rights Protect Women's Health",
+            title: "3 things you must know before immigrating to the US",
             body: 'Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.',
             author: 'Ruby',
             date: 'Nov 30, 2022',
@@ -31,6 +32,10 @@ const UserSpace = () => {
             id: 3
         }
     ]);
+
+    // *** NEEDS MODIFICATION
+    // RENDER USER INTEREST
+    const [interests, setInterest] = useState(['racial issues','immigration','freedom of speech']);
 
     // display loading msg while fetching data
     const [isPending, setIsPending] = useState(true);
@@ -56,6 +61,20 @@ const UserSpace = () => {
                             w-full text-center items-center justify-center'>
                 <img className="relative w-30 h-30 rounded-full justify-self-center" src='https://placeimg.com/160/160/arc' />
                 <h4 className='mt-2 text-gray-500 sm:text-xl md:text-xl'>@username</h4>
+            </div>
+
+            {/* interest container */}
+            <div className="h-max max-w-sm mx-auto mt-10 md:mt-14 py-8 
+                            bg-neutral rounded-lg
+                            lg:max-w-md lg:px-8 ">
+                <div className="">
+                    <h2 className='text-xl sm:text-2xl lg:text-2xl text-center'>My Interests</h2>
+                </div>
+                <div>
+                    {/* {isPending && <div>...</div>} */}
+                    {interests && <Interestlist interests={interests} />}  
+                  
+                </div> 
             </div>
 
             {/* card container */}
