@@ -65,9 +65,7 @@ const UserSpace = () => {
                 <div className="ml-6">
                     <h2 className='text-xl sm:text-2xl lg:text-2xl lg:text-center'>My posts</h2>
                 </div>
-                <div className="grid gap-5 max-w-lg mx-auto py-6 bg-neutral rounded-lg 
-                        lg:grid-cols-3 lg:max-w-none ">
-                    
+                <div>
                     {/* {isPending && <div>Loading...</div>} */}
 
                     {/* render it once we have the data & show corresponding user's blog only */}
