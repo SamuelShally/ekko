@@ -82,7 +82,7 @@ const UserSpace = () => {
                             bg-neutral rounded-lg
                             lg:grid-cols-3 lg:max-w-5xl lg:px-8"> 
                 <div className="ml-6">
-                    <h2 className='text-xl sm:text-2xl lg:text-2xl lg:text-center'>My posts</h2>
+                    <h2 className='min-h-max text-2xl text-center sm:text-2xl lg:text-2xl '>My posts</h2>
                 </div>
                 <div>
                     {/* {isPending && <div>Loading...</div>} */}
