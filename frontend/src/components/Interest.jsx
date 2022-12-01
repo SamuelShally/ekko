@@ -44,7 +44,7 @@ const Interest = () => {
                                             sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20">+ economic inequality
                         </button>
                     </div>
-                    <Link to="/quiz"> 
+                    <Link to="/people-like-me"> 
                         <div className="w-full flex flex-row mt-10 ml-6 z-20">
                             <button className="btn rounded-full flex-none md:ml-4
                                                 bg-primary text-neutral text-md
