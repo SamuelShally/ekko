@@ -22,7 +22,7 @@ const SimilarUsers = () => {
                                         sm:btn-md md:btn-md lg:btn-lg">User2
                     </button>
                 </div>
-                <Link to="/my-profile"> 
+                <Link to="/my-space"> 
                     <div className="w-full flex flex-row-reverse mt-10">
                         <button className="btn rounded-full flex-none mr-6 
                                             bg-primary text-neutral text-xl">
