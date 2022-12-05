@@ -2,7 +2,15 @@ const User = require('../models/userModel');
 const mongoose = require('mongoose');
 const express = require("express");
 const validator = require("validator");
+const jwt = require('jsonwebtoken');
 var md5 = require('md5');
+const requireAuth = require("../middleware/requireAuth");
+
+
+//function to create a web token 
+const createToken = (_id) =>{
+    return jwt.sign({_id},process.env.SECRET,{expiresIn: '30m'})
+}
 
 //for external api calls
 const request = require('request');
@@ -12,42 +20,12 @@ const MongoDBSession = require('connect-mongodb-session')(session)
 
 const router = express.Router();
 
-router.get('/getUsers',(req,res)=>{
-    // console.log(User);
-    User.find({}, (err, users) => {
-        if (err) {
-            res.status(400).json({error: err.message});
-        }
-        res.status(200).json(users);
-    });
-  
-    
-});
-
-router.get('/getUser/:id',(req,res)=>{
-   
-    const {id} = req.params;
-    
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:"User not found"})
-    }
-    const user = User.findById(id,(err,oneUser)=>{
-        if (err) {
-            res.status(400).json({error: err.message});
-            return;
-        }
-        
-        res.status(200).json(oneUser)
-    })
-    if(!user){
-        return res.status(404).json({error:"No such user"});
-    }
-    
-});
-
 router.post('/signup', (req,res)=>{
   
     const {username,email,password} = req.body;
+
+    const worldview = undefined
+    const intro = undefined
    
     //validation
     if(!username ||!email ||!password ){
@@ -95,15 +73,16 @@ router.post('/signup', (req,res)=>{
         
             
             //save a new user with encrypted password
-            User.create({username,email, password: encrypedPW}, (err, user) => {
+
+            User.create({username,email, password: encrypedPW,worldview,intro}, (err, user) => {
                 if (err) {
                     res.status(400).json({error: err.message});
                     return;
                 }
                 console.log(user);
+                const token = createToken(user._id);
                 
-                res.status(200).json({user});
-
+                res.status(200).json({username,email,token,worldview,intro});
             });  
     
         })
@@ -112,8 +91,63 @@ router.post('/signup', (req,res)=>{
 
     })
 
-    
+});
 
+router.post('/login', async(req, res) => {
+    let {username, password} = req.body;
+    console.log(req.headers);
+  
+    const user = await User.findOne({username});
+
+    if(!user){
+        res.status(400).json({error:"user not found"});
+        return;
+    }
+
+    if(user.password !== md5(password)) {
+        res.status(400).json({error:"password incorrect"});
+        return;
+    }
+
+    const token = createToken(user._id);
+
+    res.status(200).json({username,token});
+});
+
+
+router.use(requireAuth); //protecting all the APIS
+
+router.get('/getUsers',(req,res)=>{
+    // console.log(User);
+    User.find({}, (err, users) => {
+        if (err) {
+            res.status(400).json({error: err.message});
+        }
+        res.status(200).json(users);
+    });
+  
+    
+});
+
+router.get('/getUser/:id',(req,res)=>{
+   
+    const {id} = req.params;
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:"User not found"})
+    }
+    const user = User.findById(id,(err,oneUser)=>{
+        if (err) {
+            res.status(400).json({error: err.message});
+            return;
+        }
+        
+        res.status(200).json(oneUser)
+    })
+    if(!user){
+        return res.status(404).json({error:"No such user"});
+    }
+    
 });
 
 router.delete('/getUser/:id',(req,res)=>{
@@ -186,38 +220,45 @@ router.patch('/getUser/:id',(req,res)=>{
     password : 123Nyu@321
 */
 
-router.post('/login', async(req, res) => {
-    let {username, password} = req.body;
-  
-    const user = await User.findOne({username});
+router.post("/worldview",(req,res)=>{
+    let {username,worldview}= req.body;
+     User.findOneAndUpdate({username},{worldview},(err,u)=>{
+        if(err){
+            res.status(400).json(err.message);
+        }else{
+            res.status(200).json(u)
+        }
+     })
 
-    if(!user){
-        res.status(400).json({error:"user not found"});
-        return;
-    }
+})
 
-    if(user.password !== md5(password)) {
-        res.status(400).json({error:"password incorrect"});
-        return;
-    }
+router.post("/interests",(req,res)=>{
+    let {username,interests} = req.body
+    User.findOneAndUpdate({username},{interests},(err,user)=>{
+        if(err){
+            res.status(400).json(err.message);
+        }else{
+            res.status(200).json(user)
+        }
 
-    //User is logged in -> set usAuth 
-    req.session.isAuth = true;
-    req.session.userName = username;
+    })
+ 
+})
 
-    res.status(200).json({hello: 'test'});
-});
+router.post("/intro",(req,res)=>{
+    let {username,intro} = req.body
+    console.log(username,intro);
+    User.findOneAndUpdate({username},{intro},(err,user)=>{
+        if(err){
+            res.status(400).json(err.message);
+        }else{
+            console.log(user)
+            res.status(200).json(user)
+        }
 
+    })
 
-//get name from session
-router.get("/name", async (req, res) => {
-    try{
-        console.log(req.session.name);
-        req.send({message: req.session.name});
-    }catch (error){
-        console.log(error);
-    }
-});
+})
 
 
 //Pass: The name of a topic
@@ -245,25 +286,5 @@ router.post("/articles", async(req, res) => {
 
     res.status(200).json(articles);
 });
-
-
-//Log out of the app (destroy the cookie)
-router.post('/logout', (req, res) => {
-
-    // req.session.destroy((err) => {
-    //     if(err) throw err;
-
-    //     /*
-    //         Remark: I don't know where to redirect to right now. 
-    //         I need to understand the combination between front and backend better
-    //     */
-
-    //     res.redirect('/'); 
-    // })
-
-}) 
-
-
-
 
 module.exports = router;

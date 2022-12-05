@@ -52,7 +52,6 @@ const Discover = () => {
 
                     })
                 }
-
             </div>
         </div>
 

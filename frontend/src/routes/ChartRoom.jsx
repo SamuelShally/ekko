@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import io from 'socket.io-client'
+import io from 'socket.io-client';
 
 class ChatRoom extends Component{
 

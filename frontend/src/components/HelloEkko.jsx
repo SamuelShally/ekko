@@ -4,24 +4,11 @@ import fish from '../img/fish.png';
 import Navigation from '../routes/Navigation';
 
 const Greeting = () => {
-
-    const [msg, setMsg] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:4000/hi')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setMsg(data.msg);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
- 
     return (
         <div className="relative w-screen h-screen">
-            <div className="relative">
+
+            {/* navigation bar */}
+            <div className="relative z-30">
                 <Navigation/>
             </div>
             {/* <img className = "fixed mx-auto h-auto opacity-25 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src={fish} alt="Fish" /> */}
@@ -50,14 +37,12 @@ const Greeting = () => {
                         </Link>
 
                     </div>
+
                 </div>
-                </div>
-                
+             </div>
         </div>
-            
         </div>
     )
-
 }
 
 export default Greeting;

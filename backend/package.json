@@ -19,10 +19,11 @@
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
+    "socket.io": "^2.4.0",
+    "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "mongoose": "^6.7.1",
     "request": "^2.88.2",
-    "validator": "^13.7.0",
-    "socket.io": "^2.4.0"
+    "validator": "^13.7.0"
   }
 }
