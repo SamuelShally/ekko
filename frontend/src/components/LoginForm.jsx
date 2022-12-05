@@ -1,7 +1,6 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
-import { Error } from 'mongoose';
 import fish from '../img/fish.png';
 import Previous from '../components/Previous';
 
