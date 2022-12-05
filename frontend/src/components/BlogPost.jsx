@@ -12,7 +12,7 @@ const Post = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const username = "Samuel"; //This should be replaced by whatever is in the cookie
+    const username = "Samuel"; //**READ**: This should be replaced by the name in session cookie
 
     const submitForm = async(e) =>{
         e.preventDefault();
@@ -39,8 +39,7 @@ const Post = () => {
             setPost('');
             setError(null);
             console.log("Post added to DB");
-            navigate('/discover'); //navigate to creating discover page after logging in succefully (should be replaced to user's dashboard)
-
+            navigate('/my-profile'); //navigate to creating discover page after logging in succefully (should be replaced to user's dashboard)
         }
     }
 
