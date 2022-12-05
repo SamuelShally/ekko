@@ -30,15 +30,19 @@ router.post('/retrieve', (req, res) => {
 
 //Create a new blog post under userName, returns error or the created blog post
 router.post("/add", (req, res) => {
-    let {username, post} = req.body;
+    let {username, post, title} = req.body;
+
+    console.log(username);
+    console.log(post);
+    console.log(title);
 
       //Validate
-      if(!username || !post){
+      if(!username || !post || !title){
         res.status(400).json({error:"all fields need to be filled"});
         return;
     }
 
-    Blog.create( {username, post}, (err, post) => {
+    Blog.create( {username, post, title}, (err, post) => {
 
         if(err){
             res.status(400).json({error: err.message});
