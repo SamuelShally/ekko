@@ -1,7 +1,48 @@
 import { Link } from 'react-router-dom';
 import UserNav from '../components/UserNav';
+import PreviousBtn from '../components/Previous';
+import { useState } from 'react';
+import { useNavigate  } from 'react-router-dom';
+// import { Error } from 'mongoose';
+import Previous from '../components/Previous';
 
 const UserProfile = () => {
+    //Pull blog posts via usernam and add them to the frontend
+    const [posts,setPosts] = useState('');
+
+    const username = {username: "Samuel"}; //Temp hardcoded, must be updated to token.username
+
+    const getPosts = async(e) =>{
+
+        const response = await fetch("http://localhost:4005/api/blog/retrieve",{
+            method:'POST',
+            body: JSON.stringify(username),
+            headers:{
+                'Content-Type' : "application/json"
+            }
+        });
+
+        //Json contains all blog posts made by the passed username
+        const json = await response.json();
+
+        if(!response.ok){
+            console.log(json.error);
+            return [];
+        }else{
+            let array = [ ];
+
+            for(let x = 0; x<json.length; x++){
+                
+                
+    
+            }
+           
+            return  array;
+        }
+    }
+
+    
+
     return (
         <div className="min-h-screen h-full bg-white px-4 mt-4 lg:px-10">
             <UserNav/>
@@ -20,6 +61,13 @@ const UserProfile = () => {
                 </div>
                 <div className="grid gap-5 max-w-lg mx-auto py-6 bg-neutral rounded-lg
                             lg:grid-cols-3 lg:max-w-none">
+                    
+                    <div id="temp">
+                      
+                        
+                    </div> 
+
+                    
                     <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 1 */}
                         <div>
                             <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
@@ -43,6 +91,8 @@ const UserProfile = () => {
                             </div>
                         </div> 
                     </div>
+
+
                     <div className='mt-4 mx-4 rounded-xl shadow-lg overflow-hidden bg-white'> {/* card 2 */}
                         <div>
                             <img className='h-48 w-full object-cover' src="https://images.pexels.com/photos/1140854/pexels-photo-1140854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
