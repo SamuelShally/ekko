@@ -113,7 +113,7 @@ router.post('/login', async(req, res) => {
 });
 
 
-router.use(requireAuth); //protecting all the APIS
+//router.use(requireAuth); //protecting all the APIS
 
 router.get('/getUsers',(req,res)=>{
     // console.log(User);
@@ -257,6 +257,20 @@ router.post("/intro",(req,res)=>{
         }
 
     })
+
+})
+
+router.post("/recommend",async (req,res)=>{
+  
+    const _id = req.body._id;
+    console.log(_id);
+    const user = await User.findById({_id:_id}); //find the current user
+   const userWorldView = user.worldview; //get current user's worldview
+   const query = {worldview:{$ne: userWorldView}}; //query all users whose worldviws are different from that of the current user
+   const users = await User.find(query); //find all users by the query 
+
+    res.status(200).json(users) 
+ 
 
 })
 
