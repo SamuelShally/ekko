@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-import { useNavigate } from 'react-router-dom';
-import { useLogout } from '../hooks/useLogout';
-=======
 import { useLogout } from '../hooks/useLogout'
 import { useNavigate  } from 'react-router-dom';
->>>>>>> lemonbranch03
+
 
 const UserNav = () => {
     const { logout } = useLogout();
@@ -14,14 +10,11 @@ const UserNav = () => {
 
     const handleClick = () =>{
         logout();
-        navigate('/'); 
+        //navigate('/'); 
 
     }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> lemonbranch03
     return (
         <div className="navbar bg-base-100">
                 <div className="navbar-start">
@@ -31,11 +24,7 @@ const UserNav = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
-                        {/* <li><a>Favorites</a></li> */}
-                        {/* <li><a>Friends</a></li> */}
-<<<<<<< HEAD
-                        {/* <li><Link to="/saved">Saved</Link></li>
-                        <li><Link to="/stats">Stats</Link></li> */}
+                        
                         <li>
                             <Link to="/chat">Chat</Link>
                         </li>
@@ -45,12 +34,7 @@ const UserNav = () => {
                         <li>
                             <Link to="/" onClick={handleClick}>Logout</Link>
                         </li>
-=======
-                        <li><a>Saved</a></li>
-                        <li><a>Stats</a></li>
-                        <li><a>Settings</a></li>
-                        <li><a onClick={handleClick}>Logout</a></li>
->>>>>>> lemonbranch03
+
                     </ul>
                     </div>
                 </div>
