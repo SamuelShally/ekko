@@ -9,7 +9,7 @@ const requireAuth = require("../middleware/requireAuth");
 
 //function to create a web token 
 const createToken = (_id) =>{
-    return jwt.sign({_id},process.env.SECRET,{expiresIn: '30m'})
+    return jwt.sign({_id},process.env.SECRET,{expiresIn: '1d'})
 }
 
 //for external api calls
@@ -79,7 +79,7 @@ router.post('/signup', (req,res)=>{
                 console.log(user);
                 const token = createToken(user._id);
                 
-                res.status(200).json({username,email,token,worldview,intro});
+                res.status(200).json({user,token});
 
             });  
     
@@ -109,7 +109,7 @@ router.post('/login', async(req, res) => {
 
     const token = createToken(user._id);
 
-    res.status(200).json({username,token});
+    res.status(200).json({user,token});
 });
 
 
@@ -262,16 +262,22 @@ router.post("/intro",(req,res)=>{
 
 })
 
-router.post("/recommend",async (req,res)=>{
-  
-    const _id = req.body._id;
-    console.log(_id);
-    const user = await User.findById({_id:_id}); //find the current user
+router.get("/recommend/:id",async (req,res)=>{
+
+    const allUsers = await User.find({}).count(); //get num of all users in the database
+    const {id} = req.params; //id of the current user
+    
+    const user = await User.findById({_id:id}); //find the current user
+
+    
    const userWorldView = user.worldview; //get current user's worldview
    const query = {worldview:{$ne: userWorldView}}; //query all users whose worldviws are different from that of the current user
-   const users = await User.find(query); //find all users by the query 
+   let random = Math.floor(Math.random()*allUsers)
+   console.log(random)
+   const users = await User.find(query).limit(5).skip(random/4); //find all users by the query. limit to 5 random users at a time
 
     res.status(200).json(users) 
+    
  
 })
 
