@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import UserNav from '../components/UserNav';
+import React, { useState, useEffect } from 'react';
 
 const UserProfile = () => {
     return (

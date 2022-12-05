@@ -3,6 +3,7 @@ import userImageHolder from '../img/user-img-holder.png';
 import { useAuthContext, user } from "../hooks/useAuthContext";
 import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
+import React from 'react';
 
 const CreateProfile = () => {
     const { user } = useAuthContext()

@@ -72,7 +72,7 @@ mongoose.connect(process.env.MONGO_URI)
     database. If it exists and isAuth = true, we can be logged in as that user
 */
 
-/*
+
 const session = require('express-session');
 const MongoDBSession = require('connect-mongodb-session')(session);
 const User = require('./models/userModel');
@@ -82,8 +82,6 @@ const store = new MongoDBSession({
     uri: process.env.MONGO_URI,
     collection: 'mySessions',
 })
-
-*/
 
 
 //check if user is logged in, if not: redirect to log in page
@@ -107,7 +105,7 @@ const store = new MongoDBSession({
 
 //Set up the session cookie to req objects
 
-/*
+
 app.use(
     
     session({
@@ -121,6 +119,7 @@ app.use(
             maxAge: 100*60*60,
         }
     })
+)
 
 // handle the socket event
 let clients = []
@@ -167,4 +166,3 @@ io.sockets.on('connection', socket => {
         }
     });
 });
-*/
