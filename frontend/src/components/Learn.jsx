@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 const Learn = () =>{
     return (
         <div className="relative h-screen bg-neutral w-screen">

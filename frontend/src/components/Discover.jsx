@@ -1,13 +1,25 @@
 import { Link } from 'react-router-dom';
+import { useAuthContext, user } from "../hooks/useAuthContext";
 import userImageHolder from '../img/user-img-holder.png';
 import React, { useState, useEffect } from 'react';
 
 const Discover = () => {
-
+    // const { user } = useAuthContext()
+    const user = JSON.parse(localStorage.getItem('user'));
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/users/getUsers')
+        if (!user) {
+            alert("Please Login!");
+            return;
+        }
+        fetch('http://localhost:4000/api/users/getUsers',{
+            method:'GET',
+            headers:{
+                'Content-Type' : "application/json",
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);

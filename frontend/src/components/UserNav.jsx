@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout'
 import { useNavigate  } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 const UserNav = () => {
     const { logout } = useLogout();

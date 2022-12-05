@@ -1,5 +1,6 @@
 import { createContext, useReducer,useEffect } from "react";
 import { useInRouterContext } from "react-router-dom";
+import React from 'react';
 
 export const AuthContext = createContext();
 
