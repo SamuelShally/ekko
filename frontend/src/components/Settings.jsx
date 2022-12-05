@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 
 const Settings = () => {
+
+
+
+
+
     return (
         <div className='grid sm:grid-cols-5'>
             <div className=" bg-neutral h-screen sm:col-span-2">
@@ -53,7 +58,7 @@ const Settings = () => {
                     </div>
                 </div> {/* end of grid */}
             </div>
-            <div className='hidden sm:col-span-3'>
+            <div className=' hidden sm:col-span-3'>
                 <h>placeholder</h>
             </div>
         </div>
