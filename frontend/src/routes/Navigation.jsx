@@ -15,7 +15,7 @@ const Navigation = () => {
 
 
       {user&&(<div>
-        <h3>Hello {user.username} !</h3>
+        <h3>Hello {user.user.username} !</h3>
       </div>)}
 
     {!user && (<div>
