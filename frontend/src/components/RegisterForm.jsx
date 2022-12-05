@@ -1,8 +1,32 @@
 import { Link } from 'react-router-dom';
 import Previous from '../components/Previous';
+<<<<<<< HEAD
 import fish from '../img/fish.png';
+=======
+import { useState } from 'react';
+import React from 'react';
+
+import { useSignup } from '../hooks/useSignup';
+>>>>>>> lemonbranch03
 
 const RegisterForm = () => {
+    const [username,setUsername] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword]=useState('');
+    //const [error,setError] = useState(null);
+
+    const {signup,error,isLoading} =useSignup();
+
+    const submitForm= async(e) =>{
+        e.preventDefault();
+        await signup(username,email,password);
+
+       
+
+    }
+
+
+
     return (
         <div className="relative">
             <div className='grid sm:grid-cols-3 w-screen h-screen'>
@@ -14,6 +38,7 @@ const RegisterForm = () => {
                         <Previous/>
                     </Link>
                 </div>
+<<<<<<< HEAD
                 <div className="relative z-0 grid h-screen gap-y-14 place-content-center
                                 min-w-min sm:col-span-2
                                 ">
@@ -63,6 +88,50 @@ const RegisterForm = () => {
                          src={fish} alt="Fish" />
                 </div>
                 </div>
+=======
+                <h1 className="text-3xl font-semibold">Get started</h1>
+                <form  className="grid gap-6">
+                    <div className="form-control w-3/4 max-w-xs">
+                        <label className="label"/>
+                    <input type="text" placeholder="Username"
+                            className="input w-full max-w-xs rounded-full border-solid border-2
+                            input-md md:input-lg lg:input-lg font-light text-xs"
+                            value={username}
+                            onChange={(e)=>setUsername(e.target.value)}
+                            />
+                    </div>
+                    <div className="form-control w-80 max-w-xs">
+                        <label className="label"/>
+                    <input type="text" placeholder="Email address"
+                            className="input w-full max-w-xs rounded-full border-solid border-2
+                            input-md md:input-lg lg:input-lg font-light text-xs"
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.value)}/>
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"/>
+                        <input type="password" placeholder="Set password"
+                            className="input w-full max-w-xs rounded-full border-solid border-2
+                            input-md md:input-lg lg:input-lg font-light text-xs"
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}/>
+                    </div>
+                    
+                    <button
+                        className="text-lg text-white rounded-full bg-primary
+                        px-20 w-80 btn-md md:btn-lg lg:btn-lg"
+                        disabled={isLoading}
+                        onClick={submitForm}
+                    >
+                        Create an account
+                    </button>
+                    {error && <div className="error">{error}</div>}
+                
+                </form>
+               
+                
+            </div>
+>>>>>>> lemonbranch03
         </div>
     )
 

@@ -1,13 +1,47 @@
 import { Link } from 'react-router-dom';
 // left & right margins: 6
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Quiz = () => {
+    const { user } =useAuthContext();
+    const [intro,setIntro] = useState('');
+    const navigate = useNavigate();
+    
+
+    const handleSubmit = async(e) =>{
+        e.preventDefault();
+        const newUser = {username:user.username,intro};
+
+        const response = await fetch("http://localhost:4000/api/users/intro",{
+            method:'POST',
+            body: JSON.stringify(newUser),
+            headers:{
+                'Content-Type' : "application/json",
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+
+        const json = response.json();
+        if(!response.ok){
+            console.log(json.error);
+        }
+        if(response.ok){
+            setIntro('');
+            console.log("Intro set");
+            navigate('/people-like-me');
+
+        }
+
+    }
+
+
+
+
     return (
-        // <div>
-        //     <h1 className='font-bold text-3xl'>Quiz time!<br/>
-        //         <span className='font-light text-2xl'>We would love to understand more about your political belief</span>
-        //     </h1>
-        // </div>
+      
         <div className="bg-white">
             <div className="relative h-screen pt-20">
                 <h1 className='pl-6 pb-6 font-bold text-3xl'>Tell us more<br/>about yourself.<br/>
@@ -17,20 +51,22 @@ const Quiz = () => {
             <div className="relative bg-neutral h-full rounded-tl-3xl rounded-tr-3xl">
                 {/* options */}
                 <div className="grid gap-14 pt-14 place-items-center">
-                    <button className="btn bg-accent btn-lg rounded-full w-11/12 h-28 
-                                        text-2xl text-left text-primary justify-start
-                                        sm:btn-lg md:btn-lg lg:btn-lg">
-                            Q1.
-                    </button>
-                    <button className="btn bg-accent btn-lg rounded-full w-11/12 h-28
-                                        text-2xl text-left text-primary justify-start
-                                        sm:btn-md md:btn-md lg:btn-lg">Q2.
-                    </button>
+                <div className="form-control">
+                <textarea className="textarea" placeholder="Bio"
+                value={intro}
+                onChange={(e)=>{
+                    console.log(e.target.value)
+                    setIntro(e.target.value)}}
+                ></textarea>
+                </div> 
                 </div>
+             
+              
                 <Link to="/people-like-me"> 
                     <div className="w-full flex flex-row-reverse mt-10">
                         <button className="btn rounded-full flex-none mr-6 
-                                            bg-primary text-neutral text-xl">
+                                            bg-primary text-neutral text-xl"
+                        onClick={handleSubmit}>
                             Next
                         </button>
                     </div>
