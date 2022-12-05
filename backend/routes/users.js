@@ -2,7 +2,6 @@ const User = require('../models/userModel');
 const mongoose = require('mongoose');
 const express = require("express");
 const validator = require("validator");
-<<<<<<< HEAD
 const jwt = require('jsonwebtoken');
 var md5 = require('md5');
 const requireAuth = require("../middleware/requireAuth");
@@ -12,65 +11,19 @@ const requireAuth = require("../middleware/requireAuth");
 const createToken = (_id) =>{
     return jwt.sign({_id},process.env.SECRET,{expiresIn: '1d'})
 }
-=======
-var md5 = require('md5');
->>>>>>> Ruby+Samuel
 
 //for external api calls
 const request = require('request');
 
-<<<<<<< HEAD
 
 const router = express.Router();
 
-=======
-const session = require('express-session');
-const MongoDBSession = require('connect-mongodb-session')(session)
-
-const router = express.Router();
-
-router.get('/getUsers',(req,res)=>{
-    // console.log(User);
-    User.find({}, (err, users) => {
-        if (err) {
-            res.status(400).json({error: err.message});
-        }
-        res.status(200).json(users);
-    });
-  
-    
-});
-
-router.get('/getUser/:id',(req,res)=>{
-   
-    const {id} = req.params;
-    
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:"User not found"})
-    }
-    const user = User.findById(id,(err,oneUser)=>{
-        if (err) {
-            res.status(400).json({error: err.message});
-            return;
-        }
-        
-        res.status(200).json(oneUser)
-    })
-    if(!user){
-        return res.status(404).json({error:"No such user"});
-    }
-    
-});
->>>>>>> Ruby+Samuel
 
 router.post('/signup', (req,res)=>{
   
     const {username,email,password} = req.body;
-<<<<<<< HEAD
     const worldview = undefined
     const intro = undefined
-=======
->>>>>>> Ruby+Samuel
    
     //validation
     if(!username ||!email ||!password ){
@@ -118,24 +71,15 @@ router.post('/signup', (req,res)=>{
         
             
             //save a new user with encrypted password
-<<<<<<< HEAD
             User.create({username,email, password: encrypedPW,worldview,intro}, (err, user) => {
-=======
-            User.create({username,email, password: encrypedPW}, (err, user) => {
->>>>>>> Ruby+Samuel
                 if (err) {
                     res.status(400).json({error: err.message});
                     return;
                 }
                 console.log(user);
-<<<<<<< HEAD
                 const token = createToken(user._id);
                 
                 res.status(200).json({user,token});
-=======
-                
-                res.status(200).json({user});
->>>>>>> Ruby+Samuel
 
             });  
     
@@ -145,7 +89,6 @@ router.post('/signup', (req,res)=>{
 
     })
 
-<<<<<<< HEAD
 });
 
 router.post('/login', async(req, res) => {
@@ -209,12 +152,6 @@ router.get('/getUser/:id',(req,res)=>{
 
 
 
-=======
-    
-
-});
-
->>>>>>> Ruby+Samuel
 router.delete('/getUser/:id',(req,res)=>{
     const {id} = req.params;
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -285,7 +222,6 @@ router.patch('/getUser/:id',(req,res)=>{
     password : 123Nyu@321
 */
 
-<<<<<<< HEAD
 router.post("/worldview",(req,res)=>{
     let {username,worldview}= req.body;
      User.findOneAndUpdate({username},{worldview},(err,u)=>{
@@ -345,40 +281,6 @@ router.get("/recommend/:id",async (req,res)=>{
  
 })
 
-=======
-router.post('/login', async(req, res) => {
-    let {username, password} = req.body;
-  
-    const user = await User.findOne({username});
-
-    if(!user){
-        res.status(400).json({error:"user not found"});
-        return;
-    }
-
-    if(user.password !== md5(password)) {
-        res.status(400).json({error:"password incorrect"});
-        return;
-    }
-
-    //User is logged in -> set usAuth 
-    req.session.isAuth = true;
-    req.session.userName = username;
-
-    res.status(200).json({hello: 'test'});
-});
-
-
-//get name from session
-router.get("/name", async (req, res) => {
-    try{
-        console.log(req.session.name);
-        req.send({message: req.session.name});
-    }catch (error){
-        console.log(error);
-    }
-});
->>>>>>> Ruby+Samuel
 
 
 //Pass: The name of a topic
@@ -408,25 +310,6 @@ router.post("/articles", async(req, res) => {
 });
 
 
-<<<<<<< HEAD
-
-=======
-//Log out of the app (destroy the cookie)
-router.post('/logout', (req, res) => {
-
-    // req.session.destroy((err) => {
-    //     if(err) throw err;
-
-    //     /*
-    //         Remark: I don't know where to redirect to right now. 
-    //         I need to understand the combination between front and backend better
-    //     */
-
-    //     res.redirect('/'); 
-    // })
-
-}) 
->>>>>>> Ruby+Samuel
 
 
 
