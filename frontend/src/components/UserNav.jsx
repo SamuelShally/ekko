@@ -12,9 +12,11 @@ const UserNav = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><a>Favorites</a></li>
                         {/* <li><a>Friends</a></li> */}
-                        <li><a>Saved</a></li>
-                        <li><a>Stats</a></li>
-                        <li><a>Settings</a></li>
+                        <li><Link to="/saved">Saved</Link></li>
+                        <li><Link to="/stats">Stats</Link></li>
+                        <li>
+                            <Link to="/settings">Settings</Link>
+                        </li>
                     </ul>
                     </div>
                 </div>

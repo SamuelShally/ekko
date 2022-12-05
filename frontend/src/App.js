@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 //route: individual route
 
 //import components
-import './App.css';
 import Home from './routes/Home';
 import Register from './routes/Register';
 import CreateProfile from './components/CreateProfile';
@@ -21,10 +20,10 @@ import Footer from './components/Footer';
 import Login from './routes/Login';
 import Discover from './components/Discover';
 import Learn from './components/Learn';
-import ChatRoom from './routes/ChartRoom';
-import ChatRoomList from './routes/ChatRoomList';
-import ElementWrapper from './routes/Wrapper';
-import Profile from './components/UserProfile'
+import Saved from './components/Saved';
+import Settings from './components/Settings';
+import Stats from './components/Stats';
+import Post from './components/BlogPost';
 
 const App = () => {
   return (
@@ -42,18 +41,13 @@ const App = () => {
         <Route path='/chat' element = {<Chat />} />
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
-        <Route path='/discover' element = {<Discover />} />
-        <Route path='/chatList' element = {<ChatRoomList />} />
-        <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
-        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} />
-          {/* <Route exact path='/' element = {<Navigation />} >
-            <Route index={true} element = {<Home />} />
-            <Route path='register' element = {<Register />} />
-            <Route path='login' element = {<Login />} />
-            <Route path='learn' element = {<Learn />} />
-            <Route path='discover' element = {<Discover />} />
-          </Route> */}
-        </Routes>
+        <Route path='/discover' element={<Discover />} />
+        <Route path='/saved' element={<Saved />} />
+        <Route path='/stats' element={<Stats />} />
+        <Route path='/post' element = {<Post />} />
+        <Route path='/settings' element = {<Settings />} />
+      </Routes>
+      {/* <Footer/> */}
     </Router>
   );
 }
