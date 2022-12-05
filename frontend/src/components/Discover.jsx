@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 import userImageHolder from '../img/user-img-holder.png';
 import Previous from '../components/Previous';
 
+
 const Discover = () => {
+   
+
     return (
         <div className="relative h-screen bg-neutral sm:bg-transparent">
             {/* Previous button */}

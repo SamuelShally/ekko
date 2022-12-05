@@ -1,8 +1,73 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import fish from '../img/fish.png';
 // left & right margins: 6
+=======
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
+>>>>>>> lemonbranch03
 
 const Interest = () => {
+    const { user } = useAuthContext();
+    const navigate = useNavigate();
+    const [interests,setInterests] = useState([]);
+
+    useEffect(()=>{
+        console.log(interests)
+
+    },[interests])
+
+  
+
+    const handleLabel = (e) =>{
+        if(interests.includes(e.target.value)){
+            console.log("has it");
+            const label = e.target.value
+            const result = interests.filter((interest)=>{
+                return interest!== label;
+            })
+
+            setInterests(result)
+          
+           
+        }else{
+            console.log("doesn't have it")
+            setInterests(cur=>[...cur,e.target.value])
+        }
+
+    }
+
+    const handleSubmit = async(e) =>{
+        e.preventDefault();
+        const newUser = {username:user.username,interests};
+        const response = await fetch("http://localhost:4000/api/users/interests",{
+            method:'POST',
+            body: JSON.stringify(newUser),
+            headers:{
+                'Content-Type' : "application/json",
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+
+        const json = response.json();
+        if(!response.ok){
+            console.log(json.error);
+        }
+        if(response.ok){
+            setInterests([]);
+            console.log("interests set");
+            navigate('/quiz');
+
+        }
+
+
+    }
+
+
+
+
     return (
         <div className="relative bg-white h-screen z-0">
             {/* <div className='grid sm:grid-cols-3 w-screen h-screen'> */}
@@ -20,6 +85,7 @@ const Interest = () => {
                     <div className="grid grid-rows-6 w-full gap-6 inset-x-7 ml-6 lg:grid-cols-2 lg:grid-rows-3 lg:ml-12 lg:gap-10">
                         <button className="btn bg-secondary btn-md rounded-full w-5/12 max-w-xs
                                             text-xl text-left text-neutral justify-start
+<<<<<<< HEAD
                                             sm:btn-md md:btn-md md:ml-4
                                             lg:btn-lg ">+ election
                         </button>
@@ -49,6 +115,48 @@ const Interest = () => {
                             <button className="btn rounded-full flex-none md:ml-4
                                                 bg-primary text-neutral text-md
                                                 sm:btn-md md:btn-md lg:btn-lg lg:ml-10 lg:mt-10 xl:mt-20">
+=======
+                                            sm:btn-md md:btn-md lg:btn-lg"
+                                value="election"
+                                onClick={handleLabel}>+ election
+                        </button>
+                        <button className="btn bg-secondary btn-md rounded-full w-6/12
+                                            text-xl text-left text-neutral justify-start
+                                            sm:btn-md md:btn-md lg:btn-lg"
+                                value="immigration"
+                                onClick={handleLabel}>+ immigration
+                        </button>
+                        <button className="btn bg-secondary btn-md rounded-full w-9/12
+                                            text-xl text-left text-neutral justify-start
+                                            sm:btn-md md:btn-md lg:btn-lg"
+                                value="reproductive rights"
+                                onClick={handleLabel}>+ reproductive rights
+                        </button>
+                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2
+                                            text-xl text-left text-neutral justify-start
+                                            sm:btn-md md:btn-md lg:btn-lg"
+                                value="racial discrimination"
+                                onClick={handleLabel}>+ racial discrimination
+                        </button>
+                        <button className="btn bg-secondary btn-md rounded-full w-4/12 pr-2
+                                            text-xl text-left text-neutral justify-start
+                                            sm:btn-md md:btn-md lg:btn-lg"
+                                value="LGBTQ"
+                                onClick={handleLabel}>+ LGBTQ
+                        </button>
+                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2
+                                            text-xl text-left text-neutral justify-start
+                                            sm:btn-md md:btn-md lg:btn-lg"
+                                value="economic inequality"
+                                onClick={handleLabel}>+ economic inequality
+                        </button>
+                    </div>
+                    <Link to="/quiz"> 
+                        <div className="w-full flex flex-row-reverse mt-10 z-20">
+                            <button className="btn rounded-full flex-none mr-6 
+                                                bg-primary text-neutral text-xl"
+                                    onClick={handleSubmit}>
+>>>>>>> lemonbranch03
                                 Next
                             </button>
                         </div>
