@@ -74,7 +74,9 @@ router.patch("/update/:id", (req, res) => {
     if(req.body.post) {
         data.post = req.body.post;
     }
-
+    if(req.body.title){
+        data.title = title;
+    }
 
     //Update the blog post
     let doc = Blog.findOneAndUpdate({_id:id}, data, {
