@@ -4,9 +4,8 @@ import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import fish from '../img/fish.png';
 import PreviousBtn from '../components/Previous';
-import { useState } from 'react';
-import { useNavigate  } from 'react-router-dom';
-import { Error } from 'mongoose';
+
+
 import Previous from '../components/Previous';
 import { useLogin } from "../hooks/useLogin"
 

@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
         },
         worldview:{
             type:String,
-            required:true
+            
         },
         interests:{
             type:[String]
