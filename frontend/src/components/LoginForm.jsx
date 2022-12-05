@@ -16,6 +16,7 @@ const LoginForm = () => {
         e.preventDefault();
         const userInput={username,password};
         console.log(userInput);
+        
         const response = await fetch("http://localhost:4000/api/users/login",{
             method:'POST',
             body: JSON.stringify(userInput),
