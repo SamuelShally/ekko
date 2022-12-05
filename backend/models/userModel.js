@@ -16,7 +16,15 @@ const userSchema = new mongoose.Schema(
         password: {
             type:String,
             required: true
-            
+        },
+        worldview:{
+            type:String
+        },
+        interests:{
+            type:[String]
+        },
+        intro:{
+            type:String
         }
     }
 );

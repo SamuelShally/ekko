@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout'
+import { useNavigate  } from 'react-router-dom';
 
 const UserNav = () => {
+    const { logout } = useLogout();
+    const navigate = useNavigate();
+    
+
+    const handleClick = () =>{
+        logout();
+        navigate('/'); 
+
+    }
+
     return (
         <div className="navbar bg-base-100">
                 <div className="navbar-start">
@@ -15,6 +27,7 @@ const UserNav = () => {
                         <li><a>Saved</a></li>
                         <li><a>Stats</a></li>
                         <li><a>Settings</a></li>
+                        <li><a onClick={handleClick}>Logout</a></li>
                     </ul>
                     </div>
                 </div>
