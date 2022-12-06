@@ -17,7 +17,7 @@ const Greeting = () => {
 
             {/* big wrapper */}
             <div className='relative'>
-                <div className='absolute w-screen h-screen z-20'>
+                <div className='absolute w-screen h-screen z-20 sm:mt-10'>
                     <div className="relative inset-y-24">
                         {/* fish img + msg */}
                         <div className="absolute w-screen mb-10">
@@ -38,23 +38,24 @@ const Greeting = () => {
                                         mt-80 pb-32 pt-16
                                         sm:pt-24 sm:w-full sm:justify-items-center'>
                             <Link to="/discover">
-                                <button className="px-8 text-2xl ml-6 btn btn-lg
-                                                   sm:px-8 
-                                                   md:px-8 
-                                                   lg:px-10 lg:h-14 
-                                                   bg-secondary text-neutral rounded-full
+                                <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
+                                                   sm:px-32 
+                                                   md:px-44 
+                                                   lg:px-58 lg:h-14 
+                                                   
+                                                   bg-secondary text-neutral rounded-full 
                                                    hover:bg-neutral hover:text-secondary"
                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                         Discover
                                 </button>
                             </Link>
                             <Link to="/learn">
-                                <button className="px-8 text-2xl ml-6 btn btn-lg 
-                                                   sm:px-8 
-                                                   md:px-8 
-                                                   lg:px-10 
-                                                   bg-secondary text-neutral rounded-full
-                                                   hover:bg-neutral hover:text-secondary"
+                                <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
+                                                   sm:px-36 
+                                                   md:px-48 
+                                                   lg:px-62 
+                                                   bg-neutral border-4 border-secondary text-secondary rounded-full
+                                                   hover:bg-secondary hover:text-neutral"
                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                         Learn
                                 </button>
