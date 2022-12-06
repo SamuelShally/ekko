@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema(
         },
         password: {
             type:String,
-            required: true
+            unique: false,
+            required: true,
             
         },
         worldview:{

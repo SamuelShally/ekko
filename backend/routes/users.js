@@ -224,7 +224,7 @@ router.patch('/getUser/:id',(req,res)=>{
 
 router.post("/worldview",(req,res)=>{
     let {username,worldview}= req.body;
-     User.findOneAndUpdate({username},{worldview},(err,u)=>{
+     User.findOneAndUpdate({username},{worldview},{ new: true },(err,u)=>{
         if(err){
             res.status(400).json(err.message);
         }else{
@@ -236,7 +236,7 @@ router.post("/worldview",(req,res)=>{
 
 router.post("/interests",(req,res)=>{
     let {username,interests} = req.body
-    User.findOneAndUpdate({username},{interests},(err,user)=>{
+    User.findOneAndUpdate({username},{interests},{ new: true },(err,user)=>{
         if(err){
             res.status(400).json(err.message);
         }else{
@@ -250,7 +250,7 @@ router.post("/interests",(req,res)=>{
 router.post("/intro",(req,res)=>{
     let {username,intro} = req.body
     console.log(username,intro);
-    User.findOneAndUpdate({username},{intro},(err,user)=>{
+    User.findOneAndUpdate({username},{intro},{ new: true },(err,user)=>{
         if(err){
             res.status(400).json(err.message);
         }else{

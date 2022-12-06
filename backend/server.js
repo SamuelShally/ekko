@@ -23,6 +23,8 @@ const io = sio(server);
 app.use(cors()); //request from any dom.
 app.use(express.json()); //getting access to req.body
 app.use('/api/users', userRoutes);
+app.use('/api/rooms', roomRoutes);
+app.use('/api/blog',blogRoutes)
 
 
 //show req.path and req.mothod of the request.
@@ -33,7 +35,7 @@ app.use((req, res, next) => {
 })
 
 
-app.use('/api/rooms', roomRoutes);
+
 
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)

@@ -39,7 +39,8 @@ const Interest = () => {
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        const newUser = {username:user.username,interests};
+        const newUser = {username:user.user.username,interests};
+
         const response = await fetch("http://localhost:4000/api/users/interests",{
             method:'POST',
             body: JSON.stringify(newUser),
@@ -49,13 +50,22 @@ const Interest = () => {
             }
         });
 
-        const json = response.json();
+        const json = await response.json();
+        console.log(response,json)
         if(!response.ok){
             console.log(json.error);
         }
         if(response.ok){
-            setInterests([]);
+            let newAuthContext = JSON.parse(localStorage.getItem("user"));
+            newAuthContext.user.interests = json.interests
+            localStorage.setItem('user', JSON.stringify(newAuthContext));
+            setTimeout("location.reload(true);",1500);
+         
+            
+
+            
             console.log("interests set");
+
             navigate('/quiz');
 
         }
@@ -135,7 +145,7 @@ const Interest = () => {
 
 
                    
-            <Link to="/quiz"> 
+            {/* <Link to="/quiz"> 
                         <div className="w-full flex flex-row-reverse mt-10 z-20">
                             <button className="btn rounded-full flex-none mr-6 
                                                 bg-primary text-neutral text-xl"
@@ -143,7 +153,7 @@ const Interest = () => {
                                 Next
                             </button>
                         </div>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
               
