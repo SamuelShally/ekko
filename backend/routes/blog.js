@@ -28,6 +28,8 @@ router.post('/retrieve', (req, res) => {
 
 });
 
+
+
 router.get('/getPosts',(req,res)=>{
     Blog.find({},(err,docs)=>{
         if(err){
@@ -40,11 +42,12 @@ router.get('/getPosts',(req,res)=>{
 
 //Create a new blog post under userName, returns error or the created blog post
 router.post("/add", (req, res) => {
-    let {username, post, title} = req.body;
+    let {username, post, title,img} = req.body;
 
     console.log(username);
     console.log(post);
     console.log(title);
+
 
       //Validate
       if(!username || !post || !title){
@@ -52,7 +55,7 @@ router.post("/add", (req, res) => {
         return;
     }
 
-    Blog.create( {username, post, title}, (err, post) => {
+    Blog.create( {username, post, title,img}, (err, post) => {
 
         if(err){
             res.status(400).json({error: err.message});
