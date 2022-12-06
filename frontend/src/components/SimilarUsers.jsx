@@ -44,12 +44,14 @@ const SimilarUsers = () => {
     return (
         <div className="bg-white">
             <div className="relative h-screen pt-20">
-                <h1 className='pl-6 pb-6 font-bold text-3xl'>People like me<br/>
+                <h1 className='pl-6 pb-6 font-bold text-3xl
+                                sm:text-center '>People like me<br />
                     <span className='font-light text-xl'>Connect and spark that convo !</span>
                 </h1>
             {/* option wrapper div */}
             {user && (
-                <div>
+                    <div className='grid sm:grid-cols-2 sm:mx-8 max-h-max
+                                    lg:grid-cols-3 lg:mx-10 xl:mx-20 2xl:grid-cols-4'>
                     {similarUsers && similarUsers.map((su)=>{
                         return <div key={su._id}>
                             
@@ -68,9 +70,9 @@ const SimilarUsers = () => {
             }
 
             <div><Link to="/my-space"> 
-                    <div className="w-full flex flex-row-reverse mt-10">
-                        <button className="btn rounded-full flex-none mr-6 
-                                            bg-primary text-neutral text-xl">
+                    <div className="w-full flex justify-center py-10">
+                        <button className="btn rounded-full flex-none 
+                                            bg-primary text-neutral text-lg hover:bg-neutral hover:text-primary">
                             Skip to my profile
                         </button>
                     </div>
@@ -83,29 +85,3 @@ const SimilarUsers = () => {
 }
 
 export default SimilarUsers;
-
-
-
-            // <div className="relative bg-neutral h-full rounded-tl-3xl rounded-tr-3xl">
-            //     {/* options */}
-            //     <div className="grid gap-14 pt-14 place-items-center">
-            //         <button className="btn bg-accent btn-lg rounded-full w-11/12 h-28 
-            //                             text-2xl text-left text-primary justify-start
-            //                             sm:btn-lg md:btn-lg lg:btn-lg">
-            //                 User1
-            //         </button>
-            //         <button className="btn bg-accent btn-lg rounded-full w-11/12 h-28
-            //                             text-2xl text-left text-primary justify-start
-            //                             sm:btn-md md:btn-md lg:btn-lg">User2
-            //         </button>
-            //     </div>
-                // <Link to="/my-space"> 
-                //     <div className="w-full flex flex-row-reverse mt-10">
-                //         <button className="btn rounded-full flex-none mr-6 
-                //                             bg-primary text-neutral text-xl">
-                //             Skip to my profile
-                //         </button>
-                //     </div>
-                // </Link>
-            // </div>
-
