@@ -71,7 +71,13 @@ const LoginForm = () => {
                                 Sign in
                         </button>
                     </form>
-                    {error && <div className='error'>{error}</div>}
+                    {error && 
+                            <div className="alert shadow-lg bg-secondary text-neutral rounded-full -mt-8 p-4 text-center justify-center max-w-xs">
+                            <div className='text-center'>
+                                {/* <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg> */}
+                                <span>{error}</span>
+                            </div>
+                        </div>                    }
                 </div>
 
         
@@ -85,38 +91,6 @@ const LoginForm = () => {
                                     "
                          src={fish} alt="Fish" />
                 </div>
-
-                <h1 className="text-3xl font-semibold">Welcome back</h1>
-                <form  className="grid gap-6">
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"/>
-
-                    <input type="text" placeholder="User name "
-                            className="input w-80 max-w-xs rounded-full border-solid border-2
-                            input-md md:input-lg lg:input-lg font-light text-xs"
-                            value={username}
-                            onChange = {(e)=>setUsername(e.target.value)}
-                            />
-
-                    </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"/>
-                        <input type="password" placeholder="Password"
-                            className="input w-full max-w-xs rounded-full border-solid border-2
-                            input-md md:input-lg lg:input-lg font-light text-xs"
-                            value={password}
-                            onChange = {(e)=>setPassword(e.target.value)}/>
-                    </div>
-                    <button
-                        disbaled={isLoading}
-                        className="text-lg text-neutral rounded-full bg-primary
-                        px-20 w-80 btn-md md:btn-lg lg:btn-lg"
-                        onClick = {submitForm}>
-                            Sign in
-                    </button>
-                </form>
-                {error && <div className='error'>{error}</div>}
-
             </div>
         </div>
     );
