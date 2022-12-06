@@ -31,23 +31,24 @@ const UserDetails = ({u}) =>{
 
     return (<div> 
 
-    <div className='grid sm:grid-cols-3'>
+    <div className=''>
 
-    <div className="relative card card-bordered rounded-3xl bg-accent mt-20 
-                    sm:max-w-sm mx-auto w-3/4
-                    md:max-w-lg">
+            <div className="relative card card-bordered rounded-3xl bg-accent mt-10 
+                            w-3/4 mx-auto
+                            sm:max-w-xs
+                    ">
         {/* <figure className="px-10 pt-10"> */}
             <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User2"/>
         {/* </figure> */}
-        <div className="relative gap-y-2 card-body items-center text-center text-primary">
-            <h2 className="card-title text-2xl mt-8 mx-4">{username}</h2>
-            <h2 className="card-title text-2xl mt-6 mx-4">{worldview}</h2>
-            <h3 className="card-title text-2xl mt-6 mx-4">{intro}</h3>
+        <div className="relative  gap-y-2 card-body items-center text-center text-primary">
+            <h2 className="card-title text-xl mt-8 mx-4">{username}</h2>
+            <h2 className="card-title text-xl mt-2 mx-6">{worldview}</h2>
+            <h3 className="card-title text-2xl mt-2 mx-4">{intro}</h3>
 
             <Link to="/"> {/* change it to chatroom */}
-                <button className="btn align-middle my-8 mx-4 rounded-full 
-                                    bg-primary text-neutral text-xl">
-                    Connect
+                <button className="btn align-middle mb-8 mx-4 rounded-full 
+                                    bg-neutral text-primary text-lg">
+                    Chat
                 </button>
             </Link>
         </div>
