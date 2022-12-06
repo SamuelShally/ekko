@@ -14,6 +14,10 @@ const blogSchema = new mongoose.Schema(
         post:{
             type: String,
             required: true 
+        },
+        img:{
+            type: String,
+
         }
 
     }, 
