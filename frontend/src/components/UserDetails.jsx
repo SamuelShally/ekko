@@ -45,7 +45,7 @@ const UserDetails = ({u}) =>{
             <h2 className="card-title text-xl mt-2 mx-6">{worldview}</h2>
             <h3 className="card-title text-2xl mt-2 mx-4">{intro}</h3>
 
-            <Link to="/"> {/* change it to chatroom */}
+            <Link to="/chat"> {/* change it to chatroom */}
                 <button className="btn align-middle mb-8 mx-4 rounded-full 
                                     bg-neutral text-primary text-lg">
                     Chat
