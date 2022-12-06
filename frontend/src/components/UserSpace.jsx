@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import UserNav from './UserNav';
 import Bloglist from './BlogList';
 import Interestlist from './InterestList';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const UserSpace = () => {
+
+    const {user} = useAuthContext();
     const [blogs, setBlogs] = useState([
         // temporary data: must be fetched later
         {
@@ -35,7 +38,7 @@ const UserSpace = () => {
 
     // *** NEEDS MODIFICATION
     // RENDER USER INTEREST
-    const [interests, setInterest] = useState(['racial issues','immigration','freedom of speech']);
+   
 
     // display loading msg while fetching data
     const [isPending, setIsPending] = useState(true);
@@ -55,16 +58,17 @@ const UserSpace = () => {
     return (
         <div className="min-h-screen h-full bg-white px-4 mt-4 md:mt-6 lg:px-10">
             <UserNav/>
-
-            {/* <h2 className='mt-4 text-center tracking-notmal'>My Profile</h2> */}
+            {user && user.user.interests && (
+                <div> 
+                    {/* <h2 className='mt-4 text-center tracking-notmal'>My Profile</h2> */}
             <div className='flex flex-col mt-10 md:mt-14 
                             w-full text-center items-center justify-center'>
                 <img className="relative w-30 h-30 rounded-full justify-self-center" src='https://placeimg.com/160/160/arc' />
-                <h4 className='mt-2 text-gray-500 sm:text-xl md:text-xl'>@username</h4>
+                <h4 className='mt-2 text-gray-500 sm:text-xl md:text-xl'>@{user.user.username}</h4>
             </div>
 
-            {/* interest container */}
-            <div className="h-max max-w-sm mx-auto mt-10 md:mt-14 py-8 
+             {/* interest container */}
+             <div className="h-max max-w-sm mx-auto mt-10 md:mt-14 py-8 
                             bg-neutral rounded-lg
                             lg:max-w-md lg:px-8 ">
                 <div className="">
@@ -72,10 +76,13 @@ const UserSpace = () => {
                 </div>
                 <div>
                     {/* {isPending && <div>...</div>} */}
-                    {interests && <Interestlist interests={interests} />}  
+                    {user && user.user.interests && <Interestlist interests={user.user.interests} />}  
+                  
+
                   
                 </div> 
-            </div>
+                </div>
+
 
             {/* card container */}
             <div className="max-w-lg mx-auto my-10 md:my-14 py-8 
@@ -93,6 +100,17 @@ const UserSpace = () => {
                   
                 </div>  
             </div>
+
+
+                </div>
+
+            )
+            }
+
+            
+
+           
+
         </div>
     )
 }

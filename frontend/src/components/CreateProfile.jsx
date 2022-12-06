@@ -49,7 +49,7 @@ const CreateProfile = () => {
             { user &&
                 <div className="absolute grid h-3/4 inset-y-20 bg-accent place-items-center">
                     <h1 className="relative w-screen pl-11 pb-7 text-3xl text-primary text-left font-bold">
-                        Hey, {user.username}<br /><span className="font-light text-2xl">Set up your profile!</span> {/* To do: Ekko -> replace with registered username! */}
+                        Hey, {user.user.username}<br /><span className="font-light text-2xl">Set up your profile!</span> {/* To do: Ekko -> replace with registered username! */}
                     </h1>
                     {/* card */}
                     <div className="relative card card-bordered rounded-3xl bg-neutral shadow-xl

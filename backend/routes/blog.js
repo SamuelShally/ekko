@@ -28,6 +28,16 @@ router.post('/retrieve', (req, res) => {
 
 });
 
+router.get('/getPosts',(req,res)=>{
+    Blog.find({},(err,docs)=>{
+        if(err){
+            res.status(400).json({error: err.message});
+        }
+        res.status(200).json(docs);
+
+    })
+})
+
 //Create a new blog post under userName, returns error or the created blog post
 router.post("/add", (req, res) => {
     let {username, post, title} = req.body;
