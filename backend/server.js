@@ -12,22 +12,23 @@ const roomRoutes = require("./routes/rooms")
 //register the express app
 const app = express();
 
+//middleware
+app.use(cors()); //request from any dom.
+app.use(express.json()); //getting access to req.body
+
 //config the socket io
 const port = 4001;
 const server = http.createServer(app).listen(port)
 const io = sio(server);
 
-//middleware
-app.use(cors()); //request from any dom.
-app.use(express.json()); //getting access to req.body
 app.use('/api/users', userRoutes);
 
-//show req.path and req.mothod of the request.
-app.use((req, res, next) => {
-    console.log("middleware")
-    console.log(req.path, req.method);
-    next();
-})
+// //show req.path and req.mothod of the request.
+// app.use((req, res, next) => {
+//     console.log("middleware")
+//     console.log(req.path, req.method);
+//     next();
+// })
 
 const router = express.Router();
 
