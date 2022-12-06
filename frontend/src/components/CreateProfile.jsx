@@ -48,13 +48,15 @@ const CreateProfile = () => {
         
             { user &&
                 <div className="absolute grid h-3/4 inset-y-20 bg-accent place-items-center">
-                    <h1 className="relative w-screen pl-11 pb-7 text-3xl text-primary text-left font-bold">
+                    <h1 className="relative w-screen pl-11 pb-7 text-3xl text-primary text-left sm:text-center sm:p-0 font-bold">
                         Hey, {user.user.username}<br /><span className="font-light text-2xl">Set up your profile!</span> {/* To do: Ekko -> replace with registered username! */}
                     </h1>
                     {/* card */}
                     <div className="relative card card-bordered rounded-3xl bg-neutral shadow-xl
-                                    w-3/4 -mt-4">
-                        {/* user profile img */}
+                                    w-3/4 -mt-4 sm:max-w-xs md:max-w-sm">
+                        {/* user profile img */} 
+                        {/* <input className="form-control rounded-3xl mt-10 mx-8" type="file" id="profilepic" name="profilepic"
+                                accept='.png, .jpeg, .jpg'/> */}
                         <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User1" />
                         {/* card body */}
                         <div className="relative gap-y-2 card-body items-center text-center text-primary">
@@ -67,9 +69,6 @@ const CreateProfile = () => {
 
                             </div>
                             <div className="form-control mt-4">
-                                {/* <label className="label">
-                                    <span className="label-text text-sm text-stone-400 font-light mb-1">Pick one!</span>
-                                </label> */}
                                 <select 
                                 className="select select-bordered rounded-full px-6"
                                 value={worldview}
