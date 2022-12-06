@@ -69,12 +69,12 @@ const Post = () => {
                  value = {title}
                  onChange = {(e)=>setTitle(e.target.value)}
                 />
-                <input type="text" placeholder="img link" className="row-span-1 input w-full text-xl rounded-2xl" 
+                <input type="text" placeholder="IMG URL" className="row-span-1 input w-full text-xl rounded-2xl" 
                  value = {img}
                  onChange = {(e)=>setImg(e.target.value)}
                 />
                 <textarea className="row-span-4 textarea rounded-2xl
-                                     mt-4 w-full h-72 text-lg
+                                     mt-4 w-full h-72 text-xl
                                      md:h-80 lg:h-96"
                     placeholder="Type here" 
                     value={post}
