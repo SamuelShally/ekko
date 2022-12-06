@@ -12,14 +12,6 @@ import { useEffect } from 'react';
 const Post = () => {
     const {user} = useAuthContext();
    
-    // const [username,setUsername]= useState(()=>{
-    //     if(user){
-    //         return user.user.username
-    //     }
-       
-    // })
-    
-
     const [title,setTitle] = useState('');
     const [post,setPost] = useState('');
     const [img,setImg]=useState('')
@@ -52,8 +44,7 @@ const Post = () => {
         const json = await response.json();
         console.log(json);
 
-        
-
+    
         if(!response.ok){
             console.log(json.error);
             setError(json.error);
