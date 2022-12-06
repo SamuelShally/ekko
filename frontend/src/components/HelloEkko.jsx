@@ -44,7 +44,7 @@ const Greeting = () => {
                                                    lg:px-58 lg:h-14 
                                                    
                                                    bg-secondary text-neutral rounded-full 
-                                                   hover:bg-neutral hover:text-secondary"
+                                                   hover:bg-neutral hover:text-secondary hover:shadow-inner"
                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                         Discover
                                 </button>
@@ -55,7 +55,7 @@ const Greeting = () => {
                                                    md:px-48 
                                                    lg:px-62 
                                                    bg-neutral border-4 border-secondary text-secondary rounded-full
-                                                   hover:bg-secondary hover:text-neutral"
+                                                   hover:bg-secondary hover:text-neutral hover:border-primary hover:shadow-inner"
                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                         Learn
                                 </button>
