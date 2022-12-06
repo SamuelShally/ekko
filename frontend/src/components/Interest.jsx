@@ -87,43 +87,43 @@ const Interest = () => {
                 {/* option-wrapper div */}
                 <div className="relative bg-neutral h-full rounded-tl-3xl rounded-tr-3xl
                                 ">
-                    <h2 className="text-secondary text-xl font-light pt-10 mb-6 ml-6 lg:mb-10 xl:mb-10
-                                    md:ml-10 lg:ml-16">Choose up to 3</h2>
+                    {/* <h2 className="text-secondary text-xl font-light pt-10 mb-6 ml-6 lg:mb-10 xl:mb-10
+                                    md:ml-10 lg:ml-16">Choose up to 3</h2> */}
                     {/* options */}
-                    <div className="grid grid-rows-6 w-full gap-6 inset-x-7 ml-6 lg:grid-cols-2 lg:grid-rows-3 lg:ml-12 lg:gap-10">
-                        <button className="btn bg-secondary btn-md rounded-full w-5/12 max-w-xs
+                    <div className="grid grid-rows-6 w-full gap-6 inset-x-7 ml-6 pt-14 lg:grid-cols-2 lg:grid-rows-3 lg:ml-12 lg:gap-10">
+                        <button className="btn bg-secondary btn-md rounded-full w-5/12 max-w-xs focus:border-4 focus:border-primary
                                             text-xl text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4
                                             lg:btn-lg "
                                 value="election"
                                 onClick={handleLabel}>+ election
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-6/12
+                        <button className="btn bg-secondary btn-md rounded-full w-6/12 focus:border-4 focus:border-primary
                                             text-xl text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20"
                                 value="immigration"
                                 onClick={handleLabel}>+ immigration
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-9/12
+                        <button className="btn bg-secondary btn-md rounded-full w-9/12 focus:border-4 focus:border-primary
                                             text-xl text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-md"
                                             value="reproductive rights"
                                             onClick={handleLabel}>+ reproductive rights
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2
+                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2 focus:border-4 focus:border-primary
                                             text-xl text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-md lg:-ml-6 xl:-ml-20"
                                             value="racial discrimination"
                                             onClick={handleLabel}>+ racial discrimination
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-4/12 pr-2
+                        <button className="btn bg-secondary btn-md rounded-full w-4/12 pr-2 focus:border-4 focus:border-primary
                                             text-lg text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-xs"
                                             value="LGBTQ"
                                             onClick={handleLabel}>+ LGBTQ
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2
-                                            text-left text-neutral justify-start
+                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2 focus:border-4 focus:border-primary
+                                           text-xl text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20"
                                             value="economic inequality"
                                 onClick={handleLabel}>+ economic inequality
@@ -132,7 +132,7 @@ const Interest = () => {
 
                     <Link to="/people-like-me"> 
                         <div className="w-full flex flex-row mt-10 ml-6 z-20">
-                            <button className="btn rounded-full flex-none md:ml-4
+                            <button className="btn rounded-full flex-none md:ml-4 hover:bg-neutral hover:text-primary hover:border-4 hover:border-primary
                                                 bg-primary text-neutral text-md
                                                 sm:btn-md md:btn-md lg:btn-lg lg:ml-10 lg:mt-10 xl:mt-20"
                                                 onClick={handleSubmit}>
