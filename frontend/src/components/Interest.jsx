@@ -66,7 +66,7 @@ const Interest = () => {
             
             console.log("interests set");
 
-            navigate('/quiz');
+            navigate('/people-like-me');
 
         }
 
