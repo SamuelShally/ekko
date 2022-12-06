@@ -28,18 +28,18 @@ router.post('/signup', (req,res)=>{
     //validation
     if(!username ||!email ||!password ){
         
-        res.status(400).json({error:"all fields need to be filled"});
+        res.status(400).json({error:"All fields need to be filled"});
         return;
     }
 
     if(!validator.isEmail(email)){
-        res.status(400).json({error:"Email is not valid"})
+        res.status(400).json({error:"Email invalid"})
         return;
     }
 
     
     if(!validator.isStrongPassword(password)){
-        res.status(400).json({error:'Password not strong enough,password needs upper,lowercase, symbols and numbers'});
+        res.status(400).json({error:'Password not strong enough: must include upper, lowercase, symbols, and numbers'});
         return;
     }
 
@@ -98,12 +98,12 @@ router.post('/login', async(req, res) => {
     const user = await User.findOne({username});
 
     if(!user){
-        res.status(400).json({error:"user not found"});
+        res.status(400).json({error:"User not found"});
         return;
     }
 
     if(user.password !== md5(password)) {
-        res.status(400).json({error:"password incorrect"});
+        res.status(400).json({error:"Password incorrect"});
         return;
     }
 
