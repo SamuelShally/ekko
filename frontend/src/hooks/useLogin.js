@@ -39,7 +39,7 @@ export const useLogin = () =>{
             setIsLoading(false);
 
             //redirect to a different page
-            navigate('/my-profile'); //navigate to creating user profile
+            navigate('/'); //navigate to creating user profile
         }
 
     }
