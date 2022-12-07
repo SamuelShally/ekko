@@ -23,8 +23,9 @@ const UserNav = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 md:w-9 md:h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><Link to='/'>Home</Link></li>
-                        
+                        <li>
+                            <Link to='/'>Home</Link>
+                        </li>
                         <li>
                             <Link to="/chat">Chat</Link>
                         </li>
@@ -34,7 +35,6 @@ const UserNav = () => {
                         <li>
                             <Link to="/" onClick={handleClick}>Logout</Link>
                         </li>
-
                     </ul>
                     </div>
                 </div>
