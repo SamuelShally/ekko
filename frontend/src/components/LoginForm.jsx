@@ -54,7 +54,7 @@ const LoginForm = () => {
                         <input type="text" placeholder="Username"
                                 className="input w-80 rounded-full border-solid border-2
                                 input-md lg:input-lg
-                                font-light text-xs shadow-inner caret-secondary"
+                                font-light text-xs shadow-inner caret-secondary outline-secondary"
                                 value={username}
                                 onChange = {(e)=>setUsername(e.target.value)}
                                 />
@@ -64,7 +64,7 @@ const LoginForm = () => {
                             <input type="password" placeholder="Password"
                                 className="input w-full rounded-full border-solid border-2
                                 input-md lg:input-lg  
-                                font-light text-xs shadow-inner caret-secondary"
+                                font-light text-xs shadow-inner caret-secondary outline-secondary"
                                 value={password}
                                 onChange = {(e)=>setPassword(e.target.value)}/>
                         </div>
