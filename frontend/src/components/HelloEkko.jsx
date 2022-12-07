@@ -42,9 +42,9 @@ const Greeting = () => {
                                                    sm:px-32 
                                                    md:px-44 
                                                    lg:px-58 lg:h-14 
-                                                   
                                                    bg-secondary text-neutral rounded-full 
-                                                   hover:bg-neutral hover:text-secondary hover:shadow-inner"
+                                                   hover:bg-neutral hover:text-secondary 
+                                                   transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                         Discover
                                 </button>
@@ -55,7 +55,8 @@ const Greeting = () => {
                                                    md:px-48 
                                                    lg:px-62 
                                                    bg-neutral border-4 border-secondary text-secondary rounded-full
-                                                   hover:bg-secondary hover:text-neutral hover:border-primary hover:shadow-inner"
+                                                   hover:bg-secondary hover:text-neutral 
+                                                   transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
                                         Learn
                                 </button>
