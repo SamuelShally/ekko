@@ -48,7 +48,7 @@ const RegisterForm = () => {
                             <label className="label"/>
                         <input type="text" placeholder="Username"
                                 className="input w-full rounded-full border-solid border-2
-                                input-md font-light text-xs caret-secondary"
+                                input-md font-light text-xs caret-secondary outline-secondary"
                             value={username}
                             onChange={(e)=>setUsername(e.target.value)}
                                 />
@@ -57,7 +57,7 @@ const RegisterForm = () => {
                             <label className="label"/>
                         <input type="text" placeholder="Email address"
                                 className="input w-full rounded-full border-solid border-2
-                                input-md font-light text-xs caret-secondary"
+                                input-md font-light text-xs caret-secondary outline-secondary"
                                 value={email}
                             onChange={(e)=>setEmail(e.target.value)}
                                 />
@@ -66,7 +66,7 @@ const RegisterForm = () => {
                             <label className="label"/>
                             <input type="password" placeholder="Set password"
                                 className="input w-full rounded-full border-solid border-2
-                                input-md text-xs caret-secondary"
+                                input-md text-xs caret-secondary outline-secondary"
                                 value={password}
                                 onChange={(e)=>setPassword(e.target.value)}
                                 />
