@@ -22,6 +22,7 @@ import Discover from './components/Discover';
 import Learn from './components/Learn';
 import Settings from './components/Settings';
 import Post from './components/BlogPost';
+import Profile from './components/Profile'
 // import ChatRoom from './components/ChatRoom';
 // import ChatRoomList from './components/ChatRoomList';
 // import ElementWrapper from './components/Wrapper';
@@ -38,13 +39,14 @@ const App = () => {
         <Route path='/interest' element={<Interest />} />
         <Route path='/quiz' element={<Quiz />} />
         <Route path='/people-like-me' element={<SimilarUsers />} />
-        <Route path='/my-space' element={<UserSpace />} />
+        <Route path='/my-space/' element={<UserSpace />} />
         <Route path='/chat' element = {<Chat />} />
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
         <Route path='/discover' element={<Discover />} />
         <Route path='/post' element = {<Post />} />
         <Route path='/settings' element={<Settings />} />
+        <Route path='/profile/:id' element={<Profile />} />
         
         {/* <Route path='/chatList' element = {<ChatRoomList />} /> */}
         {/* <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
