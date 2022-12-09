@@ -14,7 +14,7 @@ const CreateProfile = () => {
 
     const submitView = async(e) =>{
         e.preventDefault();
-        const newUser = {username:user.username,worldview}
+        const newUser = {username:user.user.username,worldview}
         
         console.log(newUser);
 
@@ -27,14 +27,19 @@ const CreateProfile = () => {
             }
         });
 
-        const json = response.json();
+        const json = await response.json();
         if(!response.ok){
             console.log(json.error);
         }
         if(response.ok){
             setWorldView('');
             console.log("worldview set");
-            navigate('/interest');
+
+            let newAuthContext = JSON.parse(localStorage.getItem("user"));
+            newAuthContext.user.worldview = json.worldview;
+            localStorage.setItem('user', JSON.stringify(newAuthContext));
+            setTimeout("location.reload(true);",1500);
+            navigate('/quiz');
 
         }
 
