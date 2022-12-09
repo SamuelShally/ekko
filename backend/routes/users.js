@@ -129,14 +129,14 @@ router.get('/getUsers',(req,res)=>{
     
 });
 
-router.get('/getUser/:id',(req,res)=>{
+router.get('/getUser/:username',(req,res)=>{
    
-    const {id} = req.params;
+    const username = req.params;
     
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:"User not found"})
-    }
-    const user = User.findById(id,(err,oneUser)=>{
+    // if(!mongoose.Types.ObjectId.isValid(id)){
+    //     return res.status(404).json({error:"User not found"})
+    // }
+    const user = User.findOne(username,(err,oneUser)=>{
         if (err) {
             res.status(400).json({error: err.message});
             return;
@@ -246,6 +246,8 @@ router.post("/interests",(req,res)=>{
     })
  
 })
+
+
 
 router.post("/intro",(req,res)=>{
     let {username,intro} = req.body

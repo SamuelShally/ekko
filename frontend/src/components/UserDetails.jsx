@@ -38,7 +38,9 @@ const UserDetails = ({u}) =>{
                             sm:max-w-xs
                     ">
         {/* <figure className="px-10 pt-10"> */}
+        <Link to ={`/profile/${username}`}>
             <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User2"/>
+        </Link>
         {/* </figure> */}
         <div className="relative  gap-y-2 card-body items-center text-center text-primary">
             <h2 className="card-title text-xl mt-8 mx-4">{username}</h2>
