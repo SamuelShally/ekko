@@ -1,9 +1,37 @@
 import { Link } from 'react-router-dom';
 import userImageHolder from '../img/user-img-holder.png';
 import Previous from '../components/Previous';
+import UserDetails from './UserDetails';
+import { useEffect, useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 const Discover = () => {
+    const {user} = useAuthContext();
+    const [similarUsers,setSimliarUsers] = useState([]);
+
+      useEffect(()=>{
+        if(user){}
+        
+        const fetchSimilarUsers = async() => {
+        
+           
+            const response = await fetch(`http://localhost:4000/api/users/recommend/${user.user._id}`,{
+                headers:{
+                    'Authorization':`Bearer ${user.token}`,
+                }
+            });
+
+            const json = await response.json();
+            console.log(json)
+            setSimliarUsers(json)
+        }
+
+        if(user){
+            fetchSimilarUsers();
+        }
+        
+    },[user])
    
 
     return (
@@ -31,18 +59,26 @@ const Discover = () => {
                                     sm:max-w-sm mx-auto w-3/4
                                     md:max-w-lg">
                         {/* <figure className="px-10 pt-10"> */}
-                            <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User2"/>
+                            
                         {/* </figure> */}
-                        <div className="relative gap-y-2 card-body items-center text-center text-primary">
-                            <h2 className="card-title text-2xl mt-8 mx-4">User 2</h2>
-                            <h2 className="card-title text-2xl mt-6 mx-4">User 2's worldview</h2>
-                            <Link to="/"> {/* change it to chatroom */}
-                                <button className="btn align-middle my-8 mx-4 rounded-full 
-                                                    bg-primary text-neutral text-xl">
-                                    Connect
-                                </button>
-                            </Link>
-                        </div>
+                        {user && (
+                    <div>
+                    {similarUsers && similarUsers.map((su)=>{
+                        return <div key={su._id}>
+                            
+                            <UserDetails u={su} />
+                            
+                             </div>
+
+                    })
+                    }
+
+                    
+
+                </div>
+
+            )
+            }
                     </div>
                 </div>
             </div>
