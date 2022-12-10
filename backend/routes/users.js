@@ -12,11 +12,7 @@ const createToken = (_id) =>{
     return jwt.sign({_id},process.env.SECRET,{expiresIn: '1d'})
 }
 
-//for external api calls
-const request = require('request');
 
-const session = require('express-session');
-const MongoDBSession = require('connect-mongodb-session')(session)
 
 const router = express.Router();
 
@@ -81,7 +77,7 @@ router.post('/signup', (req,res)=>{
                 }
                 console.log(user);
                 const token = createToken(user._id);
-                res.status(200).json({username,email,token,worldview,intro});
+                res.status(200).json({user,token});
             });  
     
         })
@@ -130,14 +126,60 @@ router.get('/getUsers',(req,res)=>{
     
 });
 
-router.get('/getUser/:id',(req,res)=>{
+
+
+router.get('/getUser/:username',(req,res)=>{
+   
+    const username = req.params;
+    
+    // if(!mongoose.Types.ObjectId.isValid(id)){
+    //     return res.status(404).json({error:"User not found"})
+    // }
+    const user = User.findOne(username,(err,oneUser)=>{
+        if (err) {
+            res.status(400).json({error: err.message});
+            return;
+        }
+        
+        res.status(200).json(oneUser)
+    })
+    if(!user){
+        return res.status(404).json({error:"No such user"});
+    }
+    
+});
+
+router.patch("/updateUser/:id",(req,res)=>{
+    const userId = req.params.id; // the user that we want to update 
+    if(!mongoose.Types.ObjectId.isValid(userId)){
+        return res.status(404).json({error:"user not found"});
+    
+    }
+
+    
+    User.findByIdAndUpdate({_id:userId},{...req.body}, {new: true}).exec(
+        (err,data)=>{
+            if(err){
+                res.status(400).json({error: err.message});
+                return;
+            }
+            res.status(200).json(data);
+        }
+    )
+    
+
+})
+
+router.get('/getUserById/:id',(req,res)=>{
    
     const {id} = req.params;
+    console.log(id)
     
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:"User not found"})
     }
-    const user = User.findById(id,(err,oneUser)=>{
+
+    const user = User.findOne({_id:id},(err,oneUser)=>{
         if (err) {
             res.status(400).json({error: err.message});
             return;
@@ -245,6 +287,8 @@ router.post("/interests",(req,res)=>{
     })
  
 })
+
+
 
 router.post("/intro",(req,res)=>{
     let {username,intro} = req.body

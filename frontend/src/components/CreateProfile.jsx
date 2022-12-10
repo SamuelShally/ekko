@@ -9,12 +9,16 @@ const CreateProfile = () => {
     const { user } = useAuthContext()
     const [worldview,setWorldView] = useState('');
     const navigate = useNavigate();
+    if(user){
+        console.log("user",user.user)
+    }
+   
   
     
 
     const submitView = async(e) =>{
         e.preventDefault();
-        const newUser = {username:user.username,worldview}
+        const newUser = {username:user.user.username,worldview}
         
         console.log(newUser);
 
@@ -27,14 +31,19 @@ const CreateProfile = () => {
             }
         });
 
-        const json = response.json();
+        const json = await response.json();
         if(!response.ok){
             console.log(json.error);
         }
         if(response.ok){
             setWorldView('');
             console.log("worldview set");
-            navigate('/interest');
+
+            let newAuthContext = JSON.parse(localStorage.getItem("user"));
+            newAuthContext.user.worldview = json.worldview;
+            localStorage.setItem('user', JSON.stringify(newAuthContext));
+            setTimeout("location.reload(true);",1500);
+            navigate('/quiz');
 
         }
 
@@ -44,9 +53,10 @@ const CreateProfile = () => {
         // wrapper div
         <div className="relative h-screen bg-accent">
 
-            
+           
+
         
-            { user &&
+            { user && user.user && user.user.username &&
                 <div className="absolute grid h-3/4 inset-y-20 bg-accent place-items-center">
                     <h1 className="relative w-screen pl-11 pb-7 text-3xl text-primary text-left sm:text-center sm:p-0 font-bold">
                         Hey, {user.user.username}<br /><span className="font-light text-2xl">Set up your profile!</span> {/* To do: Ekko -> replace with registered username! */}
@@ -65,7 +75,7 @@ const CreateProfile = () => {
                                 <input type="text" placeholder="Enter username" className="input input-bordered rounded-full max-w-xs" />
                             </div> */}
                             <div className="w-full mt-6">
-                                <h2 className="text-2xl">{user.username}</h2> {/* To do: Ekko -> replace with registered username! */}
+                                <h2 className="text-2xl">{user.user.username}</h2> {/* To do: Ekko -> replace with registered username! */}
 
                             </div>
                             <div className="form-control mt-4">

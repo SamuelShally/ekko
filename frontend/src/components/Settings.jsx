@@ -1,6 +1,39 @@
+import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
+import SettingDetails from './SettingDetails';
+import { useAuthContext } from "../hooks/useAuthContext";
+
 
 const Settings = () => {
+    const { user } = useAuthContext();
+    //const [username,setUsername] = useState(()=> user? user.user.username : '');
+    const [curUser,setCurUser] = useState(null);
+  
+
+    useEffect(()=>{
+        const fetchCurUser = async() =>{
+            console.log(user.user._id)
+           
+            const response = await fetch(`http://localhost:4000/api/users/getUserById/${user.user._id}`,{
+                headers:{
+                    'Authorization':`Bearer ${user.token}`,
+                }
+            });
+            const json = await response.json();
+
+            console.log("is this null",json)
+            setCurUser(json);
+        }
+
+        if(user){
+            fetchCurUser();
+           
+        }
+
+    },[user])
+
+    useEffect(()=>{console.log("hoho",curUser)},[curUser])
+
 
 
 
@@ -58,8 +91,14 @@ const Settings = () => {
                     </div>
                 </div> {/* end of grid */}
             </div>
-            <div className=' hidden sm:col-span-3'>
-                <h>placeholder</h>
+            <div className=' sm:col-span-3'>
+                <h>User Details</h>
+                {user && (
+                    <div>
+                        <SettingDetails u={curUser}/>
+                        
+                    </div>
+                )}
             </div>
         </div>
     )

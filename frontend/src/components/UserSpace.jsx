@@ -5,37 +5,13 @@ import Bloglist from './BlogList';
 import Interestlist from './InterestList';
 import { useAuthContext } from '../hooks/useAuthContext';
 
+
 const UserSpace = () => {
 
     const {user} = useAuthContext();
     const [blogs,setBlogs]=useState([])
-    // const [blogs, setBlogs] = useState([
-    //     // temporary data: must be fetched later
-    //     {
-    //         title: "8 facts about gender equality you must know",
-    //         body: 'Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.',
-    //         author: 'Ruby',
-    //         date: 'Nov 15, 2022',
-    //         img: 'https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    //         id: 1
-    //     },
-    //     {
-    //         title: "5 ways abortion rights protect women's health",
-    //         body: 'Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.',
-    //         author: 'Ruby',
-    //         date: 'Nov 30, 2022',
-    //         img: 'https://placeimg.com/160/160/arch',
-    //         id: 2
-    //     },
-    //     {
-    //         title: "3 things you must know before immigrating to the US",
-    //         body: 'Lorem ipsum dolor sit amet. Eos repellendus unde sit omnis accusantium.',
-    //         author: 'Ruby',
-    //         date: 'Nov 30, 2022',
-    //         img: 'https://images.pexels.com/photos/6185320/pexels-photo-6185320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    //         id: 3
-    //     }
-    // ]);
+    
+    
 
     // *** NEEDS MODIFICATION
     // RENDER USER INTEREST
