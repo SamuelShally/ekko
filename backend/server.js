@@ -151,18 +151,18 @@ io.sockets.on('connection', socket => {
         room = data.room;
         const sr = io.sockets.adapter.rooms[room];
         socket.emit('clients', clients)
-        if (sr === undefined) {
-            // no room with such name is found so create it
-            socket.join(room);
-            console.log(io.sockets.adapter.rooms);
-            socket.emit('join');
-        } else if (sr.length === 1) {
+        // if (sr === undefined) {
+        //     // no room with such name is found so create it
+        //     socket.join(room);
+        //     console.log(io.sockets.adapter.rooms);
+        //     socket.emit('join');
+        // } else if (sr.length === 1) {
             // room only for two max
             socket.join(room);
             console.log(io.sockets.adapter.rooms);
             socket.emit('join');
-        } else {
-            socket.emit('full', room);
-        }
+        // } else {
+        //     socket.emit('full', room);
+        // }
     });
 });
