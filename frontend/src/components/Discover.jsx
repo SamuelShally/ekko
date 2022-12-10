@@ -52,12 +52,6 @@ const Discover = () => {
                                             Profile
                                         </button>
                                     </Link>
-                                    <Link to={"/chat/"+user.username}> {/* change it to chatroom */}
-                                        <button className="btn align-middle my-8 rounded-full 
-                                                bg-primary text-neutral text-xl">
-                                            Connect
-                                        </button>
-                                    </Link>
                                 </div>
                             </div>
                         )
