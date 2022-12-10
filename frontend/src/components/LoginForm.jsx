@@ -8,23 +8,19 @@ import PreviousBtn from '../components/Previous';
 
 import Previous from '../components/Previous';
 import { useLogin } from "../hooks/useLogin"
+import React from 'react';
 
 
 
 const LoginForm = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
-
-  
     const navigate = useNavigate();
-
     const {login,error,isLoading} = useLogin();
 
     const submitForm = async(e) =>{
         e.preventDefault();
         await login(username,password);
-        
-
     }
 
     return (

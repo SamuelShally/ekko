@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 //route: individual route
 
 //import components
+import './App.css';
 import Home from './routes/Home';
 import Register from './routes/Register';
 import CreateProfile from './components/CreateProfile';
@@ -25,6 +26,11 @@ import Post from './components/BlogPost';
 // import ChatRoom from './components/ChatRoom';
 // import ChatRoomList from './components/ChatRoomList';
 // import ElementWrapper from './components/Wrapper';
+import ChatRoom from './routes/ChartRoom';
+import ChatRoomList from './routes/ChatRoomList';
+import ElementWrapper from './routes/Wrapper';
+import Profile from './components/UserProfile'
+
 
 const App = () => {
   return (
@@ -42,15 +48,20 @@ const App = () => {
         <Route path='/chat' element = {<Chat />} />
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
-        <Route path='/discover' element={<Discover />} />
         <Route path='/post' element = {<Post />} />
         <Route path='/settings' element={<Settings />} />
-        
-        {/* <Route path='/chatList' element = {<ChatRoomList />} /> */}
-        {/* <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
-        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} /> */}
-      </Routes>
-      {/* <Footer/> */}
+        <Route path='/discover' element = {<Discover />} />
+        <Route path='/chatList' element = {<ChatRoomList />} />
+        <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
+        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} />
+          {/* <Route exact path='/' element = {<Navigation />} >
+            <Route index={true} element = {<Home />} />
+            <Route path='register' element = {<Register />} />
+            <Route path='login' element = {<Login />} />
+            <Route path='learn' element = {<Learn />} />
+            <Route path='discover' element = {<Discover />} />
+          </Route> */}
+        </Routes>
     </Router>
   );
 }

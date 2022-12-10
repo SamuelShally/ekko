@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
 // left & right margins: 6
+
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

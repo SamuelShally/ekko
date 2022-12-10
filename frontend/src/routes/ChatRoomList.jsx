@@ -3,16 +3,9 @@ import React, { useState, useEffect } from 'react';
 
 const ChatRoomList = () => {
 
-    const [room, setRoom] = useState([]);
+    const [room, setRoom] = useState(['election', 'immigration', 'reproductive rights', 'racial discrimination', 'LGBTQ', 'economic inequality']);
 
     useEffect(() => {
-        let temp = []
-        for (let index = 1; index <= 10; index++) {
-            temp.push({
-                roomid: index
-            })
-        }
-        setRoom(temp);
     }, [])
 
     return (
@@ -24,8 +17,8 @@ const ChatRoomList = () => {
                     <div className="chatcard card card-bordered rounded-3xl bg-accent left-1/2 -translate-x-1/2 shadow-xl
                                     w-3/4 lg:card-side">
                         <div className="card-body items-center text-center text-primary">
-                            <h2 className="card-title text-2xl mt-8">Room {elemnet.roomid}</h2>
-                            <Link to={"/chat/"+elemnet.roomid}> {/* change it to chatroom */}
+                            <h2 className="card-title text-2xl mt-8">Room: {elemnet}</h2>
+                            <Link to={"/chat/"+elemnet}> {/* change it to chatroom */}
                                 <button className="btn align-middle my-8 rounded-full 
                                                     bg-primary text-neutral text-xl">
                                     Chat

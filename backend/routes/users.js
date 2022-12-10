@@ -15,13 +15,15 @@ const createToken = (_id) =>{
 //for external api calls
 const request = require('request');
 
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session)
 
 const router = express.Router();
-
 
 router.post('/signup', (req,res)=>{
   
     const {username,email,password} = req.body;
+
     const worldview = undefined
     const intro = undefined
    
@@ -71,6 +73,7 @@ router.post('/signup', (req,res)=>{
         
             
             //save a new user with encrypted password
+
             User.create({username,email, password: encrypedPW,worldview,intro}, (err, user) => {
                 if (err) {
                     res.status(400).json({error: err.message});
@@ -78,9 +81,7 @@ router.post('/signup', (req,res)=>{
                 }
                 console.log(user);
                 const token = createToken(user._id);
-                
-                res.status(200).json({user,token});
-
+                res.status(200).json({username,email,token,worldview,intro});
             });  
     
         })
@@ -149,8 +150,6 @@ router.get('/getUser/:id',(req,res)=>{
     }
     
 });
-
-
 
 router.delete('/getUser/:id',(req,res)=>{
     const {id} = req.params;
@@ -308,10 +307,5 @@ router.post("/articles", async(req, res) => {
 
     res.status(200).json(articles);
 });
-
-
-
-
-
 
 module.exports = router;
