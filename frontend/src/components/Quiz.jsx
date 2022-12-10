@@ -15,7 +15,7 @@ const Quiz = () => {
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        const newUser = {username:user.username,intro};
+        const newUser = {username:user.user.username,intro};
 
         const response = await fetch("http://localhost:4000/api/users/intro",{
             method:'POST',
@@ -26,14 +26,18 @@ const Quiz = () => {
             }
         });
 
-        const json = response.json();
+        const json = await response.json();
         if(!response.ok){
             console.log(json.error);
         }
         if(response.ok){
             setIntro('');
             console.log("Intro set");
-            navigate('/people-like-me');
+            let newAuthContext = JSON.parse(localStorage.getItem("user"));
+            newAuthContext.user.intro = json.intro
+            localStorage.setItem('user', JSON.stringify(newAuthContext));
+            setTimeout("location.reload(true);",1500);
+            navigate('/interest');
 
         }
 

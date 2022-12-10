@@ -23,13 +23,14 @@ import Discover from './components/Discover';
 import Learn from './components/Learn';
 import Settings from './components/Settings';
 import Post from './components/BlogPost';
+import Profile from './components/Profile'
 // import ChatRoom from './components/ChatRoom';
 // import ChatRoomList from './components/ChatRoomList';
 // import ElementWrapper from './components/Wrapper';
 import ChatRoom from './routes/ChartRoom';
 import ChatRoomList from './routes/ChatRoomList';
 import ElementWrapper from './routes/Wrapper';
-import Profile from './components/UserProfile'
+//import Profile from './components/UserProfile'
 
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
         <Route path='/interest' element={<Interest />} />
         <Route path='/quiz' element={<Quiz />} />
         <Route path='/people-like-me' element={<SimilarUsers />} />
-        <Route path='/my-space' element={<UserSpace />} />
+        <Route path='/my-space/' element={<UserSpace />} />
         <Route path='/chat' element = {<Chat />} />
         <Route path='/login' element = {<Login />} />
         <Route path='/learn' element = {<Learn />} />
@@ -53,7 +54,8 @@ const App = () => {
         <Route path='/discover' element = {<Discover />} />
         <Route path='/chatList' element = {<ChatRoomList />} />
         <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
-        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} />
+         <Route path='/profile/:id' element={<Profile />} />
+        {/* <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} /> */}
           {/* <Route exact path='/' element = {<Navigation />} >
             <Route index={true} element = {<Home />} />
             <Route path='register' element = {<Register />} />
@@ -62,6 +64,13 @@ const App = () => {
             <Route path='discover' element = {<Discover />} />
           </Route> */}
         </Routes>
+       
+        
+        {/* <Route path='/chatList' element = {<ChatRoomList />} /> */}
+        {/* <Route path='/chat/:roomid' element={<ElementWrapper routeElement={ChatRoom}/>} />
+        <Route path='/profile/:userid' element={<ElementWrapper routeElement={Profile}/>} /> */}
+      {/* </Routes> */}
+      {/* <Footer/> */}
     </Router>
   );
 }
