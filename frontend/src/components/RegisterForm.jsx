@@ -3,6 +3,7 @@ import Previous from '../components/Previous';
 import fish from '../img/fish.png';
 import { useState } from 'react';
 import React from 'react';
+import { useNavigate  } from 'react-router-dom';
 import { useSignup } from '../hooks/useSignup';
 
 
@@ -10,6 +11,36 @@ const RegisterForm = () => {
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword]=useState('');
+
+    // const [error,setError] = useState(null);
+    // const navigate = useNavigate();
+
+    // const submitForm= async(e) =>{
+    //     e.preventDefault();
+    //     const user = {username,email,password};
+    //     const response = await fetch("http://localhost:4000/api/users/signup",{
+    //         method:'POST',
+    //         body: JSON.stringify(user),
+    //         headers:{
+    //             'Content-Type' : "application/json"
+    //         }
+    //     });
+    //     console.log(response);
+    //     const json = await response.json();
+    //     if(!response.ok){
+    //         console.log(json.error);
+    //         setError(json.error);
+    //     }
+    //     if(response.ok){
+    //         setUsername('');
+    //         setEmail('');
+    //         setPassword('');
+    //         setError(null);
+    //         console.log("New User Added");
+    //         navigate('/profile'); //navigate to creating user profile
+
+    //     }
+
     //const [error,setError] = useState(null);
 
     const {signup,error,isLoading} =useSignup();

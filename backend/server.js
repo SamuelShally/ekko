@@ -3,13 +3,12 @@ require('dotenv').config(); //attach env variables to the process object
 const express = require('express');
 const cors = require('cors')
 const mongoose = require('mongoose');
-
-
 const http = require('http');
 const sio = require('socket.io');
 const userRoutes = require("./routes/users");
 const roomRoutes = require("./routes/rooms")
 const blogRoutes = require("./routes/blog");
+
 
 //register the express app
 const app = express();
@@ -34,6 +33,17 @@ app.use((req, res, next) => {
     next();
 })
 
+const router = express.Router();
+
+router.get("/hi", (req, res) => {
+    res.status(200).json({ msg: "Ekko" });
+})
+
+app.use('/', router)
+
+app.use('/api/users', userRoutes);
+
+app.use('/api/rooms', roomRoutes);
 
 
 
@@ -54,9 +64,53 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 
+/* **********SESSIONS FRAMEWORK********* */
+//All changes to Server.js are below this line
+//Please do NPM install. New packages were used.
+
+/*
+    How this works (I think): 
+    
+    We will set a cookie on the front end that will remember 
+    if we're logged in or not - or whatever else we want it to remember.
+
+    This cookie will then compare against an identical copy saved to our mongoDB 
+    database. If it exists and isAuth = true, we can be logged in as that user
+*/
+
+
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session);
+const User = require('./models/userModel');
+
+//Database for saving the user session
+const store = new MongoDBSession({
+    uri: process.env.MONGO_URI,
+    collection: 'mySessions',
+})
 
 
 
+
+
+
+//Set up the session cookie to req objects
+
+
+app.use(
+    
+    session({
+        secret: 'test_user_key', //Str that will sign the cookie 
+        resave: false, //New session for every request t/f
+        saveUninitialized: false, //save if session is unmodified t/f 
+        store: store, //Save session to Database
+        cookie: {
+            sameSite: "none",
+            secure: false, 
+            maxAge: 100*60*60,
+        }
+    })
+)
 
 // handle the socket event
 let clients = []
@@ -88,18 +142,18 @@ io.sockets.on('connection', socket => {
         room = data.room;
         const sr = io.sockets.adapter.rooms[room];
         socket.emit('clients', clients)
-        if (sr === undefined) {
-            // no room with such name is found so create it
-            socket.join(room);
-            console.log(io.sockets.adapter.rooms);
-            socket.emit('join');
-        } else if (sr.length === 1) {
+        // if (sr === undefined) {
+        //     // no room with such name is found so create it
+        //     socket.join(room);
+        //     console.log(io.sockets.adapter.rooms);
+        //     socket.emit('join');
+        // } else if (sr.length === 1) {
             // room only for two max
             socket.join(room);
             console.log(io.sockets.adapter.rooms);
             socket.emit('join');
-        } else {
-            socket.emit('full', room);
-        }
+        // } else {
+        //     socket.emit('full', room);
+        // }
     });
 });

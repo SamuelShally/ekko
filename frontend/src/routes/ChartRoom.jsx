@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 
-class ChatRoom extends Component{
+class ChatRoom extends Component {
 
     constructor(props) {
         super(props);
@@ -10,7 +10,7 @@ class ChatRoom extends Component{
         let { roomid } = this.props.params;
         console.log(roomid, 'roomid')
         if (!this.socket) {
-            this.socket = io('http://localhost:4001', {query: {room: roomid}});
+            this.socket = io('http://localhost:4001', { query: { room: roomid } });
         }
         this.state = {
             inputText: '',
@@ -29,11 +29,16 @@ class ChatRoom extends Component{
         this.socket.on('full', this.onfull);
         this.socket.on('text-message', this.onRevTextMessage);
 
-        this.socket.emit('find', {room:this.props.params.roomid})
+        this.socket.emit('find', { room: this.props.params.roomid })
+        this.user = JSON.parse(localStorage.getItem('user'));
+        if (!this.user) {
+            alert("Please login first!")
+        }
+        console.log(this.user)
     }
 
     componentWillUnmount() {
-        this.socket.emit('leave', {room:this.props.params.roomid})
+        this.socket.emit('leave', { room: this.props.params.roomid })
     }
 
     onMessage(message) {
@@ -45,13 +50,13 @@ class ChatRoom extends Component{
         window.location.href = "/chatList"
     }
 
-    handleChange(event)  {
+    handleChange(event) {
         this.setState({
             inputText: event.target.value
         })
     }
-    
-    onRevTextMessage (msg) {
+
+    onRevTextMessage(msg) {
         console.log('text-message', msg);
         let temp = this.state.chatData;
         temp.push(msg);
@@ -60,10 +65,10 @@ class ChatRoom extends Component{
         })
     }
 
-    sendMsg () {
-        this.socket.emit('text-message', this.state.inputText)
+    sendMsg() {
+        this.socket.emit('text-message', { 'user': this.user.username, 'msg': this.state.inputText })
     }
-    
+
     render() {
         return (
             <div className='chat-container'>
@@ -73,19 +78,49 @@ class ChatRoom extends Component{
                 >
                     {
                         this.state.chatData.map((item, idx) => {
-                            return (<div className="card w-96 bg-base-100 shadow-xl" key={idx}>
-                                <div className="card-body">
-                                    <h2 className="card-title">{item}</h2>
-                                </div>
-                            </div>)
+                            if (item.user == this.user.username) {
+                                return (
+                                    <div key={idx}>
+                                        <div className="chat chat-end">
+                                            <div className="chat-image avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img src="https://placeimg.com/192/192/people" />
+                                                </div>
+                                            </div>
+                                            <div className="chat-header">
+                                                {item.user}
+                                            </div>
+                                            <div className="chat-bubble">{item.msg}</div>
+                                        </div>
+                                    </div>
+                                )
+                            } else {
+                                return (
+                                    <div key={idx}>
+                                        <div className="chat chat-start">
+                                            <div className="chat-image avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img src="https://placeimg.com/192/192/people" />
+                                                </div>
+                                            </div>
+                                            <div className="chat-header">
+                                                {item.user}
+                                            </div>
+                                            <div className="chat-bubble">{item.msg}</div>
+                                        </div>
+                                    </div>
+    
+                                )
+                            }
+                            
                         })
                     }
                 </ul>
-                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value = {this.state.input}
-                        onChange={this.handleChange}/>
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value={this.state.input}
+                    onChange={this.handleChange} />
                 <button className="btn btn-active btn-accent" onClick={this.sendMsg}>Send</button>
             </div>
-    
+
         )
     }
 

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import UserNav from '../components/UserNav';
 import PreviousBtn from '../components/Previous';
-import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 // import { Error } from 'mongoose';
 import Previous from '../components/Previous';
+import React, { useState, useEffect } from 'react';
 
 const UserProfile = () => {
     //Pull blog posts via usernam and add them to the frontend

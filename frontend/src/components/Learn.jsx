@@ -1,7 +1,10 @@
+
 import { Link } from 'react-router-dom';
 import Previous from '../components/Previous';
+import React, { useState, useEffect } from 'react';
 
-const Learn = () => {
+const Learn = () =>{
+
     return (
         <div className="relative min-h-screen min-w-screen bg-neutral">
             {/* Previous button */}
