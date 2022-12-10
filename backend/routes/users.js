@@ -129,6 +129,8 @@ router.get('/getUsers',(req,res)=>{
     
 });
 
+
+
 router.get('/getUser/:username',(req,res)=>{
    
     const username = req.params;
@@ -149,6 +151,52 @@ router.get('/getUser/:username',(req,res)=>{
     }
     
 });
+
+router.patch("/updateUser/:id",(req,res)=>{
+    const userId = req.params.id; // the user that we want to update 
+    if(!mongoose.Types.ObjectId.isValid(userId)){
+        return res.status(404).json({error:"user not found"});
+    
+    }
+
+    
+    User.findByIdAndUpdate({_id:userId},{...req.body}, {new: true}).exec(
+        (err,data)=>{
+            if(err){
+                res.status(400).json({error: err.message});
+                return;
+            }
+            res.status(200).json(data);
+        }
+    )
+    
+
+})
+
+router.get('/getUserById/:id',(req,res)=>{
+   
+    const {id} = req.params;
+    console.log(id)
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:"User not found"})
+    }
+
+    const user = User.findOne({_id:id},(err,oneUser)=>{
+        if (err) {
+            res.status(400).json({error: err.message});
+            return;
+        }
+        
+        res.status(200).json(oneUser)
+    })
+    if(!user){
+        return res.status(404).json({error:"No such user"});
+    }
+    
+});
+
+
 
 
 
