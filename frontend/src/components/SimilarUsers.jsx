@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 // left & right margins: 6
-import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import UserDetails from './UserDetails';
 
