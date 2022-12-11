@@ -14,9 +14,14 @@ const blogRoutes = require("./routes/blog");
 const app = express();
 
 //config the socket io
-const port = 4001;
-const server = http.createServer(app).listen(port)
-const io = sio(server);
+const socketPort = 4001;
+const server = http.createServer(app).listen(socketPort)
+const io = sio(server, {
+    cors: {
+        origin: "http://localhost:3000",
+        credentials: true,
+    }
+});
 
 //middleware
 app.use(cors()); //request from any dom.
@@ -52,6 +57,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(process.env.PORT, () => {
             console.log("Connected to db and listening on port", process.env.PORT);
+            console.log("Socket listening on port", socketPort);
         });
     })
     .catch((error) => {
@@ -121,8 +127,7 @@ io.sockets.on('connection', socket => {
     let room = query.room;
     console.log(room, 'roomid');
     clients.push({userId: socket.id, username})
-    // send message
-    socket.on('message', message => socket.broadcast.to(room).emit('message', message));
+
 
     socket.on('text-message', message => {
         console.log(message, 'text-message');
