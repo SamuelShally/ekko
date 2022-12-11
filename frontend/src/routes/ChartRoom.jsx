@@ -3,12 +3,15 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 
 class ChatRoom extends Component {
+    isPrivateChat(roomid) {
+        return !!!parseInt(roomid)
+    }
 
     constructor(props) {
         super(props);
         console.log(props);
         let { roomid } = this.props.params;
-        console.log(roomid, 'roomid')
+        console.log(roomid, 'roomid');
         if (!this.socket) {
             this.socket = io('http://localhost:4001', { query: { room: roomid } });
         }
@@ -33,6 +36,15 @@ class ChatRoom extends Component {
             alert("Please login first!")
         };
         console.log(this.user)
+
+        // Extra checks if this is a private chat room between 2 users
+        const isPrivate = this.isPrivateChat(this.props.params.roomid);
+        if (isPrivate) {
+            let users = atob(this.props.params.roomid).split(",");
+            if (!users.includes(this.user.username)) {
+                alert("You are not allowed to be in this chat room!");
+            }
+        }
     }
 
     componentWillUnmount() {
