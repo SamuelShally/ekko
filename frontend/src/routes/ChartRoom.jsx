@@ -17,7 +17,6 @@ class ChatRoom extends Component {
             chatData: []
         }
         this.onRevTextMessage = this.onRevTextMessage.bind(this);
-        this.onMessage = this.onMessage.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onfull = this.onfull.bind(this);
@@ -25,24 +24,19 @@ class ChatRoom extends Component {
     }
 
     componentDidMount() {
-        this.socket.on('message', this.onMessage);
         this.socket.on('full', this.onfull);
         this.socket.on('text-message', this.onRevTextMessage);
 
-        this.socket.emit('find', { room: this.props.params.roomid })
-        this.user = JSON.parse(localStorage.getItem('user'));
+        this.socket.emit('find', { room: this.props.params.roomid });
+        this.user = JSON.parse(localStorage.getItem('user')).user;
         if (!this.user) {
             alert("Please login first!")
-        }
+        };
         console.log(this.user)
     }
 
     componentWillUnmount() {
         this.socket.emit('leave', { room: this.props.params.roomid })
-    }
-
-    onMessage(message) {
-
     }
 
     onfull() {
@@ -58,15 +52,18 @@ class ChatRoom extends Component {
 
     onRevTextMessage(msg) {
         console.log('text-message', msg);
-        let temp = this.state.chatData;
-        temp.push(msg);
         this.setState({
-            chatData: temp
+            chatData: [...this.state.chatData, msg],
         })
     }
 
     sendMsg() {
-        this.socket.emit('text-message', { 'user': this.user.username, 'msg': this.state.inputText })
+        console.log("username", this.user.username);
+
+        this.socket.emit('text-message', { 
+            user: this.user.username, 
+            msg: this.state.inputText,
+        })
     }
 
     render() {
