@@ -74,6 +74,8 @@ const Interest = () => {
 
 
     }
+    
+    const selectedClass = (item) => interests.includes(item) ? "border-4 border-primary" : "";
 
     return (
         <div className="relative bg-white h-screen z-0">
@@ -90,40 +92,40 @@ const Interest = () => {
                                     md:ml-10 lg:ml-16">Choose up to 3</h2> */}
                     {/* options */}
                     <div className="grid grid-rows-6 w-full gap-6 inset-x-7 ml-6 pt-14 lg:grid-cols-2 lg:grid-rows-3 lg:ml-12 lg:gap-10">
-                        <button className="btn bg-secondary btn-md rounded-full w-5/12 max-w-xs focus:border-4 focus:border-primary
+                        <button className={`btn bg-secondary btn-md rounded-full w-5/12 max-w-xs 
                                             text-xl text-left text-neutral justify-start
                                             sm:btn-md md:btn-md md:ml-4
-                                            lg:btn-lg "
+                                            lg:btn-lg ${selectedClass('election')}`}
                                 value="election"
                                 onClick={handleLabel}>+ election
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-6/12 focus:border-4 focus:border-primary
+                        <button className={`btn bg-secondary btn-md rounded-full w-6/12 
                                             text-xl text-left text-neutral justify-start
-                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20"
+                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20 ${selectedClass('immigration')}`}
                                 value="immigration"
                                 onClick={handleLabel}>+ immigration
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-9/12 focus:border-4 focus:border-primary
+                        <button className={`btn bg-secondary btn-md rounded-full w-9/12 
                                             text-xl text-left text-neutral justify-start
-                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-md"
+                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-md ${selectedClass('reproductive rights')}`}
                                             value="reproductive rights"
                                             onClick={handleLabel}>+ reproductive rights
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2 focus:border-4 focus:border-primary
+                        <button className={`btn bg-secondary btn-md rounded-full w-9/12 pr-2 
                                             text-xl text-left text-neutral justify-start
-                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-md lg:-ml-6 xl:-ml-20"
+                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-md lg:-ml-6 xl:-ml-20 ${selectedClass('racial discrimination')}`}
                                             value="racial discrimination"
                                             onClick={handleLabel}>+ racial discrimination
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-4/12 pr-2 focus:border-4 focus:border-primary
+                        <button className={`btn bg-secondary btn-md rounded-full w-4/12 pr-2 
                                             text-lg text-left text-neutral justify-start
-                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-xs"
+                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-xs ${selectedClass('LGBTQ')}`}
                                             value="LGBTQ"
                                             onClick={handleLabel}>+ LGBTQ
                         </button>
-                        <button className="btn bg-secondary btn-md rounded-full w-9/12 pr-2 focus:border-4 focus:border-primary
+                        <button className={`btn bg-secondary btn-md rounded-full w-9/12 pr-2 
                                            text-xl text-left text-neutral justify-start
-                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20"
+                                            sm:btn-md md:btn-md md:ml-4 lg:btn-lg max-w-sm lg:-ml-6 xl:-ml-20 ${selectedClass('economic inequality')}`}
                                             value="economic inequality"
                                 onClick={handleLabel}>+ economic inequality
                         </button>
