@@ -21,6 +21,8 @@ class ChatRoom extends Component {
         this.sendMsg = this.sendMsg.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onfull = this.onfull.bind(this);
+        this.getCurrentTime = this.getCurrentTime.bind(this);
+        this.zeroFill = this.zeroFill.bind(this);
         console.log(this.state)
     }
 
@@ -65,8 +67,31 @@ class ChatRoom extends Component {
         })
     }
 
+    getCurrentTime() {
+        var date = new Date();
+        var month = this.zeroFill(date.getMonth() + 1);
+        var day = this.zeroFill(date.getDate());
+        var hour = this.zeroFill(date.getHours());
+        var minute = this.zeroFill(date.getMinutes());
+        var second = this.zeroFill(date.getSeconds());
+        
+        var curTime = date.getFullYear() + "-" + month + "-" + day
+                + " " + hour + ":" + minute + ":" + second;
+        
+        return curTime;
+    }
+
+    zeroFill(i){
+        if (i >= 0 && i <= 9) {
+            return "0" + i;
+        } else {
+            return i;
+        }
+    }
+
     sendMsg() {
-        this.socket.emit('text-message', { 'user': this.user.username, 'msg': this.state.inputText })
+        console.log(this.getCurrentTime())
+        this.socket.emit('text-message', { 'user': this.user.username, 'msg': this.state.inputText, 'time': this.getCurrentTime()})
     }
 
     render() {
@@ -89,6 +114,7 @@ class ChatRoom extends Component {
                                             </div>
                                             <div className="chat-header">
                                                 {item.user}
+                                                <time className="text-xs opacity-50">{item.time}</time>
                                             </div>
                                             <div className="chat-bubble">{item.msg}</div>
                                         </div>
@@ -105,6 +131,7 @@ class ChatRoom extends Component {
                                             </div>
                                             <div className="chat-header">
                                                 {item.user}
+                                                <time className="text-xs opacity-50">{item.time}</time>
                                             </div>
                                             <div className="chat-bubble">{item.msg}</div>
                                         </div>
