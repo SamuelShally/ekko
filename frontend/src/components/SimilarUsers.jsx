@@ -69,16 +69,16 @@ const SimilarUsers = () => {
             )
             }
 
-            <div><Link to="/my-space"> 
+            <div>
                     <div className="w-full flex justify-center py-10">
                         <button className="btn rounded-full flex-none 
                                             bg-primary text-neutral text-lg hover:bg-neutral hover:text-primary">
+                            <Link to="/my-space"> 
                             Skip to my profile
+                            </Link>
                         </button>
                     </div>
-                </Link></div>
-           
-
+               </div>
         </div>
     </div>
     )
