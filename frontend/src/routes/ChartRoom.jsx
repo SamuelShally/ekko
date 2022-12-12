@@ -64,6 +64,9 @@ class ChatRoom extends Component {
         // console.log('text-message', msg);
         this.setState({
             chatData: [...this.state.chatData, msg],
+        }, () => {
+            let chatList = document.getElementById('chatList')
+            chatList.scrollTop = chatList.scrollHeight;
         })
     }
 
@@ -86,7 +89,8 @@ class ChatRoom extends Component {
             <div className='chat-container'>
                 <div>Chat</div>
                 <ul
-                    className='chatList'
+                    id="chatList" 
+                    className='chatList overflow-y-scroll'
                 >
                     {
                         this.state.chatData.map((item, idx) => {
