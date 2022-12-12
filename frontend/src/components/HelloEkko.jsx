@@ -34,9 +34,13 @@ const Greeting = () => {
                         </div>
 
                         {/* Learn, Discover  */}
+                       
                         <div className='absolute grid grid-rows-2 gap-y-8 justify-items-start 
                                         mt-80 pb-32 pt-16
                                         sm:pt-24 sm:w-full sm:justify-items-center'>
+                             {user &&
+
+                           
                             <Link to="/discover">
                                 <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
                                                    sm:px-32 
@@ -49,18 +53,28 @@ const Greeting = () => {
                                         Discover
                                 </button>
                             </Link>
-                            <Link to="/chatlist">
-                                <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
-                                                   sm:px-32 
-                                                   md:px-44 
-                                                   lg:px-58 lg:h-14 
-                                                   bg-secondary text-neutral rounded-full 
-                                                   hover:bg-neutral hover:text-secondary 
-                                                   transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
-                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
-                                        Chat
-                                </button>
-                            </Link>
+                             }
+
+                            {user &&
+                            
+                                 <Link to="/chatlist">
+                                 <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
+                                                    sm:px-32 
+                                                    md:px-44 
+                                                    lg:px-58 lg:h-14 
+                                                    bg-secondary text-neutral rounded-full 
+                                                    hover:bg-neutral hover:text-secondary 
+                                                    transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
+                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
+                                         Chat
+                                 </button>
+                             </Link>
+                                }
+                           
+                            
+                           
+                           
+
                             <Link to="/learn">
                                 <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
                                                    sm:px-36 

@@ -52,7 +52,7 @@ const Profile = (props) => {
 
    
     return( <div className="min-h-screen h-full bg-white px-4 mt-4 md:mt-6 lg:px-10">
-        <UserNav/>
+        <UserNav hidePost={true} username={username}/>
         {user && (
              <div> 
              {/* <h2 className='mt-4 text-center tracking-notmal'>My Profile</h2> */}

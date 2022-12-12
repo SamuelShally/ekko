@@ -39,7 +39,7 @@ const Discover = () => {
 
         <h1 className="relative w-screen text-4xl text-primary text-center text-bold">Discover</h1>
 
-        {users && users.map((u, index) => {
+        {users && users.filter(u=>u.username!==user.user.username).map((u, index) => {
 
             return (
                       
