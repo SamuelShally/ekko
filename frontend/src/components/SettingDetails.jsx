@@ -62,7 +62,7 @@ const SettingDetails = ({u}) =>{
             username,email,intro,worldview
         }
         console.log(updateInfo)
-        const response = await fetch(`http://localhost:4000/api/users/updateUser/${user.user._id}`,{
+        const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/updateUser/${user.user._id}`,{
             method:'PATCH',
             body: JSON.stringify(updateInfo),
             headers:{

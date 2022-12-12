@@ -15,7 +15,7 @@ const Discover = () => {
             alert("Please Login!");
             return;
         }
-        fetch('http://localhost:4000/api/users/getUsers',{
+        fetch('https://ekko-backend.herokuapp.com/api/users/getUsers',{
             method:'GET',
             headers:{
                 'Content-Type' : "application/json",

@@ -13,7 +13,7 @@ export const useSignup = () =>{
         setError(null);
         const user = {username,email,password};
 
-        const response = await fetch("http://localhost:4000/api/users/signup",{
+        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/signup",{
             method:'POST',
             body: JSON.stringify(user),
             headers:{

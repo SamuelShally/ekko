@@ -9,7 +9,7 @@ class ChatRoom extends Component {
         let { roomid } = this.props.params;
         console.log(roomid, 'roomid');
         if (!this.socket) {
-            this.socket = io('http://localhost:4001', { query: { room: roomid } });
+            this.socket = io('https://ekko-backend.herokuapp.com', { query: { room: roomid } });
         }
         this.state = {
             inputText: '',

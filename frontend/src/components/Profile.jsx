@@ -21,7 +21,7 @@ const Profile = (props) => {
     useEffect(()=>{
         
         const fetchUser = async() => {
-            const response = await fetch(`http://localhost:4000/api/users/getUser/${username}`);
+            const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/getUser/${username}`);
             const json = await response.json();
             
           
@@ -34,7 +34,7 @@ const Profile = (props) => {
 
     useEffect(()=>{
         const fetchBlogs = async() =>{
-            const response = await fetch(`http://localhost:4000/api/blog/getPosts/${username}`);
+            const response = await fetch(`https://ekko-backend.herokuapp.com/api/blog/getPosts/${username}`);
             const json = await response.json();
             console.log(json)
             setBlogs(json);

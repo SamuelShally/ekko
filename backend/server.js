@@ -14,11 +14,10 @@ const blogRoutes = require("./routes/blog");
 const app = express();
 
 //config the socket io
-const socketPort = 4001;
-const server = http.createServer(app).listen(socketPort)
+const server = http.createServer(app)
 const io = sio(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://ekko-frontend.herokuapp.com",
         credentials: true,
     }
 });
@@ -55,9 +54,9 @@ app.use('/api/rooms', roomRoutes);
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        app.listen(process.env.PORT, () => {
+        server.listen(process.env.PORT, () => {
             console.log("Connected to db and listening on port", process.env.PORT);
-            console.log("Socket listening on port", socketPort);
+            console.log("Socket listening on port", process.env.PORT);
         });
     })
     .catch((error) => {

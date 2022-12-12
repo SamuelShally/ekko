@@ -17,7 +17,7 @@ const Quiz = () => {
         e.preventDefault();
         const newUser = {username:user.user.username,intro};
 
-        const response = await fetch("http://localhost:4000/api/users/intro",{
+        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/intro",{
             method:'POST',
             body: JSON.stringify(newUser),
             headers:{

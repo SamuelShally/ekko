@@ -43,7 +43,7 @@ const Interest = () => {
         e.preventDefault();
         const newUser = {username:user.user.username,interests};
 
-        const response = await fetch("http://localhost:4000/api/users/interests",{
+        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/interests",{
             method:'POST',
             body: JSON.stringify(newUser),
             headers:{

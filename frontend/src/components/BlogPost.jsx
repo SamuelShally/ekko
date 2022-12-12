@@ -34,7 +34,7 @@ const Post = () => {
         console.log(userInput)
      
 
-        const response = await fetch("http://localhost:4000/api/blog/add",{
+        const response = await fetch("https://ekko-backend.herokuapp.com/api/blog/add",{
             method:'POST',
             body: JSON.stringify(userInput),
             headers:{

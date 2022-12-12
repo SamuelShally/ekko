@@ -22,7 +22,7 @@ const CreateProfile = () => {
         
         console.log(newUser);
 
-        const response = await fetch("http://localhost:4000/api/users/worldview",{
+        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/worldview",{
             method:'POST',
             body: JSON.stringify(newUser),
             headers:{

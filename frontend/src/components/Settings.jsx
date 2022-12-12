@@ -14,7 +14,7 @@ const Settings = () => {
         const fetchCurUser = async() =>{
             console.log(user.user._id)
            
-            const response = await fetch(`http://localhost:4000/api/users/getUserById/${user.user._id}`,{
+            const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/getUserById/${user.user._id}`,{
                 headers:{
                     'Authorization':`Bearer ${user.token}`,
                 }

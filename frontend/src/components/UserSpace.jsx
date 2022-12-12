@@ -18,7 +18,7 @@ const UserSpace = () => {
 
     useEffect(()=>{
         const fetchBlogs = async() =>{
-            const res = await fetch("http://localhost:4000/api/blog/getPosts");
+            const res = await fetch("https://ekko-backend.herokuapp.com/api/blog/getPosts");
             const parsed = await res.json();
             console.log(parsed);
             setBlogs(parsed)
