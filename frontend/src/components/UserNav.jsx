@@ -27,7 +27,7 @@ const UserNav = () => {
                             <Link to='/'>Home</Link>
                         </li>
                         <li>
-                            <Link to="/chat">Chat</Link>
+                            <Link to="/chatlist">Chat</Link>
                         </li>
                         <li>
                             <Link to="/settings">Settings</Link>
