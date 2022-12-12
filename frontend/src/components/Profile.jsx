@@ -42,12 +42,7 @@ const Profile = (props) => {
 
         }
         fetchBlogs();
-
-
     },[])
-
-    useEffect(()=>{console.log(user)})
-
 
 
    

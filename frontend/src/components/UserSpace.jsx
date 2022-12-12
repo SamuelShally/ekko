@@ -26,7 +26,7 @@ const UserSpace = () => {
         fetchBlogs();
         //console.log("blogs",blogs[0].username)
     
-    },[blogs])
+    },[])
    
 
     // display loading msg while fetching data

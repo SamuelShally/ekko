@@ -14,13 +14,6 @@ const Interest = () => {
     const navigate = useNavigate();
     const [interests,setInterests] = useState([]);
 
-    useEffect(()=>{
-        console.log(interests)
-
-    },[interests])
-
-  
-
     const handleLabel = (e) =>{
         if(interests.includes(e.target.value)){
             console.log("has it");

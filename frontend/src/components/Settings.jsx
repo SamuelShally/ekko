@@ -32,13 +32,6 @@ const Settings = () => {
 
     },[user])
 
-    useEffect(()=>{console.log("hoho",curUser)},[curUser])
-
-
-
-
-
-
     return (
         <div className='grid sm:grid-cols-5'>
             <div className=" bg-neutral h-screen sm:col-span-2">

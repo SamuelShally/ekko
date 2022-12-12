@@ -5,9 +5,6 @@ const ChatRoomList = () => {
 
     const [room, setRoom] = useState(['election', 'immigration', 'reproductive rights', 'racial discrimination', 'LGBTQ', 'economic inequality']);
 
-    useEffect(() => {
-    }, [])
-
     return (
         <div>
         {
