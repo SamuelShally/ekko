@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 
 class ChatRoom extends Component {
-    isPrivateChat(roomid) {
-        return !!!parseInt(roomid)
-    }
-
     constructor(props) {
         super(props);
         console.log(props);
@@ -38,12 +34,14 @@ class ChatRoom extends Component {
         console.log(this.user)
 
         // Extra checks if this is a private chat room between 2 users
-        const isPrivate = this.isPrivateChat(this.props.params.roomid);
-        if (isPrivate) {
-            let users = atob(this.props.params.roomid).split(",");
-            if (!users.includes(this.user.username)) {
-                alert("You are not allowed to be in this chat room!");
-            }
+        let users;
+        try {
+            users = atob(this.props.params.roomid).split(",");
+        } catch {
+            users = [];
+        }
+        if (users.length === 2 && !users.includes(this.user.username)) {
+            alert("You are not allowed to be in this chat room!");
         }
     }
 
