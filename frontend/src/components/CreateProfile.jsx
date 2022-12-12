@@ -1,38 +1,109 @@
 import { Link } from 'react-router-dom';
+import userImageHolder from '../img/user-img-holder.png';
+import { useAuthContext, user } from "../hooks/useAuthContext";
+import { useState } from 'react';
+import { useNavigate  } from 'react-router-dom';
+import React from 'react';
 
 const CreateProfile = () => {
+    const { user } = useAuthContext()
+    const [worldview,setWorldView] = useState('');
+    const navigate = useNavigate();
+    if(user){
+        console.log("user",user.user)
+    }
+   
+  
+    
+
+    const submitView = async(e) =>{
+        e.preventDefault();
+        const newUser = {username:user.user.username,worldview}
+        
+        console.log(newUser);
+
+        const response = await fetch("http://localhost:4000/api/users/worldview",{
+            method:'POST',
+            body: JSON.stringify(newUser),
+            headers:{
+                'Content-Type' : "application/json",
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+
+        const json = await response.json();
+        if(!response.ok){
+            console.log(json.error);
+        }
+        if(response.ok){
+            setWorldView('');
+            console.log("worldview set");
+
+            let newAuthContext = JSON.parse(localStorage.getItem("user"));
+            newAuthContext.user.worldview = json.worldview;
+            localStorage.setItem('user', JSON.stringify(newAuthContext));
+            setTimeout("location.reload(true);",1500);
+            navigate('/quiz');
+
+        }
+
+    }
+
     return (
-        <div className="relative h-screen">
-            <h1 className="absolute w-screen my-20 text-4xl text-primary text-center text-bold">Create profile</h1>
-            <div className="absolute card card-bordered rounded-3xl bg-accent left-1/2 -translate-x-1/2 shadow-xl top-1/2 -translate-y-1/2
-                            w-3/4 lg:card-side">
-                <img className="rounded-3xl mt-10 mx-8" src="https://placeimg.com/400/225/arch" alt="User1"/>
-                <div className="relative card-body items-center text-center text-primary">
-                    {/* <h2 className="card-title text-3xl mt-8">User1</h2> */}
-                    <div className="w-full mt-8">
-                        <input type="text" placeholder="Enter username" className="input input-bordered rounded-full max-w-xs" />
-                    </div>
-                    <div className="form-control mt-4">
-                        {/* <label className="label">
-                            <span className="label-text text-sm text-stone-400 font-light mb-1">Pick one!</span>
-                        </label> */}
-                        <select className="select select-bordered rounded-full px-6">
-                            <option disabled selected>Choose your worldview</option>
-                            <option>worldview1</option>
-                            <option>worldview2</option>
-                            <option>worldview3</option>
-                            <option>worldview4</option>
-                            <option>other</option>
-                        </select>
+        // wrapper div
+        <div className="relative h-screen bg-accent">
+
+           
+
+        
+            { user && user.user && user.user.username &&
+                <div className="absolute grid h-3/4 inset-y-20 bg-accent place-items-center">
+                    <h1 className="relative w-screen pl-11 pb-7 text-3xl text-primary text-left sm:text-center sm:p-0 font-bold">
+                        Hey, {user.user.username}<br /><span className="font-light text-2xl">Set up your profile!</span> {/* To do: Ekko -> replace with registered username! */}
+                    </h1>
+                    {/* card */}
+                    <div className="relative card card-bordered rounded-3xl bg-neutral shadow-xl
+                                    w-3/4 -mt-4 sm:max-w-xs md:max-w-sm">
+                        {/* user profile img */} 
+                        {/* <input className="form-control rounded-3xl mt-10 mx-8" type="file" id="profilepic" name="profilepic"
+                                accept='.png, .jpeg, .jpg'/> */}
+                        <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User1" />
+                        {/* card body */}
+                        <div className="relative gap-y-2 card-body items-center text-center text-primary">
+                            {/* <h2 className="card-title text-3xl mt-8">User1</h2> */}
+                            {/* <div className="w-full mt-8">
+                                <input type="text" placeholder="Enter username" className="input input-bordered rounded-full max-w-xs" />
+                            </div> */}
+                            <div className="w-full mt-6">
+                                <h2 className="text-2xl">{user.user.username}</h2> {/* To do: Ekko -> replace with registered username! */}
+
+                            </div>
+                            <div className="form-control mt-4">
+                                <select 
+                                className="select select-bordered rounded-full px-6"
+                                value={worldview}
+                                onChange={(e)=>{
+                                    setWorldView(e.target.value)
+                                    }}>
+                                    <option >Choose your worldview</option>
+                                    <option value="Progressive">Progressive</option>
+                                    <option value="Liberal">Liberal</option>
+                                    <option value="Conservative">Conservative</option>
+                                    <option value="Christian">Christian</option>
+                                    <option value="other">other</option>
+                                </select>
+                                </div>
+                           
+                                <button className="btn my-8 rounded-full 
+                                                    bg-primary text-neutral text-xl"
+                                            onClick={submitView}>
+                                    Next
+                                </button>
+                        
                         </div>
-                    <Link to="/"> {/* remember: change it to my dashboard */}
-                        <button className="btn my-8 rounded-full 
-                                            bg-primary text-neutral text-xl">
-                            Create
-                        </button>
-                    </Link>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }

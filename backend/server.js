@@ -5,19 +5,31 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const http = require('http');
 const sio = require('socket.io');
+const userRoutes = require("./routes/users");
+const roomRoutes = require("./routes/rooms")
+const blogRoutes = require("./routes/blog");
 
 
 //register the express app
 const app = express();
 
 //config the socket io
-const port = 4000;
-const server = http.createServer(app).listen(port)
-const io = sio(server);
+const socketPort = 4001;
+const server = http.createServer(app).listen(socketPort)
+const io = sio(server, {
+    cors: {
+        origin: "http://localhost:3000",
+        credentials: true,
+    }
+});
 
 //middleware
-app.use(cors())
+app.use(cors()); //request from any dom.
 app.use(express.json()); //getting access to req.body
+app.use('/api/users', userRoutes);
+app.use('/api/rooms', roomRoutes);
+app.use('/api/blog',blogRoutes)
+
 
 //show req.path and req.mothod of the request.
 app.use((req, res, next) => {
@@ -34,24 +46,88 @@ router.get("/hi", (req, res) => {
 
 app.use('/', router)
 
+app.use('/api/users', userRoutes);
+
+app.use('/api/rooms', roomRoutes);
+
+
+
 //connecting to mongo db
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(process.env.PORT, () => {
             console.log("Connected to db and listening on port", process.env.PORT);
+            console.log("Socket listening on port", socketPort);
         });
     })
     .catch((error) => {
         console.log("Bad news! Something went wrong");
         console.log(error);
+})
+
+
+
+
+
+
+/* **********SESSIONS FRAMEWORK********* */
+//All changes to Server.js are below this line
+//Please do NPM install. New packages were used.
+
+/*
+    How this works (I think): 
+    
+    We will set a cookie on the front end that will remember 
+    if we're logged in or not - or whatever else we want it to remember.
+
+    This cookie will then compare against an identical copy saved to our mongoDB 
+    database. If it exists and isAuth = true, we can be logged in as that user
+*/
+
+
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session);
+const User = require('./models/userModel');
+
+//Database for saving the user session
+const store = new MongoDBSession({
+    uri: process.env.MONGO_URI,
+    collection: 'mySessions',
+})
+
+
+
+
+
+
+//Set up the session cookie to req objects
+
+
+app.use(
+    
+    session({
+        secret: 'test_user_key', //Str that will sign the cookie 
+        resave: false, //New session for every request t/f
+        saveUninitialized: false, //save if session is unmodified t/f 
+        store: store, //Save session to Database
+        cookie: {
+            sameSite: "none",
+            secure: false, 
+            maxAge: 100*60*60,
+        }
     })
+)
 
 // handle the socket event
+let clients = []
 io.sockets.on('connection', socket => {
+    let query = socket.handshake.query
     console.log('connect');
-    let room = '';
-    // send message
-    socket.on('message', message => socket.broadcast.to(room).emit('message', message));
+    let username = query.username
+    let room = query.room;
+    console.log(room, 'roomid');
+    clients.push({userId: socket.id, username})
+
 
     socket.on('text-message', message => {
         console.log(message, 'text-message');
@@ -60,26 +136,29 @@ io.sockets.on('connection', socket => {
     });
 
     // leave room
-    socket.on('leave', () => {
+    socket.on('leave', (data) => {
         // sending to others
-        socket.broadcast.to(room).emit('hangup');
+        room = data.room;
         socket.leave(room);
     });
 
     // find room
-    socket.on('find', () => {
-        const url = socket.request.headers.referer.split('/');
-        room = url[url.length - 1];
+    socket.on('find', (data) => {
+        room = data.room;
         const sr = io.sockets.adapter.rooms[room];
-        if (sr === undefined) {
-            // no room with such name is found so create it
-            socket.join(room);
-            socket.emit('create');
-        } else if (sr.length === 1) {
+        socket.emit('clients', clients)
+        // if (sr === undefined) {
+        //     // no room with such name is found so create it
+        //     socket.join(room);
+        //     console.log(io.sockets.adapter.rooms);
+        //     socket.emit('join');
+        // } else if (sr.length === 1) {
             // room only for two max
+            socket.join(room);
+            console.log(io.sockets.adapter.rooms);
             socket.emit('join');
-        } else {
-            socket.emit('full', room);
-        }
+        // } else {
+        //     socket.emit('full', room);
+        // }
     });
 });

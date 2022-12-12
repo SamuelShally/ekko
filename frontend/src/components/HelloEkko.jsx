@@ -2,62 +2,101 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fish from '../img/fish.png';
 import Navigation from '../routes/Navigation';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Greeting = () => {
-
-    const [msg, setMsg] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:4000/hi')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setMsg(data.msg);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    const { user } = useAuthContext();
  
     return (
         <div className="relative w-screen h-screen">
-            <div className="relative">
+
+            {/* navigation bar */}
+            <div className="relative z-30">
                 <Navigation/>
             </div>
-            {/* <img className = "fixed mx-auto h-auto opacity-25 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src={fish} alt="Fish" /> */}
-            <div className='absolute w-screen top-1/3 md:top-2'>
-                <div className="relative">
-                <img className="absolute opacity-25 w-3/4 md:w-1/3 lg:w-2/5 left-1/2 -translate-x-1/2" src={fish} alt="Fish" />
-                <div className="relative grid gap-y-10 md:top-1/2 lg:top-1/2">
-                    <h1 className="font-readex text-4xl text-center justify-center">
-                        Connections Built on<br />Exchange of Ideas.
-                    </h1>  
-                    <div className='grid grid-cols-3 justify-items-center'>
-                        <Link to="/learn">
-                            <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
-                                Learn
-                            </button>
-                        </Link>
-                        <Link to="/chatList">
-                            <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
-                                Chat
-                            </button>
-                        </Link>
-                        <Link to="/discover">
-                            <button className="text-xl justify-items-center btn btn-md sm:btn-sm md:btn-md lg:btn-lg bg-secondary text-neutral rounded-full">
-                                Discover
-                            </button>
-                        </Link>
 
-                    </div>
+            {/* big wrapper */}
+            <div className='relative'>
+                <div className='absolute w-screen h-screen z-20 sm:mt-10'>
+                    <div className="relative inset-y-24">
+                        {/* fish img + msg */}
+                        <div className="absolute w-screen mb-10">
+                            <img className="relative opacity-25 
+                                            left-10 w-72
+                                            sm:w-80 sm:left-0 sm:mx-auto"
+                                 src={fish} alt="Fish" />
+                            <div className="absolute top-1/2 -translate-y-1/2">
+                                <h1 className="w-screen font-readex text-4xl text-left leading-normal px-6 
+                                               sm:text-5xl sm:leading-relaxed sm:text-center">
+                                    Connections<br /><span className="font-light">built on</span><br />Exchange of Ideas
+                                </h1>  
+                            </div>
+                        </div>
+
+                        {/* Learn, Discover  */}
+                       
+                        <div className='absolute grid grid-rows-2 gap-y-8 justify-items-start 
+                                        mt-80 pb-32 pt-16
+                                        sm:pt-24 sm:w-full sm:justify-items-center'>
+                             {user &&
+
+                           
+                            <Link to="/discover">
+                                <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
+                                                   sm:px-32 
+                                                   md:px-44 
+                                                   lg:px-58 lg:h-14 
+                                                   bg-secondary text-neutral rounded-full 
+                                                   hover:bg-neutral hover:text-secondary 
+                                                   transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
+                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
+                                        Discover
+                                </button>
+                            </Link>
+                             }
+
+                            {user &&
+                            
+                                 <Link to="/chatlist">
+                                 <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
+                                                    sm:px-32 
+                                                    md:px-44 
+                                                    lg:px-58 lg:h-14 
+                                                    bg-secondary text-neutral rounded-full 
+                                                    hover:bg-neutral hover:text-secondary 
+                                                    transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
+                                         onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
+                                         Chat
+                                 </button>
+                             </Link>
+                                }
+                           
+                            
+                           
+                           
+
+                            <Link to="/learn">
+                                <button className="px-8 text-2xl ml-6 btn btn-lg shadow-lg
+                                                   sm:px-36 
+                                                   md:px-48 
+                                                   lg:px-62 
+                                                   bg-neutral border-4 border-secondary text-secondary rounded-full
+                                                   hover:bg-secondary hover:text-neutral 
+                                                   transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 duration-300"
+                                        onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>
+                                        Learn
+                                </button>
+                            </Link>
+                            {/* <div className='w-full h-96'>
+                            <p>hi</p>
+                            </div> */}
+                        </div>   
+                        
+                    </div>    {/* fish, button container */}
                 </div>
-                </div>
-                
-        </div>
-            
+             </div>
         </div>
     )
-
 }
 
 export default Greeting;

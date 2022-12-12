@@ -14,4 +14,8 @@ html, body, .chat-container, #root {
   .chatcard {
     margin-top: 20px;
   }
+
+  .card {
+    margin-top: 20px;
+  }
   
