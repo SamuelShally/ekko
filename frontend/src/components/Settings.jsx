@@ -12,16 +12,16 @@ const Settings = () => {
 
     useEffect(()=>{
         const fetchCurUser = async() =>{
-            console.log(user.user._id)
+            // console.log(user.user._id)
            
-            const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/getUserById/${user.user._id}`,{
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/getUserById/${user.user._id}`,{
                 headers:{
                     'Authorization':`Bearer ${user.token}`,
                 }
             });
             const json = await response.json();
 
-            console.log("is this null",json)
+            // console.log("is this null",json)
             setCurUser(json);
         }
 

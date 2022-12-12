@@ -16,7 +16,7 @@ const Interest = () => {
 
     const handleLabel = (e) =>{
         if(interests.includes(e.target.value)){
-            console.log("has it");
+            // console.log("has it");
             const label = e.target.value
             const result = interests.filter((interest)=>{
                 return interest!== label;
@@ -26,7 +26,7 @@ const Interest = () => {
           
            
         }else{
-            console.log("doesn't have it")
+            // console.log("doesn't have it")
             setInterests(cur=>[...cur,e.target.value])
         }
 
@@ -36,7 +36,7 @@ const Interest = () => {
         e.preventDefault();
         const newUser = {username:user.user.username,interests};
 
-        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/interests",{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/interests`,{
             method:'POST',
             body: JSON.stringify(newUser),
             headers:{
@@ -46,9 +46,9 @@ const Interest = () => {
         });
 
         const json = await response.json();
-        console.log(response,json)
+        // console.log(response,json)
         if(!response.ok){
-            console.log(json.error);
+            // console.log(json.error);
         }
         if(response.ok){
             let newAuthContext = JSON.parse(localStorage.getItem("user"));
@@ -56,10 +56,7 @@ const Interest = () => {
             localStorage.setItem('user', JSON.stringify(newAuthContext));
             setTimeout("location.reload(true);",1500);
          
-            
-
-            
-            console.log("interests set");
+            // console.log("interests set");
 
             navigate('/people-like-me');
 

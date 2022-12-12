@@ -15,7 +15,7 @@ const Discover = () => {
             alert("Please Login!");
             return;
         }
-        fetch('https://ekko-backend.herokuapp.com/api/users/getUsers',{
+        fetch('${process.env.REACT_APP_API_URL}/api/users/getUsers',{
             method:'GET',
             headers:{
                 'Content-Type' : "application/json",
@@ -24,11 +24,11 @@ const Discover = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setUsers(data);
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
             });
     }, []);
 

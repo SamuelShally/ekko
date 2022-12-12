@@ -31,11 +31,11 @@ app.use('/api/blog',blogRoutes)
 
 
 //show req.path and req.mothod of the request.
-app.use((req, res, next) => {
-    console.log("middleware")
-    console.log(req.path, req.method);
-    next();
-})
+// app.use((req, res, next) => {
+//     // console.log("middleware")
+//     // console.log(req.path, req.method);
+//     next();
+// })
 
 const router = express.Router();
 
@@ -121,16 +121,16 @@ app.use(
 let clients = []
 io.sockets.on('connection', socket => {
     let query = socket.handshake.query
-    console.log('connect');
+    // console.log('connect');
     let username = query.username
     let room = query.room;
-    console.log(room, 'roomid');
+    // console.log(room, 'roomid');
     clients.push({userId: socket.id, username})
 
 
     socket.on('text-message', message => {
-        console.log(message, 'text-message');
-        console.log(room, 'room');
+        // console.log(message, 'text-message');
+        // console.log(room, 'room');
         io.emit('text-message', message)
     });
 

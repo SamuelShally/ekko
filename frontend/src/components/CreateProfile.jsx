@@ -9,9 +9,6 @@ const CreateProfile = () => {
     const { user } = useAuthContext()
     const [worldview,setWorldView] = useState('');
     const navigate = useNavigate();
-    if(user){
-        console.log("user",user.user)
-    }
    
   
     
@@ -20,9 +17,9 @@ const CreateProfile = () => {
         e.preventDefault();
         const newUser = {username:user.user.username,worldview}
         
-        console.log(newUser);
+        // console.log(newUser);
 
-        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/worldview",{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/worldview`,{
             method:'POST',
             body: JSON.stringify(newUser),
             headers:{
@@ -33,11 +30,11 @@ const CreateProfile = () => {
 
         const json = await response.json();
         if(!response.ok){
-            console.log(json.error);
+            // console.log(json.error);
         }
         if(response.ok){
             setWorldView('');
-            console.log("worldview set");
+            // console.log("worldview set");
 
             let newAuthContext = JSON.parse(localStorage.getItem("user"));
             newAuthContext.user.worldview = json.worldview;

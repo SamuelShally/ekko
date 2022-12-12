@@ -25,16 +25,16 @@ const Post = () => {
         
         const username = user.user.username
         const userInput={post, title, username,img};
-        console.log(userInput.post);
-        console.log(userInput.title);
-        console.log(userInput.img)
+        // console.log(userInput.post);
+        // console.log(userInput.title);
+        // console.log(userInput.img)
         if(!userInput.img){
             userInput.img = "https://placeimg.com/160/160/arch"
         }
-        console.log(userInput)
+        // console.log(userInput)
      
 
-        const response = await fetch("https://ekko-backend.herokuapp.com/api/blog/add",{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/blog/add`,{
             method:'POST',
             body: JSON.stringify(userInput),
             headers:{
@@ -42,18 +42,18 @@ const Post = () => {
             }
         })
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
 
     
         if(!response.ok){
-            console.log(json.error);
+            // console.log(json.error);
             setError(json.error);
         }
         if(response.ok){
             setTitle('');
             setPost('');
             setError(null);
-            console.log("Post added to DB");
+            // console.log("Post added to DB");
             navigate('/my-space'); //navigate to creating discover page after logging in succefully (should be replaced to user's dashboard)
         }
     }

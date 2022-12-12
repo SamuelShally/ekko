@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Interestlist = (props) => {
     const interests = props.interests;
-    console.log(interests)
+    // console.log(interests)
   
     
     return ( 

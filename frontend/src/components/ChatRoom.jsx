@@ -6,11 +6,11 @@ class ChatRoom extends Component{
 
     constructor(props) {
         super(props);
-        console.log(props);
+        // console.log(props);
         let { roomid } = this.props.params;
-        console.log(roomid, 'roomid')
+        // console.log(roomid, 'roomid')
         if (!this.socket) {
-            this.socket = io('https://ekko-backend.herokuapp.com', {query: {room: roomid}});
+            this.socket = io(`${process.env.REACT_APP_API_URL}`, {query: {room: roomid}});
         }
         this.state = {
             inputText: '',
@@ -21,7 +21,7 @@ class ChatRoom extends Component{
         this.sendMsg = this.sendMsg.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onfull = this.onfull.bind(this);
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     componentDidMount() {
@@ -52,7 +52,7 @@ class ChatRoom extends Component{
     }
     
     onRevTextMessage (msg) {
-        console.log('text-message', msg);
+        // console.log('text-message', msg);
         let temp = this.state.chatData;
         temp.push(msg);
         this.setState({

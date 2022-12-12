@@ -58,9 +58,9 @@ router.get('/getPosts/:username',(req,res)=>{
 router.post("/add", (req, res) => {
     let {username, post, title,img} = req.body;
 
-    console.log(username);
-    console.log(post);
-    console.log(title);
+    // console.log(username);
+    // console.log(post);
+    // console.log(title);
 
 
       //Validate

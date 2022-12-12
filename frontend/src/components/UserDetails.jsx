@@ -7,7 +7,7 @@ const UserDetails = ({u}) =>{
     const { user } = useAuthContext();
     const [userId,setUserId] = useState(user.user._id);
     //console.log(user)
-    console.log(u.username)
+    // console.log(u.username)
 
     
     const [username,setUsername] = useState(()=>{

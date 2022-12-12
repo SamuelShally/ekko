@@ -75,7 +75,7 @@ router.post('/signup', (req,res)=>{
                     res.status(400).json({error: err.message});
                     return;
                 }
-                console.log(user);
+                // console.log(user);
                 const token = createToken(user._id);
                 res.status(200).json({user,token});
             });  
@@ -90,7 +90,7 @@ router.post('/signup', (req,res)=>{
 
 router.post('/login', async(req, res) => {
     let {username, password} = req.body;
-    console.log(req.headers);
+    // console.log(req.headers);
   
     const user = await User.findOne({username});
 
@@ -173,7 +173,7 @@ router.patch("/updateUser/:id",(req,res)=>{
 router.get('/getUserById/:id',(req,res)=>{
    
     const {id} = req.params;
-    console.log(id)
+    // console.log(id)
     
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:"User not found"})
@@ -292,12 +292,12 @@ router.post("/interests",(req,res)=>{
 
 router.post("/intro",(req,res)=>{
     let {username,intro} = req.body
-    console.log(username,intro);
+    // console.log(username,intro);
     User.findOneAndUpdate({username},{intro},{ new: true },(err,user)=>{
         if(err){
             res.status(400).json(err.message);
         }else{
-            console.log(user)
+            // console.log(user)
             res.status(200).json(user)
         }
 
@@ -316,7 +316,7 @@ router.get("/recommend/:id",async (req,res)=>{
    const userWorldView = user.worldview; //get current user's worldview
    const query = {worldview:{$ne: userWorldView}}; //query all users whose worldviws are different from that of the current user
    let random = Math.floor(Math.random()*allUsers)
-   console.log(random)
+//    console.log(random)
    const users = await User.find(query).limit(5).skip(random/4); //find all users by the query. limit to 5 random users at a time
 
     res.status(200).json(users) 

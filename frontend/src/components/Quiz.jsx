@@ -17,7 +17,7 @@ const Quiz = () => {
         e.preventDefault();
         const newUser = {username:user.user.username,intro};
 
-        const response = await fetch("https://ekko-backend.herokuapp.com/api/users/intro",{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/intro`,{
             method:'POST',
             body: JSON.stringify(newUser),
             headers:{
@@ -28,11 +28,11 @@ const Quiz = () => {
 
         const json = await response.json();
         if(!response.ok){
-            console.log(json.error);
+            // console.log(json.error);
         }
         if(response.ok){
             setIntro('');
-            console.log("Intro set");
+            // console.log("Intro set");
             let newAuthContext = JSON.parse(localStorage.getItem("user"));
             newAuthContext.user.intro = json.intro
             localStorage.setItem('user', JSON.stringify(newAuthContext));
@@ -61,7 +61,7 @@ const Quiz = () => {
                 <textarea className="textarea" placeholder="Bio"
                 value={intro}
                 onChange={(e)=>{
-                    console.log(e.target.value)
+                    // console.log(e.target.value)
                     setIntro(e.target.value)}}
                 ></textarea>
                 </div> 

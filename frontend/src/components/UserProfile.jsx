@@ -26,7 +26,7 @@ const UserProfile = () => {
         const json = await response.json();
 
         if(!response.ok){
-            console.log(json.error);
+            // console.log(json.error);
             return [];
         }else{
             let array = [ ];

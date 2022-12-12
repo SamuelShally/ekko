@@ -5,11 +5,11 @@ import io from 'socket.io-client';
 class ChatRoom extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
+        // console.log(props);
         let { roomid } = this.props.params;
-        console.log(roomid, 'roomid');
+        // console.log(roomid, 'roomid');
         if (!this.socket) {
-            this.socket = io('https://ekko-backend.herokuapp.com', { query: { room: roomid } });
+            this.socket = io(`${process.env.REACT_APP_API_URL}`, { query: { room: roomid } });
         }
         this.state = {
             inputText: '',
@@ -19,7 +19,7 @@ class ChatRoom extends Component {
         this.sendMsg = this.sendMsg.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onfull = this.onfull.bind(this);
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     componentDidMount() {
@@ -31,7 +31,7 @@ class ChatRoom extends Component {
         if (!this.user) {
             alert("Please login first!")
         };
-        console.log(this.user)
+        // console.log(this.user)
 
         // Extra checks if this is a private chat room between 2 users
         let users;
@@ -61,14 +61,14 @@ class ChatRoom extends Component {
     }
 
     onRevTextMessage(msg) {
-        console.log('text-message', msg);
+        // console.log('text-message', msg);
         this.setState({
             chatData: [...this.state.chatData, msg],
         })
     }
 
     sendMsg() {
-        console.log("username", this.user.username);
+        // console.log("username", this.user.username);
 
         this.socket.emit('text-message', { 
             user: this.user.username, 

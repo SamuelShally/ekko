@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 const Profile = (props) => {
     const {id} = useParams();
-    console.log(id);
+    // console.log(id);
     const username = id
 
 
@@ -21,7 +21,7 @@ const Profile = (props) => {
     useEffect(()=>{
         
         const fetchUser = async() => {
-            const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/getUser/${username}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/getUser/${username}`);
             const json = await response.json();
             
           
@@ -34,9 +34,9 @@ const Profile = (props) => {
 
     useEffect(()=>{
         const fetchBlogs = async() =>{
-            const response = await fetch(`https://ekko-backend.herokuapp.com/api/blog/getPosts/${username}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/blog/getPosts/${username}`);
             const json = await response.json();
-            console.log(json)
+            // console.log(json)
             setBlogs(json);
 
 

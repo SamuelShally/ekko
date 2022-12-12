@@ -54,15 +54,15 @@ const SettingDetails = ({u}) =>{
     const handleSubmit = async(e) =>{
         e.preventDefault();
         if(!user){
-            console.log("must be logged in to update feedback");
+            // console.log("must be logged in to update feedback");
             return
         }
 
         const updateInfo ={
             username,email,intro,worldview
         }
-        console.log(updateInfo)
-        const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/updateUser/${user.user._id}`,{
+        // console.log(updateInfo)
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/updateUser/${user.user._id}`,{
             method:'PATCH',
             body: JSON.stringify(updateInfo),
             headers:{
@@ -73,7 +73,7 @@ const SettingDetails = ({u}) =>{
         });
 
         const json = await response.json()
-        console.log(json)
+        // console.log(json)
         if(response.ok){
             let newAuthContext = JSON.parse(localStorage.getItem("user"));
             newAuthContext.user = json; 
@@ -145,7 +145,7 @@ const SettingDetails = ({u}) =>{
                         if(user){
                         setEditing(true)
                     }else{
-                        console.log("must be logged in");
+                        // console.log("must be logged in");
                     }}}>Edit</button>
                 </div>
             </div>

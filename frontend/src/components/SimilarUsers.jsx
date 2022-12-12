@@ -20,14 +20,14 @@ const SimilarUsers = () => {
         const fetchSimilarUsers = async() => {
         
            
-            const response = await fetch(`https://ekko-backend.herokuapp.com/api/users/recommend/${user.user._id}`,{
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/recommend/${user.user._id}`,{
                 headers:{
                     'Authorization':`Bearer ${user.token}`,
                 }
             });
 
             const json = await response.json();
-            console.log(json)
+            // console.log(json)
             setSimliarUsers(json)
         }
 
