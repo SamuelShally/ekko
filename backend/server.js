@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app)
 const io = sio(server, {
     cors: {
-        origin: "https://ekko-frontend.herokuapp.com",
+        origin: ["https://ekko-frontend.herokuapp.com", "http://localhost:3000"],
         credentials: true,
     }
 });
