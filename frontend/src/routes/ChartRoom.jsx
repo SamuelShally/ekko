@@ -74,6 +74,11 @@ class ChatRoom extends Component {
             user: this.user.username, 
             msg: this.state.inputText,
         })
+        
+        this.setState({
+            inputText: '',
+        })
+
     }
 
     render() {
@@ -123,7 +128,7 @@ class ChatRoom extends Component {
                         })
                     }
                 </ul>
-                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value={this.state.input}
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value={this.state.inputText}
                     onChange={this.handleChange} />
                 <button className="btn btn-active btn-accent" onClick={this.sendMsg}>Send</button>
             </div>
