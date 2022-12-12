@@ -52,6 +52,7 @@ const Discover = () => {
                                     <h2 className="card-title text-2xl mt-8">{u.username}</h2>
                                     <h2 className="card-title text-2xl mt-6">{u.email}</h2>
                                     <h3 className='card-title text-1xl mt-6'>{u.worldview}</h3>
+                                    <h3 className='card-title text-1xl mt-6'>{u.intro}</h3>
                                     <div>
                                         <Link to={"/profile/"+u.username}> {/* change it to chatroom */}
                                             <button className="btn align-middle my-8 rounded-full 
