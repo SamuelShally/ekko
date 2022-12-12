@@ -89,10 +89,13 @@ const Settings = () => {
                             <p3>Worldview</p3>
                         </div>
                     </div>
+                    
                 </div> {/* end of grid */}
             </div>
             <div className=' sm:col-span-3'>
-                <h>User Details</h>
+                <div className='pl-6 pb-6 pt-20'>
+                    <p1 className="font-bold text-3xl">User Details</p1>
+                </div>
                 {user && (
                     <div>
                         <SettingDetails u={curUser}/>
