@@ -21,19 +21,26 @@ const Learn = () =>{
                               lg:w-2/5 xl:w-2/5">Check out our proudly curated resources to better engage in
                     civil discourse and exercise your right to freedom of speech.
                 </p>
-                <div className="mt-10 grid grid-rows-3 gap-y-8 content-center w-full justify-items-center">
+
+                <div className="mt-10 grid grid-rows-3 gap-y-8 content-center w-full min-w-xs justify-items-center">
+                    <a href="https://freespeechcenter.universityofcalifornia.edu/programs-and-resources/resource-materials/first-amendment-freedom-of-expression-resources/">
                     <button className=" 
-                    btn bg-white rounded-full px-32 sm:px-48">
-                        Link 1
+                    btn bg-white rounded-full px-4 sm:px-12 mx-2">
+                      Freedom of Expression Education
                     </button>
+                    </a>
+                    <a href="https://www.billofrightsinstitute.org/resources/freedom-of-speech-general">
                     <button className=" 
-                    btn bg-white rounded-full px-32 sm:px-48">
-                        Link 2
+                    btn bg-white rounded-full px-4 sm:px-12 mx-2">
+                        Supreme Court Cases with Freedom of Speech 
                     </button>
+                    </a>
+                    <a href="https://constitution.congress.gov/browse/amendment-1/">
                     <button className=" 
-                    btn bg-white rounded-full px-32 sm:px-48">
-                        Link 3
+                    btn bg-white rounded-full px-4 sm:px-12 mx-2">
+                        First Amendment 
                     </button>
+                    </a>
                 </div>
             </div>
             {/* <div className="bg-white">

@@ -35,16 +35,18 @@ const Discover = () => {
     return (
         <div className="relative h-screen">
 
-        <div className="absolute grid h-3/4 inset-y-20 place-items-center">
-
-        <h1 className="relative w-screen text-4xl text-primary text-center text-bold">Discover</h1>
+        {/* <div className="absolute grid h-3/4 inset-y-20 place-items-center"> */}
+        <h1 className="relative w-screen text-4xl text-primary text-center text-bold p-10">Discover</h1>
+        <div className='grid gap-y-4 sm:grid-cols-2 sm:mx-8 max-h-max place-items-center pb-10
+                                    lg:grid-cols-3 lg:mx-10 xl:mx-20 2xl:grid-cols-4'>
+        
 
         {users && users.filter(u=>u.username!==user.user.username).map((u, index) => {
 
             return (
-                      
-                            <div key={index} className="relative card card-bordered rounded-3xl bg-accent
-                                w-3/4 lg:card-side">
+                        // <div className=''>
+                            <div key={index} className=" card card-bordered rounded-3xl bg-accent
+                                w-3/4 sm:max-w-xs md:max-w-sm lg:md:max-w-sm">
                                 {/* <figure className="px-10 pt-10"> */}
                                 <img className="rounded-3xl mt-10 mx-8" src={userImageHolder} alt="User2" />
                                 {/* </figure> */}
@@ -71,7 +73,8 @@ const Discover = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
+                    //   </div>
 
                     )
                     }
