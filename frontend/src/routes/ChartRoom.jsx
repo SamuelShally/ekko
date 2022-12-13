@@ -18,15 +18,12 @@ class ChatRoom extends Component {
         this.onRevTextMessage = this.onRevTextMessage.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.onfull = this.onfull.bind(this);
         // console.log(this.state)
     }
 
     componentDidMount() {
-        this.socket.on('full', this.onfull);
         this.socket.on('text-message', this.onRevTextMessage);
 
-        this.socket.emit('find', { room: this.props.params.roomid });
         this.user = JSON.parse(localStorage.getItem('user')).user;
         if (!this.user) {
             alert("Please login first!")
@@ -43,15 +40,6 @@ class ChatRoom extends Component {
         if (users.length === 2 && !users.includes(this.user.username)) {
             alert("You are not allowed to be in this chat room!");
         }
-    }
-
-    componentWillUnmount() {
-        this.socket.emit('leave', { room: this.props.params.roomid })
-    }
-
-    onfull() {
-        alert("this room is full!")
-        window.location.href = "/chatList"
     }
 
     handleChange(event) {
